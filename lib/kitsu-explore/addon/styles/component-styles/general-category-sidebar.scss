@@ -1,0 +1,37 @@
+& {
+  max-width: 300px;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  @media screen and (max-height: 660px) {
+    position: relative;
+    top: 0;
+  }
+  .card {
+    padding: 20px;
+  }
+  h5 {
+    font-size: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+  }
+  p {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .favorite-categories {
+    margin-bottom: 30px;
+  }
+  .categories-list {
+    display: flex;
+    flex-flow: column wrap;
+    max-height: 375px;
+    a {
+      font-size: 12px;
+      font-weight: 600px;
+    }
+  }
+  .edit-favorite-categories {
+    font-size: 12px;
+  }
+}

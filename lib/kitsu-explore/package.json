@@ -1,0 +1,20 @@
+{
+  "name": "kitsu-explore",
+  "keywords": [
+    "ember-addon",
+    "ember-engine"
+  ],
+  "dependencies": {
+    "ember-cli-htmlbars": "*",
+    "ember-cli-babel": "*",
+    "ember-cli-sass": "*",
+    "ember-intl": "*",
+    "ember-component-css": "*",
+    "ember-composable-helpers": "*"
+  },
+  "ember-addon": {
+    "paths": [
+      "../kitsu-shared"
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+<div class="col-sm pl-0">
+  <h3>{{t "kitsu-explore.titles.index" type=model.type}}</h3>
+  {{! @TODO: Search Component }}
+
+  {{! Trending media this week }}
+  {{media-list
+    key="trending"
+    type=model.type
+  }}
+
+  {{! Media airing this week }}
+  {{media-list
+    key="top-current"
+    type=model.type
+    sort="-user_count"
+    filters="status:current"
+  }}
+
+  {{! Upcoming media }}
+  {{media-list
+    key="top-upcoming"
+    type=model.type
+    sort="-user_count"
+    filters="status:upcoming"
+  }}
+
+  {{! Sampled favorites }}
+  {{#if model.favorites.value}}
+    {{#each (take 2 (shuffle model.favorites.value)) as |favorite|}}
+      {{media-list
+        key="trending"
+        type=model.type
+        category=favorite.category
+        viewMoreRoute="kitsu-explore.index.category.more"
+      }}
+    {{/each}}
+  {{/if}}
+
+  {{! Highest rated media }}
+  {{media-list
+    key="highest-rated"
+    type=model.type
+    sort="-average_rating"
+  }}
+
+  {{! Popular media }}
+  {{media-list
+    key="most-popular"
+    type=model.type
+    sort="-user_count"
+  }}
+</div>
+
+<div class="col-sm">
+  {{general-category-sidebar task=model.favorites}}
+</div>

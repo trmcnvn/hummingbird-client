@@ -1,0 +1,16 @@
+kitsu-shared:
+  media-rankings:
+    popularity: "{length, select,
+      short {#{rank} Most Popular}
+      full {{type, select,
+        anime {Rank #{rank} (Most Popular Anime)}
+        manga {Rank #{rank} (Most Popular Manga)}
+        other {}}}
+      other {}}"
+    rating: "{length, select,
+      short {#{rank} Highest Rated}
+      full {{type, select,
+        anime {Rank #{rank} (Highest Rated Anime)}
+        manga {Rank #{rank} (Highest Rated Manga)}
+        other {}}}
+      other {}}"

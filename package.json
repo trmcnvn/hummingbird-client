@@ -1,0 +1,77 @@
+{
+  "name": "kitsu",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Frontend for Kitsu",
+  "license": "Apache-2.0",
+  "author": "Kitsu, Inc.",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": "https://github.com/hummingbird-me/hummingbird-client",
+  "scripts": {
+    "build": "ember build",
+    "lint:js": "eslint ./*.js app config lib server tests",
+    "start": "ember serve",
+    "test": "ember test --reporter dot"
+  },
+  "devDependencies": {
+    "@ember/optional-features": "^0.5.2",
+    "algoliasearch": "^3.26.0",
+    "bootstrap": "^4.0.0",
+    "broccoli-asset-rev": "^2.6.0",
+    "ember-cli": "~3.0.2",
+    "ember-cli-app-version": "^3.1.3",
+    "ember-cli-autoprefixer": "^0.8.1",
+    "ember-cli-babel": "^6.12.0",
+    "ember-cli-code-coverage": "^0.4.2",
+    "ember-cli-dependency-checker": "^2.1.0",
+    "ember-cli-document-title": "^0.3.3",
+    "ember-cli-eslint": "^4.2.3",
+    "ember-cli-htmlbars": "^2.0.3",
+    "ember-cli-htmlbars-inline-precompile": "^1.0.2",
+    "ember-cli-inject-live-reload": "^1.7.0",
+    "ember-cli-lazysizes": "^0.1.1",
+    "ember-cli-qunit": "^4.3.2",
+    "ember-cli-sass": "^7.1.7",
+    "ember-cli-sentry": "^3.0.0",
+    "ember-cli-shims": "^1.2.0",
+    "ember-cli-sri": "^2.1.1",
+    "ember-cli-uglify": "^2.0.2",
+    "ember-component-css": "^0.6.3",
+    "ember-composable-helpers": "^2.1.0",
+    "ember-concurrency": "^0.8.16",
+    "ember-data": "~3.1.1",
+    "ember-engines": "^0.5.16",
+    "ember-fetch": "^3.4.4",
+    "ember-intl": "^2.33.1",
+    "ember-load-initializers": "^1.0.0",
+    "ember-luxon": "^1.4.0",
+    "ember-maybe-import-regenerator": "^0.1.6",
+    "ember-parachute": "^0.3.7",
+    "ember-popper": "^0.9.0",
+    "ember-resolver": "^4.5.5",
+    "ember-simple-auth": "^1.5.1",
+    "ember-source": "~3.1.0-beta.5",
+    "ember-svg-jar": "^1.0.0",
+    "ember-truth-helpers": "^2.0.0",
+    "ember-web-app": "^2.3.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-ember": "^5.1.0",
+    "hoverintent": "^2.0.0",
+    "loader.js": "^4.6.0",
+    "svgo-plugin-unify-ids": "^1.0.0",
+    "torii": "^0.10.1"
+  },
+  "engines": {
+    "node": "^4.5 || 6.* || >= 7.*"
+  },
+  "ember-addon": {
+    "paths": [
+      "lib/kitsu-dashboard",
+      "lib/kitsu-explore",
+      "lib/kitsu-media",
+      "lib/kitsu-shared"
+    ]
+  }
+}

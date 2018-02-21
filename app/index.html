@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kitsu</title>
+    <meta name="keywords" content="anime, manga, kitsu, hummingbird, anime news">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="YKitj6wgNvrB_gq_M8vbT0JmLHEONWRZN29H96TROf0">
+
+    {{content-for "head"}}
+
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/kitsu.css">
+    <script>
+      window.prerenderReady = false;
+    </script>
+
+    {{content-for "head-footer"}}
+  </head>
+  <body>
+    {{content-for "body"}}
+
+    <script src="{{rootURL}}assets/vendor.js"></script>
+    <script src="{{rootURL}}assets/kitsu.js"></script>
+
+    {{content-for "body-footer"}}
+  </body>
+</html>

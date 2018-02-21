@@ -1,0 +1,41 @@
+& {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $purple;
+  min-width: 10px;
+  min-height: 10px;
+  margin-right: 10px;
+  &:last-child {
+    margin-right: 0;
+  }
+
+  .image-container {
+    position: relative;
+    cursor: pointer;
+    img {
+      border-radius: 3px;
+      width: 100%;
+      height: 100%;
+    }
+    .image-overlay {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 3px;
+      &:hover {
+        opacity: 1;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.8) 100%);
+        background-size: auto 200%;
+      }
+      > a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

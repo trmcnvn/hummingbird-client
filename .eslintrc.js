@@ -4,36 +4,21 @@ module.exports = {
     ecmaVersion: 2017,
     sourceType: 'module'
   },
-  extends: 'airbnb-base',
+  extends: [
+    'eslint:recommended',
+    'plugin:ember/recommended'
+  ],
   env: {
     browser: true
   },
-  rules: {
-    // enable
-    'curly': 'error',
-    // disable
-    'no-console': 'off',
-    'comma-dangle': 'off',
-    'import/no-extraneous-dependencies': 'off',
-    'import/extensions': 'off',
-    'import/no-unresolved': 'off',
-    'no-underscore-dangle': 'off',
-    'consistent-return': 'off',
-    'space-before-function-paren': 'off',
-    'prefer-rest-params': 'off',
-    'func-names': 'off',
-    'no-useless-escape': 'off',
-    'newline-per-chained-call': 'off',
-    'no-constant-condition': ['error', { 'checkLoops': false }],
-    'no-shadow': 'off',
-    'object-curly-newline': 'off' // No way to disable just for function params
-  },
+  rules: {},
   overrides: [
     {
       files: [
         'testem.js',
         'ember-cli-build.js',
-        'config/**/*.js'
+        'config/**/*.js',
+        'lib/*/index.js'
       ],
       parserOptions: {
         sourceType: 'script',
@@ -42,15 +27,6 @@ module.exports = {
       env: {
         browser: false,
         node: true
-      }
-    },
-    {
-      files: ['tests/**/*.js'],
-      globals: {
-        'server': true
-      },
-      rules: {
-        'prefer-arrow-callback': 'off'
       }
     }
   ]

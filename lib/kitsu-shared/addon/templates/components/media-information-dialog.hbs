@@ -1,0 +1,18 @@
+{{yield}}
+
+{{#if (and isEnabled showDialog)}}
+  {{#ember-popper-targeting-parent class=(concat styleNamespace " popper") placement=@placement}}
+    <div class="media-meta">
+      <span class="media-title">{{@media.yearlessTitle}}</span>
+      <span class="media-year">{{@media.year}}</span>
+    </div>
+    {{#if @media.averageRating}}
+      <div class="media-ratings {{percentageClass}}">
+        {{math-floor @media.averageRating}}%
+      </div>
+    {{/if}}
+    {{media-rankings media=@media length="short"}}
+    <div class="media-synopsis">{{@media.synopsis}}</div>
+    <div class="popper-arrow" x-arrow></div>
+  {{/ember-popper-targeting-parent}}
+{{/if}}
