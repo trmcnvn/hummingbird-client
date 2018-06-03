@@ -1,0 +1,136 @@
+{{#click-outside action=(action "closeEditor") except-selector=".editor-media-modal"}}
+  <div class="{{styleNamespace}} card {{if isExpanded "expanded" "folded"}}" {{action "openEditor"}}>
+    <div class="editor-header">
+      {{ui-avatar image=(get-image session.currentUser.avatar "medium")}}
+      {{#if isExpanded}}
+        <span class="name">{{session.currentUser.name}}</span>
+      {{else}}
+        <span class="placeholder">{{placeholder}}</span>
+      {{/if}}
+    </div>
+
+    {{#if isExpanded}}
+      <div class="editor-body">
+        {{textarea-autosize
+          autofocus=true
+          value=message
+          maxlength=maxLength
+          placeholder=(t "shared-addon.app-feed.editor.message-placeholder")
+          onInput=(action "processMessage")}}
+      </div>
+
+      <div class="editor-attachments">
+        {{#if (gt uploads.length 0)}}
+
+        {{else if embed}}
+          <div class="embed-preview">
+            <div class="embed-meta">
+              {{t "shared-addon.app-feed.editor.attachments.embed.preview"}}
+              <span class="clear-embed" {{action "clearEmbed"}}>
+                {{svg-jar "x"}}
+                {{bs-tooltip title=(t "shared-addon.app-feed.editor.attachments.embed.remove")}}
+              </span>
+            </div>
+            {{#if fetchEmbed.isRunning}}
+              {{ui-spinner center=true}}
+            {{else}}
+              {{#with fetchEmbed.last.value as |embed|}}
+                {{app-feed/items/post/embed embed=embed}}
+              {{/with}}
+            {{/if}}
+          </div>
+        {{/if}}
+
+        {{#if (and media (not isMediaReadOnly))}}
+          <div class="media-preview">
+            <span class="clear-media" {{action "clearMedia"}}>
+              {{svg-jar "x"}}
+              {{bs-tooltip title=(t "shared-addon.app-feed.editor.attachments.media.remove")}}
+            </span>
+            {{app-feed/items/post/media media=media}}
+            {{#if (gt media.unitCount 0)}}
+              <div class="media-unit">
+                <div class="custom-control custom-checkbox">
+                  <input class="custom-control-input" type="checkbox" id="unit-checkbox" checked={{isUnitTagged}}>
+                  <label class="custom-control-label" for="unit-checkbox" {{action (toggle "isUnitTagged" this)}}>
+                    {{t "shared-addon.app-feed.editor.actions.unit" type=media.type}}
+                  </label>
+                </div>
+                <input class="form-control" type="number" min="1" max={{media.unitCount}}
+                  value={{unitNumber}} oninput={{action (mut unitNumber) value="target.value"}} />
+              </div>
+            {{/if}}
+          </div>
+        {{/if}}
+      </div>
+
+      <div class="editor-actions">
+        <div class="left-actions">
+          <span class="uploads {{if embed "disabled"}}">
+            {{svg-jar "camera"}}
+            {{t "shared-addon.app-feed.editor.actions.images"}}
+            {{bs-tooltip title=(t "shared-addon.app-feed.editor.actions.images-tooltip")}}
+          </span>
+          <span class="media-tag {{if media "disabled"}}" {{action "showMediaModal"}}>
+            {{svg-jar "bookmark"}}
+            {{t "shared-addon.app-feed.editor.actions.media"}}
+            {{bs-tooltip title=(t "shared-addon.app-feed.editor.actions.media-tooltip")}}
+          </span>
+          <span class="emoji">
+            <img src="https://twemoji.maxcdn.com/2/72x72/1f600.png">
+            {{bs-tooltip title=(t "shared-addon.app-feed.editor.actions.emoji")}}
+          </span>
+          <span class="help" {{action (mut showHelpModal) true}}>
+            {{svg-jar "help-circle"}}
+            {{bs-tooltip title=(t "shared-addon.app-feed.editor.actions.help-tooltip")}}
+          </span>
+        </div>
+        <div class="right-actions">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" id="nsfw-checkbox" checked={{isNSFW}}>
+            <label class="custom-control-label" for="nsfw-checkbox" {{action (toggle "isNSFW" this)}}>
+              {{t "shared-addon.app-feed.editor.actions.nsfw"}}
+            </label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" id="spoiler-checkbox" checked={{isSpoiler}}>
+            <label class="custom-control-label" for="spoiler-checkbox" {{action (toggle "isSpoiler" this)}}>
+              {{t "shared-addon.app-feed.editor.actions.spoiler"}}
+            </label>
+          </div>
+          {{#ui-button onClick=(perform createPost) isLoading=createPost.isRunning isDisabled=(not canPost) buttonClass="post-button"}}
+            {{t "shared-addon.app-feed.editor.actions.post"}}
+          {{/ui-button}}
+        </div>
+      </div>
+    {{/if}}
+  </div>
+{{/click-outside}}
+
+{{! Media Modal }}
+{{#bs-modal open=showMediaModal onHidden=(action (mut showMediaModal) false) class=(concat styleNamespace " editor-media-modal") as |modal|}}
+  {{#modal.header}}
+    <h5 class="modal-title">
+      {{t "shared-addon.app-feed.editor.media.title"}}
+      <small class="text-muted">
+        {{t "shared-addon.app-feed.editor.media.subtitle"}}
+      </small>
+    </h5>
+  {{/modal.header}}
+  {{#modal.body}}
+    {{app-feed/editor/media-search
+      onClick=(action "selectMedia")}}
+  {{/modal.body}}
+{{/bs-modal}}
+
+{{! Help Modal }}
+{{#bs-modal open=showHelpModal onHidden=(action (mut showHelpModal) false) as |modal|}}
+  {{#modal.header}}
+    <h5 class="modal-title">
+      {{t "shared-addon.app-feed.editor.help.title"}}
+    </h5>
+  {{/modal.header}}
+  {{#modal.body}}
+    {{markdown-to-html markdown=(fr-markdown-file "post-help") tables=true}}
+  {{/modal.body}}
+{{/bs-modal}}

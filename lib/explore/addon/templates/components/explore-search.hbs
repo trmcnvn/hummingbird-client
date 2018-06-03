@@ -1,0 +1,11 @@
+<div class="input-wrapper">
+  {{svg-jar "search"}}
+  <input
+    class="form-control" type="search" placeholder={{t "explore.search.placeholder"}}
+    value={{query}} oninput={{action (mut query) value="target.value"}} />
+  {{search-popper query=query}}
+</div>
+
+<div class="meta-info">
+  {{t "explore.search.meta" type=@type htmlSafe=true}}
+</div>

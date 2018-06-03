@@ -1,7 +1,6 @@
-import Media from 'kitsu/models/-media';
-import attr from 'ember-data/attr';
-import { hasMany } from 'ember-data/relationships';
+import Model from 'kitsu/mixins/models/media';
+import { hasMany } from 'kitsu/decorators/orbit';
 
-export default Media.extend({
-
-});
+export default class Manga extends Model {
+  @hasMany('category', { inverse: 'manga' }) categories;
+}

@@ -1,0 +1,65 @@
+@import "../../../app/styles/variables";
+
+.jumbotron-kitsu {
+  margin-top: rem(-20px);
+  padding: rem(30px) 0 0 ;
+  border-radius: 0;
+
+  @include themify($themes) {
+    background-color: themed('purple-darker');
+  }
+
+  h2 {
+    display: block;
+    font-weight: normal;
+    margin-bottom: 0;
+    line-height: rem(40px);
+
+    @include themify($themes) {
+      color: themed('white');
+    }
+  }
+
+  nav {
+    width: 100%;
+    margin: rem(20px) 0 0 rem(-11px);
+
+    .nav-link {
+      position: relative;
+      font-size: rem(14px);
+      padding: rem(18px) rem(11px) rem(15px);
+
+      transition: color .2s;
+      text-transform: uppercase;
+      will-change: color;
+
+      @include themify($themes) {
+        color: #a793a5; // @Theme
+        &:hover, &:active {
+          color: themed('white');
+        }
+      }
+
+      &:hover, &.active {
+        text-decoration: none !important;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: rem(5px);
+        border-top-left-radius: rem(3px);
+        border-top-right-radius: rem(3px);
+        background: linear-gradient(to right, RGBA(237, 72, 95, 1), RGBA(242, 124, 54, 1));
+        transform: scaleX(0);
+        transition: transform 250ms ease;
+      }
+      &.active {
+        &::before { transform: scaleX(1); }
+      }
+    }
+  }
+}

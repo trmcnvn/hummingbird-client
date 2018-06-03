@@ -1,0 +1,18 @@
+{{#photo-swipe
+  class=(concat "photo-grid " gridStyle)
+  bgOpacity=0.92
+  showAnimationDuration=0
+  hideAnimationDuration=0
+  history=false
+  items=items as |ps|}}
+  {{#each (take 5 items) as |item index|}}
+    <a href={{item.src}} {{action ps.actions.open (compute (action "getPhotoOptions") index)}}>
+      {{ui-image image=item.thumbSrc}}
+      {{#if (and (gt items.length 5) (eq index 4))}}
+        <div class="uploads-overlay uploads-more">+{{dec 4 items.length}}</div>
+      {{else if (eq item.type "image/gif")}}
+        <div class="uploads-overlay uploads-gif">{{t "shared-addon.app-feed.items.post.uploads.gif"}}</div>
+      {{/if}}
+    </a>
+  {{/each}}
+{{/photo-swipe}}

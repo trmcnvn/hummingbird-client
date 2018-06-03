@@ -1,0 +1,51 @@
+{{#if (and isContentGated isGateShown)}}
+  <div class="content-gate {{gateType}}" {{action "toggleGate"}}>
+    <div class="gate-label">{{t (concat "shared-addon.app-feed.items.post.gate." gateType ".label")}}</div>
+    <div class="gate-hover">{{t (concat "shared-addon.app-feed.items.post.gate." gateType ".hover")}}</div>
+  </div>
+{{else}}
+  {{! Post body }}
+  {{#if post.contentFormatted}}
+    {{#if @isPermalinkPage}}
+      <p class="post-content">
+        {{html-safe (format-content post.contentFormatted)}}
+      </p>
+    {{else}}
+      {{#read-more text=(format-content post.contentFormatted) limit=700 htmlSafe=true class="post-content" as |rm|}}
+        {{#if rm.wasTruncated}}
+          <div class="view-more" {{action rm.toggle}}>
+            {{#if rm.isExpanded}}
+              {{t "shared-addon.app-feed.items.post.view-less"}}
+            {{else}}
+              {{t "shared-addon.app-feed.items.post.view-more"}}
+            {{/if}}
+          </div>
+        {{/if}}
+      {{/read-more}}
+    {{/if}}
+  {{/if}}
+
+  {{! Uploads/Embed }}
+  {{#if post.uploads}}
+    {{app-feed/items/post/uploads-grid uploads=post.uploads}}
+  {{else if post.embed}}
+    {{app-feed/items/post/embed embed=post.embed}}
+  {{/if}}
+{{/if}}
+
+{{! Tagged Media }}
+{{#if (and post.media (or (not post.media.nsfw) (not (and isContentGated isGateShown))))}}
+  {{app-feed/items/post/media media=post.media spoiledUnit=post.spoiledUnit}}
+{{/if}}
+
+{{! Actions }}
+{{app-feed/items/post/actions
+  post=post
+  feed=@feed
+  reason=@reason
+  isGated=@isContentGated
+  isGateShown=isGateShown
+  toggleGate=(action "toggleGate")
+  onLike=(action @onLike)
+  onDislike=(action @onDislike)
+  onDelete=(action @onDelete)}}

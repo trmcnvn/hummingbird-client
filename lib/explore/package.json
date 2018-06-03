@@ -1,0 +1,22 @@
+{
+  "name": "explore",
+  "keywords": [
+    "ember-addon",
+    "ember-engine"
+  ],
+  "dependencies": {
+    "@ember-decorators/babel-transforms": "*",
+    "babel-plugin-transform-object-rest-spread": "*",
+    "ember-cli-htmlbars": "*",
+    "ember-cli-babel": "*",
+    "ember-cli-sass": "*",
+    "ember-component-css": "*",
+    "ember-intl": "*",
+    "ember-bootstrap": "*"
+  },
+  "ember-addon": {
+    "paths": [
+      "../shared-addon"
+    ]
+  }
+}

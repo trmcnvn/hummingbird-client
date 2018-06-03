@@ -1,0 +1,66 @@
+{{#if fetchLikes.isRunning}}
+  <div class="mb-2">
+    {{ui-spinner size="small"}}
+  </div>
+{{else}}
+  <span class="heart {{if isLiked "is-liked"}}" {{action (perform createLike)}}>
+    {{svg-jar "heart"}}
+  </span>
+
+  {{#if (and showUsers (gt records.length 0))}}
+    <div class="users">
+      {{#each (take 4 records) as |like|}}
+        {{#with like.user as |user|}}
+          <a href={{href-to "profile" user.linkableId}}>
+            {{ui-avatar image=(get-image user.avatar "tiny")}}
+            {{bs-tooltip title=user.name}}
+          </a>
+        {{/with}}
+      {{/each}}
+      {{#if (gt likedCount 4)}}
+        <a class="like-count" href="#" {{action (toggle "isModalShown" this)}}>
+          {{#if (gt likedCount 99)}}
+            {{format-number 99}}+
+            {{bs-tooltip title=(format-number (dec 4 likedCount) fallback="-")}}
+          {{else}}
+            {{format-number (dec 4 likedCount) fallback="-"}}
+          {{/if}}
+        </a>
+      {{/if}}
+    </div>
+  {{/if}}
+{{/if}}
+
+{{#bs-modal
+  open=isModalShown
+  onHidden=(toggle-action "isModalShown" this)
+  class=styleNamespace
+  as |modal|}}
+  {{#modal.header}}
+    <h5 class="modal-title">
+      {{t "shared-addon.app-feed.activity-likes.reactions"}}
+    </h5>
+  {{/modal.header}}
+  {{#modal.body}}
+    <ul class="list-unstyled">
+      {{#ui-pagination onPagination=(perform onPagination)}}
+        {{#each records as |record|}}
+          {{#with record.user as |user|}}
+            <li class="media user-list-item">
+              <a href={{href-to "profile" user.linkableId}}>
+                {{ui-avatar image=(get-image user.avatar "medium") class="mr-3"}}
+                <div class="media-body">
+                  <h5 class="my-0">{{user.name}}</h5>
+                  <span class="followers">
+                    {{t "shared-addon.app-feed.items.post.actions.followers" count=user.followersCount}}
+                  </span>
+                  {{! @TODO: Following button? }}
+                </div>
+              </a>
+            </li>
+          {{/with}}
+        {{/each}}
+      {{/ui-pagination}}
+    </ul>
+  {{/modal.body}}
+{{/bs-modal}}

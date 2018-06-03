@@ -1,0 +1,84 @@
+<div class="{{styleNamespace}} media">
+  <a href={{href-to "profile" @comment.user.linkableId}} class="mr-3 avatar">
+    {{ui-avatar image=(get-image @comment.user.avatar "small")}}
+  </a>
+  <div class="media-body">
+    <div class="comment-body">
+      <h5 class="username">
+        <a href={{href-to "profile" @comment.user.linkableId}}>
+          {{@comment.user.name}}
+        </a>
+        <a class="timestamps" href={{href-to "comments" @comment.remoteId}}>
+          <small>
+            {{format-relative @comment.createdAt interval=60000}}
+            {{#if @comment.editedAt}}
+              &middot;
+              {{t "shared-addon.app-feed.items.post.edited"}}
+              {{format-relative @comment.editedAt interval=60000}}
+            {{/if}}
+          </small>
+        </a>
+      </h5>
+      {{#if @comment.contentFormatted}}
+        {{#read-more text=(format-content @comment.contentFormatted) limit=350 htmlSafe=true class="comment-content" as |rm|}}
+          {{#if rm.wasTruncated}}
+            <div class="view-more" {{action rm.toggle}}>
+              {{#if rm.isExpanded}}
+                {{t "shared-addon.app-feed.items.post.view-less"}}
+              {{else}}
+                {{t "shared-addon.app-feed.items.post.view-more"}}
+              {{/if}}
+            </div>
+          {{/if}}
+        {{/read-more}}
+      {{/if}}
+
+      {{#if @comment.uploads}}
+        {{app-feed/items/post/uploads-grid uploads=@comment.uploads}}
+      {{else if @comment.embed}}
+        {{app-feed/items/post/embed embed=@comment.embed}}
+      {{/if}}
+    </div>
+    <div class="comment-actions">
+      {{app-feed/items/post/comment/actions
+        comment=@comment
+        post=@post
+        onLike=(perform onLike)
+        onDislike=(perform onDislike)
+        onDelete=(perform deleteComment)}}
+    </div>
+    {{#unless isReply}}
+      <div class="comment-replies">
+        {{#if fetchReplies.isRunning}}
+          {{ui-spinner size="small" center=true class="my-2"}}
+        {{else}}
+          {{#if hasMoreReplies}}
+            <div class="pagination">
+              <div class="left-actions">
+                <a href="#" class="pagination-action {{if executePaginationQuery.isRunning "disabled"}}" {{action "onPagination"}}>
+                  {{t "shared-addon.app-feed.items.post.comments.show-previous-replies"}}
+                </a>
+              </div>
+              <div class="right-actions">
+                <div class="count">
+                  {{t "shared-addon.app-feed.items.post.comments.count" number=replies.length total=replies.firstObject._meta.count}}
+                </div>
+              </div>
+            </div>
+          {{/if}}
+
+          {{#if executePaginationQuery.isRunning}}
+            {{ui-spinner size="small" center=true class="my-2"}}
+          {{/if}}
+          {{#each replies as |reply|}}
+            {{app-feed/items/post/comment
+              comment=reply
+              post=@post
+              isReply=true
+              onDelete=(action "onReplyDeleted")}}
+          {{/each}}
+        {{/if}}
+      </div>
+    {{/unless}}
+  </div>
+</div>

@@ -1,0 +1,52 @@
+{{#modal.body class="sign-up-modal"}}
+  <form class="was-validated" novalidate data-test-sign-up-form>
+    <div class="auth-section-username">
+      <h6>{{t "application.authentication.sign-up.username.header"}}</h6>
+      <p>{{t "application.authentication.sign-up.username.info"}}</p>
+      <fieldset class="form-group">
+        <input class="form-control username {{if validations.attrs.name.isValid 'is-valid' 'is-invalid'}}" type="text" placeholder={{t "application.authentication.sign-up.username.placeholder"}}
+          value={{name}} oninput={{action (mut name) value="target.value"}} data-test-username />
+        {{#if (and name validations.attrs.name.isInvalid)}}
+          <div class="invalid-feedback">
+            {{v-get this "name" "message"}}
+          </div>
+        {{/if}}
+      </fieldset>
+    </div>
+
+    <div class="auth-section-email faded">
+      <h6>{{t "application.authentication.sign-up.email.header"}}</h6>
+      <p>{{t "application.authentication.sign-up.email.info"}}</p>
+      <fieldset class="form-group">
+        <input class="form-control {{if validations.attrs.email.isValid 'is-valid' 'is-invalid'}}" type="email" placeholder={{t "application.authentication.sign-up.email.placeholder"}}
+          value={{email}} oninput={{action (mut email) value="target.value"}}
+          onfocus={{action "removeFade" "email"}} data-test-email />
+        {{#if (and email validations.attrs.email.isInvalid)}}
+          <div class="invalid-feedback">
+            {{v-get this "email" "message"}}
+          </div>
+        {{/if}}
+      </fieldset>
+    </div>
+
+    <div class="auth-section-password faded">
+      <h6>{{t "application.authentication.sign-up.password.header"}}</h6>
+      <p>{{t "application.authentication.sign-up.password.info"}}</p>
+      <fieldset class="form-group">
+        <input class="form-control {{if validations.attrs.password.isValid 'is-valid' 'is-invalid'}}" type="password" placeholder={{t "application.authentication.sign-up.password.placeholder"}}
+          value={{password}} oninput={{action (mut password) value="target.value"}}
+          onfocus={{action "removeFade" "password"}} data-test-password />
+        <span class="password-strength-{{passwordScore.score}}"></span>
+        {{#if (and password validations.attrs.password.isInvalid)}}
+          <div class="invalid-feedback">
+            {{v-get this "password" "message"}}
+          </div>
+        {{/if}}
+      </fieldset>
+    </div>
+
+    {{#ui-button onClick=(perform createAccount) isLoading=createAccount.isRunning isDisabled=(not isButtonValid)}}
+      {{t (concat "application.authentication.sign-up.create." buttonTranslationKey)}}
+    {{/ui-button}}
+  </form>
+{{/modal.body}}

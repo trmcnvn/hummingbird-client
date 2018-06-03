@@ -1,0 +1,43 @@
+<a href="#" class="nav-link notifications {{if (gt unseenCount 0) "has-unread"}}" {{action "showPopper"}}>
+  {{#if (gt unseenCount 0)}}
+    {{unseenCount}}
+  {{else}}
+    {{svg-jar "bell"}}
+  {{/if}}
+</a>
+
+{{#if shouldRenderPopper}}
+  {{#click-outside action=(action "outsideWasClicked")}}
+    {{#ember-popper-targeting-parent class="notification-popper" placement="bottom-end" renderInPlace=shouldRenderPopper}}
+      {{#if (and fetchNotifications.isRunning onPagination.isIdle)}}
+        {{ui-spinner center=true class="my-4"}}
+      {{else}}
+        {{#if (eq records.length 0)}}
+          <div class="empty-state">
+            <p>{{t "application.notifications.empty"}}</p>
+          </div>
+        {{else}}
+          <header>
+            <a href={{href-to "notifications"}} onclick={{action (mut shouldRenderPopper) false}}>
+              {{t "application.notifications.see-all"}}
+            </a>
+            {{#if hasUnreadNotifications}}
+              <a href="#" {{action "markNotifications" "read"}}>{{t "application.notifications.mark-read"}}</a>
+            {{/if}}
+          </header>
+
+          <ul class="list-unstyled">
+            {{#ui-pagination onPagination=(perform onPagination)}}
+              {{#each records as |notification|}}
+                {{app-header/notifications/item
+                  notification=notification
+                  closePopper=(action (mut shouldRenderPopper) false)
+                }}
+              {{/each}}
+            {{/ui-pagination}}
+          </ul>
+        {{/if}}
+      {{/if}}
+    {{/ember-popper-targeting-parent}}
+  {{/click-outside}}
+{{/if}}

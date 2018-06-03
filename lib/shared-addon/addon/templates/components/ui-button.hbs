@@ -1,0 +1,13 @@
+{{#if isLink}}
+  <a href={{href}} class="{{styleNamespace}} {{buttonClass}}" {{action (optional @onClick) preventDefault=false}} target="{{if isExternal "_blank" "_self"}}">
+    {{yield}}
+  </a>
+{{else}}
+  {{#bs-button type="kitsu" onClick=@onClick disabled=isButtonDisabled class=(concat styleNamespace " " buttonClass " " (if @isDestructive 'btn-danger' ''))}}
+    {{#if @isLoading}}
+      {{ui-spinner center=true color=spinnerColor}}
+    {{else}}
+      {{yield}}
+    {{/if}}
+  {{/bs-button}}
+{{/if}}

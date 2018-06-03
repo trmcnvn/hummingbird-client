@@ -1,0 +1,59 @@
+& {
+  padding: rem(5px) rem(10px);
+
+  &:hover {
+    @include themify($themes) {
+      background-color: themed('active');
+    }
+  }
+
+  a {
+    display: flex;
+    width: 100%;
+    @include themify($themes) {
+      color: themed('text');
+      &:hover, &:active, &:focus { color: themed('text') !important; }
+    }
+  }
+
+  img {
+    height: rem(70px);
+    width: rem(50px);
+    @include themify($themes) {
+      background-color: themed('purple');
+    }
+  }
+
+  h5 {
+    font-size: rem(16px);
+  }
+
+  .synopsis {
+    font-size: rem(14px);
+  }
+
+  .types {
+    display: block;
+    margin-top: rem(5px);
+    font-size: rem(12px);
+    font-style: italic;
+
+    @include themify($themes) {
+      color: lighten(themed('text'), 25%);
+      .rating { // @Theme
+        &.percent-quarter-1 {
+          color: $rating-awful;
+        }
+        &.percent-quarter-2 {
+          color: $rating-meh;
+        }
+        &.percent-quarter-3 {
+          color: $rating-good;
+        }
+        &.percent-quarter-4 {
+          color: $rating-great;
+        }
+      }
+    }
+  }
+}

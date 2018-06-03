@@ -1,0 +1,25 @@
+{
+  "name": "shared-addon",
+  "keywords": [
+    "ember-addon"
+  ],
+  "dependencies": {
+    "@ember-decorators/babel-transforms": "*",
+    "babel-plugin-transform-object-rest-spread": "*",
+    "ember-cli-babel": "*",
+    "ember-cli-htmlbars": "*",
+    "ember-cli-sass": "*",
+    "ember-cli-string-helpers": "*",
+    "ember-concurrency": "*",
+    "ember-component-css": "*",
+    "ember-composable-helpers": "*",
+    "ember-truth-helpers": "*",
+    "ember-popper": "*",
+    "ember-svg-jar": "*",
+    "ember-href-to": "*",
+    "ember-click-outside": "*",
+    "ember-power-select": "*",
+    "ember-fr-markdown-file": "*",
+    "ember-cli-showdown": "*"
+  }
+}

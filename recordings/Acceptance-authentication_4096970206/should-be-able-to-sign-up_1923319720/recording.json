@@ -1,0 +1,129 @@
+{
+  "created_at": "2018-07-17T14:41:56.330Z",
+  "entries": {
+    "4ead78bcdaf854c1d8fe626c74c64a77": [
+      {
+        "created_at": "2018-07-17T14:41:56.330Z",
+        "request": {
+          "body": null,
+          "headers": {
+            "accept": "application/vnd.api+json",
+            "content-type": "application/vnd.api+json;charset=utf-8"
+          },
+          "method": "GET",
+          "timestamp": "2018-07-17T14:41:49.711Z",
+          "url": "https://staging.kitsu.io/api/edge/_flags"
+        },
+        "response": {
+          "body": "{}",
+          "headers": {
+            "cache-control": "max-age=0, private, must-revalidate",
+            "content-type": "application/json; charset=utf-8"
+          },
+          "status": 200,
+          "timestamp": "2018-07-17T14:41:50.281Z"
+        }
+      }
+    ],
+    "71c7eba6ad9bc9f5f2876700a86d11a9": [
+      {
+        "created_at": "2018-07-17T14:41:56.330Z",
+        "request": {
+          "body": "grant_type=password&username=KitsuTesting%40vevix.net&password=KitsuTesting",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded;charset=utf-8"
+          },
+          "method": "POST",
+          "timestamp": "2018-07-17T14:41:54.073Z",
+          "url": "https://staging.kitsu.io/api/oauth/token"
+        },
+        "response": {
+          "body": "{\"access_token\":\"8713421f152aae574b05fe8277826f685934b4a523f125e1456ce402a53d7445\",\"token_type\":\"bearer\",\"expires_in\":2592000,\"refresh_token\":\"fa4f9e4fe6e83999728fef3d77546df5b46cd7f4c265a3a725104c5d4482798d\",\"scope\":\"public\",\"created_at\":1531838515}",
+          "headers": {
+            "cache-control": "no-store",
+            "content-type": "application/json; charset=utf-8",
+            "pragma": "no-cache"
+          },
+          "status": 200,
+          "timestamp": "2018-07-17T14:41:55.420Z"
+        }
+      }
+    ],
+    "94f6d31cee024271f08ee413da832073": [
+      {
+        "created_at": "2018-07-17T14:41:56.330Z",
+        "request": {
+          "body": "{\"data\":{\"type\":\"users\",\"attributes\":{\"name\":\"KitsuTesting\",\"email\":\"KitsuTesting@vevix.net\",\"password\":\"KitsuTesting\"}}}",
+          "headers": {
+            "accept": "application/vnd.api+json",
+            "content-type": "application/vnd.api+json;charset=utf-8"
+          },
+          "method": "POST",
+          "timestamp": "2018-07-17T14:41:51.521Z",
+          "url": "https://staging.kitsu.io/api/edge/users"
+        },
+        "response": {
+          "body": "{\"data\":{\"id\":\"183924\",\"type\":\"users\",\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924\"},\"attributes\":{\"createdAt\":\"2018-07-17T14:41:52.309Z\",\"updatedAt\":\"2018-07-17T14:41:52.309Z\",\"name\":\"KitsuTesting\",\"pastNames\":[],\"slug\":null,\"about\":\"\",\"location\":null,\"waifuOrHusbando\":null,\"followersCount\":0,\"followingCount\":0,\"lifeSpentOnAnime\":0,\"birthday\":null,\"gender\":null,\"commentsCount\":0,\"favoritesCount\":0,\"likesGivenCount\":0,\"reviewsCount\":0,\"likesReceivedCount\":0,\"postsCount\":0,\"ratingsCount\":0,\"mediaReactionsCount\":0,\"proExpiresAt\":null,\"title\":null,\"profileCompleted\":false,\"feedCompleted\":false,\"website\":null,\"avatar\":null,\"coverImage\":null,\"status\":\"registered\",\"subscribedToNewsletter\":true},\"relationships\":{\"waifu\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/waifu\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/waifu\"}},\"pinnedPost\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/pinned-post\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/pinned-post\"}},\"followers\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/followers\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/followers\"}},\"following\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/following\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/following\"}},\"blocks\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/blocks\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/blocks\"}},\"linkedAccounts\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/linked-accounts\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/linked-accounts\"}},\"profileLinks\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/profile-links\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/profile-links\"}},\"userRoles\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/user-roles\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/user-roles\"}},\"libraryEntries\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/library-entries\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/library-entries\"}},\"favorites\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/favorites\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/favorites\"}},\"reviews\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/reviews\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/reviews\"}},\"stats\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/stats\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/stats\"}},\"notificationSettings\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/notification-settings\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/notification-settings\"}},\"oneSignalPlayers\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/one-signal-players\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/one-signal-players\"}},\"categoryFavorites\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/category-favorites\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/category-favorites\"}}}}}",
+          "headers": {
+            "cache-control": "max-age=0, private, must-revalidate",
+            "content-type": "application/vnd.api+json"
+          },
+          "status": 201,
+          "timestamp": "2018-07-17T14:41:53.970Z"
+        }
+      }
+    ],
+    "a9fbafbad2849ad960e2b2ef1bf5a764": [
+      {
+        "created_at": "2018-07-17T14:41:56.330Z",
+        "request": {
+          "body": null,
+          "headers": {
+            "accept": "application/vnd.api+json",
+            "authorization": "Bearer 8713421f152aae574b05fe8277826f685934b4a523f125e1456ce402a53d7445",
+            "content-type": "application/vnd.api+json;charset=utf-8"
+          },
+          "method": "GET",
+          "timestamp": "2018-07-17T14:41:55.532Z",
+          "url": "https://staging.kitsu.io/api/edge/users?filter%5Bself%5D=true"
+        },
+        "response": {
+          "body": "{\"data\":[{\"id\":\"183924\",\"type\":\"users\",\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924\"},\"attributes\":{\"createdAt\":\"2018-07-17T14:41:52.309Z\",\"updatedAt\":\"2018-07-17T14:41:52.309Z\",\"name\":\"KitsuTesting\",\"pastNames\":[],\"slug\":null,\"about\":\"\",\"location\":null,\"waifuOrHusbando\":null,\"followersCount\":0,\"followingCount\":0,\"lifeSpentOnAnime\":0,\"birthday\":null,\"gender\":null,\"commentsCount\":0,\"favoritesCount\":0,\"likesGivenCount\":0,\"reviewsCount\":0,\"likesReceivedCount\":0,\"postsCount\":0,\"ratingsCount\":0,\"mediaReactionsCount\":0,\"proExpiresAt\":null,\"title\":null,\"profileCompleted\":false,\"feedCompleted\":false,\"website\":null,\"avatar\":null,\"coverImage\":null,\"email\":\"kitsutesting@vevix.net\",\"password\":null,\"confirmed\":false,\"previousEmail\":null,\"language\":null,\"timeZone\":null,\"country\":null,\"shareToGlobal\":true,\"titleLanguagePreference\":\"canonical\",\"sfwFilter\":true,\"ratingSystem\":\"simple\",\"theme\":\"light\",\"facebookId\":null,\"hasPassword\":true,\"status\":\"registered\",\"subscribedToNewsletter\":true,\"aoPro\":null},\"relationships\":{\"waifu\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/waifu\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/waifu\"}},\"pinnedPost\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/pinned-post\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/pinned-post\"}},\"followers\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/followers\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/followers\"}},\"following\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/following\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/following\"}},\"blocks\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/blocks\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/blocks\"}},\"linkedAccounts\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/linked-accounts\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/linked-accounts\"}},\"profileLinks\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/profile-links\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/profile-links\"}},\"userRoles\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/user-roles\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/user-roles\"}},\"libraryEntries\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/library-entries\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/library-entries\"}},\"favorites\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/favorites\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/favorites\"}},\"reviews\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/reviews\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/reviews\"}},\"stats\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/stats\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/stats\"}},\"notificationSettings\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/notification-settings\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/notification-settings\"}},\"oneSignalPlayers\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/one-signal-players\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/one-signal-players\"}},\"categoryFavorites\":{\"links\":{\"self\":\"https://staging.kitsu.io/api/edge/users/183924/relationships/category-favorites\",\"related\":\"https://staging.kitsu.io/api/edge/users/183924/category-favorites\"}}}}],\"meta\":{\"count\":1},\"links\":{\"first\":\"https://staging.kitsu.io/api/edge/users?filter%5Bself%5D=true\\u0026page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\",\"last\":\"https://staging.kitsu.io/api/edge/users?filter%5Bself%5D=true\\u0026page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\"}}",
+          "headers": {
+            "cache-control": "max-age=0, private, must-revalidate",
+            "content-type": "application/vnd.api+json"
+          },
+          "status": 200,
+          "timestamp": "2018-07-17T14:41:56.318Z"
+        }
+      }
+    ],
+    "e27b70e083abf48b8335a93a60928224": [
+      {
+        "created_at": "2018-07-17T14:42:53.644Z",
+        "request": {
+          "body": null,
+          "headers": {
+            "accept": "application/vnd.api+json",
+            "authorization": "Bearer 8713421f152aae574b05fe8277826f685934b4a523f125e1456ce402a53d7445",
+            "content-type": "application/vnd.api+json;charset=utf-8"
+          },
+          "method": "GET",
+          "timestamp": "2018-07-17T14:42:53.089Z",
+          "url": "https://staging.kitsu.io/api/edge/feeds/notifications/183924?include=actor%2Csubject%2Ctarget.user%2Ctarget.post%2Ctarget.anime%2Ctarget.manga&page%5Blimit%5D=15"
+        },
+        "response": {
+          "body": "{\"data\":[],\"meta\":{\"feed\":{\"group\":\"notifications\",\"id\":\"183924\",\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNvdXJjZSI6IioiLCJhY3Rpb24iOiJyZWFkIiwiZmVlZF9pZCI6Im5vdGlmaWNhdGlvbnMxODM5MjQifQ.DP1cWKrrnmaFJmHzR8JppoBM0yxs3pzyNZYkG3PKfRg\"},\"readonlyToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNvdXJjZSI6IioiLCJhY3Rpb24iOiJyZWFkIiwiZmVlZF9pZCI6Im5vdGlmaWNhdGlvbnMxODM5MjQifQ.DP1cWKrrnmaFJmHzR8JppoBM0yxs3pzyNZYkG3PKfRg\",\"unseenCount\":0,\"unreadCount\":0},\"links\":{}}",
+          "headers": {
+            "cache-control": "max-age=0, private, must-revalidate",
+            "content-type": "application/vnd.api+json; charset=utf-8"
+          },
+          "status": 200,
+          "timestamp": "2018-07-17T14:42:53.626Z"
+        }
+      }
+    ]
+  },
+  "name": "Acceptance | authentication/should be able to sign up",
+  "schema_version": 0.1
+}

@@ -1,0 +1,189 @@
+& {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  margin: rem(1px) 0 rem(1px);
+  overflow: hidden;
+
+  &.photo-grid-1 {
+    padding-bottom: 0;
+  }
+  &.photo-grid-2.square {
+    padding-bottom: 50%;
+  }
+  &.photo-grid-5 {
+    padding-bottom: 83%;
+  }
+
+  .photo-grid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    a {
+      position: relative;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &.landscape {
+      a:first-of-type {
+        margin-bottom: rem(4px);
+        height: 100%;
+        img {
+          object-fit: cover;
+        }
+      }
+    }
+    &.portrait {
+      flex-direction: column;
+      height: 100%;
+      a:first-of-type {
+        margin-right: rem(4px);
+      }
+    }
+    &.square {
+      a:first-of-type {
+        margin-right: rem(4px);
+        margin-bottom: rem(4px);
+      }
+      a {
+        width: calc((100% - #{rem(4px)}) * (1 / 2));
+        height: 100%;
+      }
+      &.photo-grid-4 {
+        a {
+          height: calc((100% - #{rem(4px)}) * (1 / 2));
+        }
+      }
+    }
+    &.photo-grid-1 {
+      position: static;
+      a {
+        width: 100%;
+        img {
+          max-height: rem(538px);
+          object-fit: contain;
+        }
+      }
+    }
+    &.photo-grid-2 {
+      &.landscape {
+        a {
+          width: 100%;
+          height: calc((100% - #{rem(4px)}) * (1 / 2));
+        }
+      }
+      &.portrait {
+        a {
+          width: calc((100% - #{rem(4px)}) * (1 / 2));
+          height: 100%;
+        }
+      }
+    }
+    &.photo-grid-3, &.photo-grid-4 {
+      &.landscape {
+        a:first-of-type {
+          width: 100%;
+          height: calc((100% - #{rem(4px)}) * (2 / 3));
+        }
+      }
+      &.portrait {
+        a:first-of-type {
+          width: calc((100% - #{rem(4px)}) * (2 / 3));
+          height: 100%;
+        }
+      }
+    }
+    &.photo-grid-3 {
+      &.landscape {
+        a + a {
+          width: calc((100% - #{rem(4px)}) * (1 / 2));
+          height: calc((100% - #{rem(4px)}) * (1 / 3));
+        }
+      }
+      &.portrait {
+        a + a {
+          width: calc((100% - #{rem(4px)}) * (1 / 3));
+          height: calc((100% - #{rem(4px)}) * (1 / 2));
+        }
+      }
+    }
+    &.photo-grid-4:not(.square) {
+      &.landscape {
+        a + a {
+          width: calc((100% - #{rem(8px)}) * (1 / 3));
+          height: calc((100% - #{rem(4px)}) * (1 / 3));
+        }
+      }
+      &.portrait {
+        a + a {
+          width: calc((100% - #{rem(4px)}) * (1 / 3));
+          height: calc((100% - #{rem(8px)}) * (1 / 3));
+        }
+      }
+    }
+    &.photo-grid-5 {
+      a:nth-of-type(-n+2) {
+        width: calc((100% - #{rem(4px)}) * (1 / 2));
+        height: calc((100% - #{rem(4px)}) * (3 / 5));
+      }
+      a + a + a {
+        width: calc((100% - #{rem(8px)}) * (1 / 3));
+        height: calc((100% - #{rem(4px)}) * (2 / 5));
+      }
+      a + a + a + a + a {
+        position: relative;
+      }
+      a + a + a + a + a + a {
+        display: none;
+      }
+    }
+  }
+
+  .uploads-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+
+    @include themify($themes) {
+      background-color: rgba(0, 0, 0, 0.4); // @Theme
+      color: themed('white');
+    }
+
+    &.uploads-more {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      font-size: rem(60px);
+    }
+    &.uploads-gif {
+      width: rem(70px);
+      height: rem(70px);
+      top: calc(50% - #{rem(35px)});
+      left: calc(50% - #{rem(35px)});
+      font-size: rem(20px);
+      border: rem(2px) solid;
+      border-radius: 999em;
+
+      @include themify($themes) {
+        border-color: themed('white');
+      }
+    }
+  }
+
+  .pswp__share-tooltip {
+    a {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+}

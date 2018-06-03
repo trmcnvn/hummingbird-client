@@ -1,0 +1,18 @@
+& {
+  li {
+    font-size: rem(12px);
+  }
+
+  textarea {
+    margin-top: rem(15px);
+
+    width: 100%;
+    min-height: rem(100px);
+
+    padding: rem(5px);
+    border: rem(1px) solid;
+    @include themify($themes) {
+      border-color: themed('gray-500');
+    }
+  }
+}

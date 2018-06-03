@@ -16,8 +16,24 @@
 
     {{content-for "head-footer"}}
     {{content-for "test-head-footer"}}
+
+    <script>
+      window.fetchPendingRequests = 0;
+      const decrement = () => { window.fetchPendingRequests--; };
+      const originalFetch = window.fetch;
+      window.fetch = (...args) => {
+        window.fetchPendingRequests++;
+        return originalFetch(...args).then(response => {
+          response.clone().blob().then(decrement, decrement);
+          return response;
+        }, (error) => {
+          decrement();
+          throw error;
+        });
+      };
+    </script>
   </head>
-  <body>
+  <body class="theme-light">
     {{content-for "body"}}
     {{content-for "test-body"}}
 

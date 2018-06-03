@@ -1,0 +1,191 @@
+application:
+  titles:
+    notifications: "Notifications"
+    terms: "Terms"
+    posts: "Post by {name}"
+    comments: "Comment by {name}"
+  header:
+    library: "Library"
+    browse: "Browse"
+    browse-items:
+      anime: "Anime"
+      manga: "Manga"
+    groups: "Groups"
+    feedback: "Feedback"
+    feedback-items:
+      bugs: "Bugs"
+      feature-requests: "Feature Requests"
+      database-requests: "Database Requests"
+      mobile-bugs: "Mobile Bugs"
+      mobile-features: "Mobile Features"
+    search-placeholder: "Search Kitsu"
+    sign-up: "Sign Up"
+    sign-in: "Sign In"
+    user:
+      profile: "View Profile"
+      settings: "Settings"
+      admin: "Kitsu Admin"
+      logout: "Logout"
+  authentication:
+    errors:
+      facebook-user: "There was a problem with a request to Facebook. Please try again."
+      invalid-credenditials: "There was a problem authenticating you with Kitsu. Were your details correct?"
+      unknown-error: "There was a problem with the request. Please try again."
+      facebook-connected: "There is already an account on Kitsu associated with your Facebook."
+    social-auth:
+      intro: "Create an account to track, share, and discover anime and manga in a uniquely social way."
+      facebook: "Continue with Facebook"
+      wont-post: "We won't post without asking"
+      sign-up: "Sign up with email"
+      question: "Have an account?"
+      login: "Login"
+      privacy: "If you sign up with Facebook, we'll start you off with a network by automatically matching you with your followers/followees or friends already on Kitsu. Don't worry, we'll never post to Facebook without your permission."
+      agreement: "By signing up you indicate that you have read and agree to the <a href=\"/terms\">Terms of Service</a> and <a href=\"/terms\">Privacy Policy</a>."
+    sign-in:
+      welcome: "Welcome back!"
+      help-text: "Login to your Kitsu account below. If you need an account,"
+      create: "create one."
+      facebook: "Continue with Facebook"
+      alternative: "Or, sign in with:"
+      email: "Email"
+      password: "Password"
+      forgot: "forgot password?"
+      login: "Login"
+    sign-up:
+      username:
+        header: "What should we call you?"
+        info: "Your username should be original, being witty is optional."
+        placeholder: "Username"
+      email:
+        header: "What email should we use?"
+        info: "We'll use your email address to send you occasional updates and help you out if you forget your password."
+        placeholder: "Email"
+      password:
+        header: "Think of a strong password."
+        info: "Your password should be at least 8 characters. You should also consider mixing in numbers and special characters! This is to keep the bad guys from doing bad guy things with your account."
+        placeholder: "Password"
+      create:
+        empty: "Let's get some basic info first"
+        username: "Very witty - email is next!"
+        email: "Looks legit, how about a password?"
+        password: "Cool - Let's create that account"
+    aozora-conflict:
+      header: "Oh, you already have a Kitsu account! Which do you want to keep?"
+      info: "Activity feed posts from both accounts will be merged. All other account information will be overwritten by the account you select below."
+      count: "{count} Library Entries"
+    import-select:
+      header: "Do you have anime / manga data to import?"
+      info: "If you currently track your anime and manga on another platform, we can quickly import your data to jumpstart your account."
+      myanimelist: "MyAnimeList"
+      anilist: "Anilist"
+      close: "Close"
+      skip: "Nothing to import, skip this"
+    import-file:
+      header: "Okay, let's import your {site} account"
+      info: "Our {site} importer can import your existing anime and manga data from an exported file."
+      button: "Select File"
+      back: "Back to Import Select"
+      start: "Start {site} Import"
+    import-progress:
+      header: "Hang tight! We're importing your data!"
+      info-0: "Your {site} import will continue in the background."
+      info-1: "We'll send you a notification when your import has completed!"
+      safely: "You can safely continue setting up your account in the mean time."
+      finish: "Finish"
+      continue: "Continue"
+    find-friends:
+      header: "Find your friends!"
+      info: "Kitsu becomes more interesting as you follow others. Connect your social accounts so you and your friends can find each other."
+      facebook-connect: "Connect to Facebook"
+      facebook-disconnect: "Disconnect from Facebook"
+      facebook-description: "Friends you have on Facebook who are also on Kitsu will become part of your Kitsu network. <strong>We will never post to Facebook or message your friends without your permission.</strong>"
+      finished: "All set - Welcome to Kitsu!"
+    rate-content:
+      header: "Rate the content you've seen"
+      info: "We use your 'Library' to track the media you've seen and look forward to. Let's get your library started by rating some of the anime and manga you've seen or read."
+      search-placeholder: "Search by media title..."
+      rate-more: "Rate {num} more to continue"
+      continue: "Continue"
+      wanted: "Want to {type, select,
+        anime {Watch}
+        manga {Read}
+        other {}}"
+      added: "Added to your Library"
+  notifications:
+    dismiss: "Dismiss this notification"
+    new: "You have a new notification from {actor}"
+    empty: "You don't currently have any notifications."
+    see-all: "See All Notifications"
+    mark-read: "Mark all as Read"
+    items:
+      others: "and"
+      others-unknown: "and Unknown."
+      others-count: " and <strong>{count} others</strong>"
+      verbs:
+        follow: "followed you."
+        post: "mentioned you in a post."
+        comment:
+          replied: "replied to your {type, select,
+            post {post}
+            comment {comment}
+            other {}}."
+          mentioned:
+            "mentioned you in their comment."
+          reply: "replied to {type, select,
+            user {{actor, select,
+              owner {their}
+              self {your}
+              other {<a href={link}>{name}'s</a>}}}
+            other {a}} post."
+        post_like: "liked your post."
+        comment_like: "liked your comment."
+        invited: "invited you to a group."
+        vote: "liked your <a href={link}>{title}</a> reaction."
+        aired: "{type, select,
+          chapter {Chapter}
+          episode {Episode}
+          other {}} {number} of {media} {type, select,
+          chapter {Released}
+          episode {Aired}
+          other {}}!"
+  mobile-banner:
+    info: "Get a better experience using the official Kitsu mobile application"
+  errors:
+    notifications-request: "There was an issue retrieving your Notifications."
+    notifications-marking: "There was an issue updating your Notifications."
+general:
+  anime: "Anime"
+  manga: "Manga"
+errors:
+  description: "This field"
+  inclusion: "{description} is not included in the list"
+  exclusion: "{description} is reserved"
+  invalid: "{description} is invalid"
+  confirmation: "{description} doesn't match {on}"
+  accepted: "{description} must be accepted"
+  empty: "{description} can't be empty"
+  blank: "{description} can't be blank"
+  present: "{description} must be blank"
+  collection: "{description} must be a collection"
+  singular: "{description} can't be a collection"
+  tooLong: "{description} is too long (maximum is {max} characters)"
+  tooShort: "{description} is too short (minimum is {min} characters)"
+  before: "{description} must be before {before}"
+  after: "{description} must be after {after}"
+  wrongDateFormat: "{description} must be in the format of {format}"
+  wrongLength: "{description} is the wrong length (should be {is} characters)"
+  notANumber: "{description} must be a number"
+  notAnInteger: "{description} must be an integer"
+  greaterThan: "{description} must be greater than {gt}"
+  greaterThanOrEqualTo: "{description} must be greater than or equal to {gte}"
+  equalTo: "{description} must be equal to {is}"
+  lessThan: "{description} must be less than {lt}"
+  lessThanOrEqualTo: "{description} must be less than or equal to {lte}"
+  otherThan: "{description} must be other than {value}"
+  odd: "{description} must be odd"
+  even: "{description} must be even"
+  positive: "{description} must be positive"
+  date: "{description} must be a valid date"
+  email: "{description} must be a valid email address"
+  phone: "{description} must be a valid phone number"
+  url: "{description} must be a valid url"

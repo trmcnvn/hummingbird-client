@@ -1,0 +1,19 @@
+{{#with (object-at 0 announcements) as |announcement|}}
+  <div class="card">
+    <h6>{{announcement.title}}</h6>
+    <p>{{announcement.description}}</p>
+    {{#if announcement.imageUrl}}
+      <div class="featured-image">
+        {{ui-image image=announcement.imageUrl alt=announcement.title}}
+      </div>
+    {{/if}}
+    {{#if announcement.link}}
+      {{#ui-button href=announcement.link isExternal=true isLink=true onClick=(action "removeAnnouncement" announcement)}}
+        {{t "dashboard.announcements.button"}}
+      {{/ui-button}}
+    {{/if}}
+    <span class="dismiss-announcement" {{action "removeAnnouncement" announcement}}>
+      {{svg-jar "x"}}
+    </span>
+  </div>
+{{/with}}

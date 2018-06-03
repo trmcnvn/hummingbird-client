@@ -1,0 +1,14 @@
+{
+  "name": "feedback",
+  "keywords": [
+    "ember-addon",
+    "ember-engine"
+  ],
+  "dependencies": {
+    "@ember-decorators/babel-transforms": "*",
+    "ember-cli-htmlbars": "*",
+    "ember-cli-babel": "*",
+    "ember-cli-sass": "*",
+    "ember-intl": "*"
+  }
+}

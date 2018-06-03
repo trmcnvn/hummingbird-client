@@ -1,0 +1,15 @@
+{{#if @isLoading}}
+  {{ui-spinner color="white" center="true"}}
+{{else if media}}
+  {{#media-info-popper media=@media placement="right" disabled=(not @hasInformationHover)}}
+    <div class="image-container">
+      {{ui-image image=@media.posterImage.medium}}
+      <div class="image-overlay">
+        {{link-to-kitsu "" (concat @media.type ".show") @media.slug}}
+        {{#if @hasLibraryInteraction}}
+          {{! @TODO: Library button }}
+        {{/if}}
+      </div>
+    </div>
+  {{/media-info-popper}}
+{{/if}}

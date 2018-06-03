@@ -1,0 +1,52 @@
+explore:
+  titles:
+    explore: "Explore {type, select,
+      anime {Anime}
+      manga {Manga}
+      other {}}"
+    trending: "Trending This Week"
+    trending-category: "Trending {category} {type, select,
+      anime {Anime}
+      manga {Manga}
+      other {}}"
+    top-current: "Top {type, select,
+      anime {Airing Anime}
+      manga {Publishing Manga}
+      other {}}"
+    top-upcoming: "Top Upcoming {type, select,
+      anime {Anime}
+      manga {Manga}
+      other {}}"
+    highest-rated: "Highest Rated {type, select,
+      anime {Anime}
+      manga {Manga}
+      other {}}"
+    most-popular: "Most Popular {category} {type, select,
+      anime {Anime}
+      manga {Manga}
+      other {}}"
+    newly-released: "Newly Released {category} {type, select,
+      anime {Anime}
+      manga {Manga}
+      other {}}"
+    category:
+      index: "{category} {type, select,
+        anime {Anime}
+        manga {Manga}
+        other {}}"
+  view-more: "View more"
+  sidebar:
+    favorite-categories: "My Favorite Categories"
+    empty-favorites: "We'll use your favorite categories to improve recommendations for you."
+    categories: "Categories"
+    related: "Related Categories"
+    more-categories: "More categories..."
+  favorite-button:
+    add: "Add to Favorites"
+    remove: "Remove from Favorites"
+  empty-content: "(个_个), Doesn't look like any media was found."
+  modal:
+    title: "All Categories"
+  search:
+    placeholder: "What are you searching for?"
+    meta: "Or, browse using our <a href=\"/{type}\">advanced filters.</a>"

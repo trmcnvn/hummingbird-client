@@ -1,0 +1,104 @@
+& {
+  .notifications {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    top: rem(7.8px);
+
+    margin-left: rem(8px);
+    padding: 0 !important;
+
+    width: rem(25px);
+    height: rem(25px);
+    border-radius: 50%;
+
+    @include themify($themes) {
+      background-color: themed('purple-darker');
+
+      &:hover {
+        background-color: darken(themed('purple-darker'), 5%);
+      }
+    }
+
+    &.has-unread {
+      @include themify($themes) {
+        background-color: themed('orange');
+        color: themed('white');
+      }
+      text-align: center;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    svg {
+      position: relative;
+      left: rem(0.5px);
+
+      width: rem(15px);
+      height: rem(15px);
+
+      // @Theme
+      fill: #7d677c;
+      stroke: #7d677c;
+    }
+  }
+
+  .notification-popper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: $zIndex-popper;
+    top: 15px !important;
+
+    min-width: rem(400px);
+    max-width: rem(400px);
+    padding: 0;
+    border: none;
+    box-shadow: 0 0 rem(15px) rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    overflow: hidden;
+
+    @include themify($themes) {
+      background-color: themed('white');
+      border-color: themed('gray-300');
+    }
+
+    .empty-state {
+      padding: rem(10px);
+      p { margin-bottom: 0; }
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: rem(5px) rem(10px);
+      border-bottom: rem(1px) solid;
+      @include themify($themes) {
+        border-color: themed('gray-300');
+      }
+
+      a {
+        font-size: rem(12px);
+        @include themify($themes) {
+          color: themed('text') !important;
+          &:hover { color: themed('text') !important; }
+        }
+      }
+    }
+
+    ul {
+      width: 100%;
+      overflow: auto;
+      max-height: rem(300px);
+      @include themify($themes) {
+        background-color: themed('background');
+      }
+    }
+  }
+}

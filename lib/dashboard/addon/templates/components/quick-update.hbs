@@ -1,0 +1,71 @@
+<div class="{{styleNamespace}}">
+  <div class="container">
+    <div class="row">
+      <header>
+        <h6>{{t "dashboard.quick-update.header"}}</h6>
+        {{! Filter }}
+        {{#bs-dropdown as |dd|}}
+          {{#dd.toggle}}
+            {{t (concat "dashboard.quick-update.filters." selectedFilter)}}
+          {{/dd.toggle}}
+          {{#dd.menu as |ddm|}}
+            {{#each filterOptions as |option|}}
+              {{#ddm.item}}
+                <a href="#" class="dropdown-item {{if (eq option selectedFilter) "active"}}" {{action "changeFilter" option}}>
+                  {{t (concat "dashboard.quick-update.filters." option)}}
+                </a>
+              {{/ddm.item}}
+            {{/each}}
+          {{/dd.menu}}
+        {{/bs-dropdown}}
+      </header>
+
+      {{! Entries }}
+      {{#if fetchLibraryEntries.isRunning}}
+        <div class="quick-update-spinner">
+          {{ui-spinner center=true size="large" color="white"}}
+        </div>
+      {{else}}
+        {{#swiper-container
+          grabCursor=true
+          keyboard=true
+          mousewheel=true
+          freeMode=true
+          slidesPerView="auto"
+          customUpdateFor=libraryEntries.length as |container|}}
+          {{#ui-pagination onPagination=(action "onPagination") showSpinner=false}}
+            {{#each libraryEntries as |entry|}}
+              {{#container.slide}}
+                {{quick-update/card
+                  libraryEntry=entry
+                  onUpdate=(action "onUpdate")}}
+              {{/container.slide}}
+            {{/each}}
+          {{/ui-pagination}}
+
+          {{#if (lt libraryEntries.length 4)}}
+            {{#container.slide}}
+              <div class="card hint-card">
+                {{! @TODO: Profile -> Libraries}}
+                <p>
+                  {{t "dashboard.quick-update.empty.info" link="#" htmlSafe=true}}
+                </p>
+                {{#ui-button href=(href-to "explore.explore" kind) isLink=true buttonClass="discover-button"}}
+                  {{t "dashboard.quick-update.empty.discover" kind=kind}}
+                {{/ui-button}}
+              </div>
+            {{/container.slide}}
+
+            {{#each (repeat remainingSlides) as |_|}}
+              {{#container.slide}}
+                <div class="empty-panel">
+                  {{svg-jar "plus-circle"}}
+                </div>
+              {{/container.slide}}
+            {{/each}}
+          {{/if}}
+        {{/swiper-container}}
+      {{/if}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class={{styleNamespace}}>
+  {{#each ratings as |rating|}}
+    <div class="{{styleNamespace}}__{{rating.tag}} {{if (and _rating (not-eq rating.value _rating)) "disabled"}}" {{action "setRating" rating}}>
+      {{bs-tooltip title=(t (concat "shared-addon.media-rating." rating.tag))}}
+    </div>
+  {{/each}}
+</div>

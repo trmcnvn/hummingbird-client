@@ -5,7 +5,8 @@ module.exports = function(environment) {
     modulePrefix: 'kitsu',
     environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'router-scroll',
+    historySupportMiddleware: true,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -20,6 +21,7 @@ module.exports = function(environment) {
     },
 
     kitsu: {
+      environment: process.env.HEROKU_EMBER_APP || environment,
       APIHost: 'https://kitsu.io',
       APIKeys: {
         algolia: 'AWQO5J657S',
@@ -28,8 +30,18 @@ module.exports = function(environment) {
           production: '01f6e47a-6809-4118-a796-949952e9c209',
           staging: '9933b0ac-ca94-4990-931b-7efa6bafdfd6',
           development: '9933b0ac-ca94-4990-931b-7efa6bafdfd6'
-        }
-      }
+        },
+        getstream: {
+          production: { key: 'eb6dvmba4ct3', app: '18373' },
+          staging: { key: 'ekx6xkn9v9xx', app: '17647' },
+          // development: { key: 'sjm3sx9mgcx2', app: '17073' }
+          development: { key: 'eb6dvmba4ct3', app: '18373' }
+        },
+        googleAnalytics: 'UA-37633900-4',
+        twitterPixel: 'nz90m',
+        facebookPixel: '1372973436170230'
+      },
+      OrbitDBVersion: '99d88fb9-57c8-426a-a3d9-7ce70fef53c3'
     },
 
     // ember-cli-sentry
@@ -56,6 +68,10 @@ module.exports = function(environment) {
           scope: 'public_profile,email,user_friends'
         }
       }
+    },
+
+    '@ember-decorators/argument': {
+      ignoreComponentsWithoutValidations: true
     }
   };
 
@@ -78,8 +94,7 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
-
-    ENV.kitsu.APIHost = undefined;
+    ENV.kitsu.APIHost = 'https://staging.kitsu.io';
   }
 
   if (process.env.HEROKU_EMBER_APP === 'staging') {

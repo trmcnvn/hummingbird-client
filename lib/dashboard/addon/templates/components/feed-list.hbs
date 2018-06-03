@@ -1,0 +1,26 @@
+<ul class="{{styleNamespace}} list-unstyled">
+  <li>
+    <a href="#" class="feed-list-item {{if (eq @activeType "timeline") "active"}}" {{action (action @onClick) "timeline"}}>
+      <span class="emoji">👀</span>
+      {{t "dashboard.feed-list.following"}}
+    </a>
+  </li>
+  <li>
+    <a href="#" class="feed-list-item {{if (eq @activeType "interest_timeline/anime") "active"}}" {{action (action @onClick) "interest_timeline/anime"}}>
+      <span class="emoji">📺</span>
+      {{t "dashboard.feed-list.anime"}}
+    </a>
+  </li>
+  <li>
+    <a href="#" class="feed-list-item {{if (eq @activeType "interest_timeline/manga") "active"}}" {{action (action @onClick) "interest_timeline/manga"}}>
+      <span class="emoji">📙</span>
+      {{t "dashboard.feed-list.manga"}}
+    </a>
+  </li>
+  <li>
+    <a href="#" class="feed-list-item {{if (eq @activeType "global") "active"}}" {{action (action @onClick) "global"}}>
+      <span class="emoji">🌏</span>
+      {{t "dashboard.feed-list.global"}}
+    </a>
+  </li>
+</ul>

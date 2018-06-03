@@ -1,0 +1,25 @@
+{
+  "name": "dashboard",
+  "keywords": [
+    "ember-addon",
+    "ember-engine"
+  ],
+  "dependencies": {
+    "@ember-decorators/babel-transforms": "*",
+    "ember-cli-htmlbars": "*",
+    "ember-cli-babel": "*",
+    "ember-cli-sass": "*",
+    "ember-component-css": "*",
+    "ember-bootstrap": "*",
+    "ember-intl": "*",
+    "ember-composable-helpers": "*",
+    "ember-truth-helpers": "*",
+    "ember-href-to": "*",
+    "ember-cli-swiper": "1.0.1"
+  },
+  "ember-addon": {
+    "paths": [
+      "../shared-addon"
+    ]
+  }
+}

@@ -1,56 +1,88 @@
-import Session from 'ember-simple-auth/services/session';
+import SessionService from 'ember-simple-auth/services/session';
 import { get, set } from '@ember/object';
-import { inject as service } from '@ember/service';
-import { UnauthorizedError } from 'ember-data/adapters/errors';
+import { service } from '@ember-decorators/service';
+import { isArray } from '@ember/array';
+import { ClientError } from '@orbit/data';
+import { computed } from '@ember-decorators/object';
+import RSVP from 'rsvp';
 
-export default Session.extend({
-  account: null,
-  error: null,
-  store: service(),
-  raven: service(),
+export default class Session extends SessionService {
+  userId = null; // This is the local store id, not the user's remote id.
+
+  @service store;
+  @service raven;
+  @service router;
+
+  @computed('userId')
+  get currentUser() {
+    return this.getCurrentUser();
+  }
+
+  @computed('session.isAuthenticated', 'userId')
+  get hasSession() {
+    return this.isAuthenticated();
+  }
+
+  @computed('session.content.authenticated')
+  get authData() {
+    return this.session.content.authenticated;
+  }
 
   authenticateWithOAuth2(identification, password) {
     return this.authenticate('authenticator:oauth2', identification, password);
-  },
+  }
 
   authenticateWithFacebook() {
     return this.authenticate('authenticator:assertion', 'facebook');
-  },
+  }
 
   isCurrentUser(user) {
     const isAuthenticated = this.isAuthenticated();
     if (!isAuthenticated || !user) { return false; }
-    return this.account.get('id') === (user.get('id') || user);
-  },
+    const currentUser = this.getCurrentUser();
+    return currentUser && currentUser.remoteId === (user.remoteId || user);
+  }
 
   isAuthenticated() {
-    return this.isAuthenticated && this.account !== null;
-  },
+    return this.session.isAuthenticated && this.userId !== null;
+  }
 
   getCurrentUser() {
-    return this.account;
-  },
+    try {
+      return this.store.cache.query(q => q.findRecord({ type: 'user', id: this.userId }));
+    } catch (error) {
+      return null;
+    }
+  }
 
   async fetchCurrentUser() {
+    if (!this.session.isAuthenticated) { return RSVP.reject(); }
     try {
-      const users = await this.store.query('user', {
-        filter: { self: true }
+      const users = await this.store.request('user', {
+        filter: { self: true },
+        cache: false
       });
-      const user = users.get('firstObject');
+      const user = isArray(users) ? users.firstObject : null;
       if (!user) {
-        throw new UnauthorizedError();
+        throw new ClientError('Unauthorized');
       }
-      return set(this, 'account', user);
+      set(this, 'userId', user.id);
+      return user;
     } catch (error) {
-      this.raven.captureException(error);
-      const status = get(error, 'errors.firstObject.status');
       // Don't invalidate the session for 5xx errors
-      if (status && status.charAt(0) === '5') {
-        set(this, 'error', 'serverError');
-      } else {
+      const status = get(error, 'response.status');
+      if (status === 401) {
         this.invalidate();
-        throw error;
+      } else {
+        this.raven.captureException(error);
+        this.router.replaceWith('server-error');
       }
     }
   }
-});
+
+  openAuthenticationModal() {
+    const element = document.getElementById('sign-up-header-link');
+    if (!element) { return; }
+    element.click();
+  }
+}

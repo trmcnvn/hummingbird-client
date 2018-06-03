@@ -1,0 +1,71 @@
+<div class="{{styleNamespace}}">
+  {{! Hover Actions }}
+  <div class="action-wrapper">
+    {{#if isCompleted}}
+      {{! @TODO: Completed State (Rating/Reaction) }}
+    {{else}}
+      <textarea placeholder={{t "dashboard.quick-update.actions.placeholder" type=libraryEntry.media.type number=nextProgressValue}}
+      value={{message}} oninput={{action (mut message) value="target.value"}} />
+      <div class="meta-actions">
+        {{! @TODO: Episode Link }}
+        <a href="#">
+          {{t "dashboard.quick-update.actions.discussion"}}
+        </a>
+        <div class="update-wrapper">
+          {{! @TODO: Modal }}
+          <a href="#" class="edit-modal">
+            {{svg-jar "edit"}}
+            {{bs-tooltip title=(t "dashboard.quick-update.actions.tooltips.edit")}}
+          </a>
+
+          {{#ui-button onClick=(perform updateLibraryEntry) isLoading=updateLibraryEntry.isRunning}}
+            {{svg-jar "check-circle" class="checkmark"}}
+            {{#if canCompleteEntry}}
+              {{t "dashboard.quick-update.actions.completed"}}
+            {{else}}
+              {{t "dashboard.quick-update.actions.update"
+                type=libraryEntry.media.type
+                number=nextProgressValue}}
+            {{/if}}
+            {{bs-tooltip title=buttonTooltipText}}
+          {{/ui-button}}
+        </div>
+      </div>
+    {{/if}}
+  </div>
+
+  {{! Media Information }}
+  <div class="card-meta">
+    {{ui-image image=(get-image libraryEntry.media.posterImage "small")}}
+    <div class="title-info col-sm">
+      <h6>
+        <a href={{href-to libraryEntry.media.type libraryEntry.media.slug}}>
+          {{computed-title libraryEntry.media}}
+        </a>
+        <small>
+          {{t (concat "general." libraryEntry.media.type)}}
+          {{#if libraryEntry.media.year}}
+            &middot;
+            {{libraryEntry.media.year}}
+          {{/if}}
+        </small>
+      </h6>
+      <div class="card-progress">
+        {{#if libraryEntry.media.unitCount}}
+          <div class="progress">
+            <div class="progress-bar" style={{completedPercent}}></div>
+          </div>
+        {{/if}}
+        <span class="progress-units">
+          {{unitText}}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  {{! Background Poster }}
+  <div class="card-poster">
+    <div class="poster-overlay"></div>
+    {{ui-image image=(get-image posterObject "medium")}}
+  </div>
+</div>

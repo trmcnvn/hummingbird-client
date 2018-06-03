@@ -1,0 +1,39 @@
+<div class="card">
+  <h6>{{t "dashboard.checklist.header"}}</h6>
+  <div class="steps-remaining">
+    {{t "dashboard.checklist.status" remaining=(dec stepsCompleted 5)}}
+    <div class="progress">
+      <div class="progress-bar" style={{progressPercent}}></div>
+    </div>
+  </div>
+  <ul class="list-unstyled">
+    <li class="step step--complete">
+      <span class="step-status">✅</span>
+      <span class="step-description">{{t "dashboard.checklist.steps.feed"}}</span>
+    </li>
+    <li class="step {{if hasRatings "step--complete"}}">
+      <span class="step-status">{{if hasRatings "✅" "⭐️"}}</span>
+      <span class="step-description">
+        {{t "dashboard.checklist.steps.rated" remaining=(or ratingsLeft 5)}}
+      </span>
+    </li>
+    <li class="step {{if hasFollows "step--complete"}}">
+      <span class="step-status">{{if hasFollows "✅" "👀"}}</span>
+      <span class="step-description">
+        {{t "dashboard.checklist.steps.follow" remaining=(or followsLeft 5)}}
+      </span>
+    </li>
+    <li class="step {{if hasComment "step--complete"}}">
+      <span class="step-status">{{if hasComment "✅" "✍️"}}</span>
+      <span class="step-description">
+        {{t "dashboard.checklist.steps.comment"}}
+      </span>
+    </li>
+    <li class="step {{if hasLikes "step--complete"}}">
+      <span class="step-status">{{if hasLikes "✅" "😍"}}</span>
+      <span class="step-description">
+        {{t "dashboard.checklist.steps.like" remaining=(or likesLeft 3)}}
+      </span>
+    </li>
+  </ul>
+</div>

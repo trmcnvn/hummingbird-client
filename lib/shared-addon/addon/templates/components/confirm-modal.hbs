@@ -1,0 +1,16 @@
+{{#bs-modal open=@open onHidden=(action @onClose) as |modal|}}
+  {{#modal.header}}
+    <h5 class="modal-title">{{t "shared-addon.confirm-modal.title"}}</h5>
+  {{/modal.header}}
+  {{#modal.body}}
+    {{t "shared-addon.confirm-modal.body"}}
+  {{/modal.body}}
+  {{#modal.footer}}
+    <button class="btn btn-danger" {{action (action modal.close)}}>
+      {{t "shared-addon.confirm-modal.close"}}
+    </button>
+    {{#ui-button onClick=(action @onConfirm)}}
+      {{t "shared-addon.confirm-modal.confirm"}}
+    {{/ui-button}}
+  {{/modal.footer}}
+{{/bs-modal}}

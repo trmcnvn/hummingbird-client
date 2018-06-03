@@ -1,38 +1,43 @@
 import Controller from '@ember/controller';
-import { set } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { service } from '@ember-decorators/service';
 import QueryParams from 'ember-parachute';
 
 const queryParams = new QueryParams({
   notification: {
-    defaultValue: null
+    defaultValue: null,
+    replace: true
   }
 });
 
-export default Controller.extend(queryParams.Mixin, {
-  ajax: service(),
-  session: service(),
-  store: service(),
+export default class Application extends Controller.extend(queryParams.Mixin) {
+  @service fetch;
+  @service session;
+  @service store;
 
-  async queryParamsDidChange({ changed: { notification } }) {
+  async setup({ changes: { notification } }) {
+    await this.markNotification(notification);
+  }
+
+  async queryParamsDidChange({ changes: { notification } }) {
+    await this.markNotification(notification);
+  }
+
+  async markNotification(notification) {
     if (notification && this.session.isAuthenticated()) {
       await this._markNotificationRead(notification);
-      set(this, 'notification', null);
+      this.set('notification', null);
     }
-  },
+  }
 
   async _markNotificationRead(notification) {
     const user = this.session.getCurrentUser();
-    const endpoint = `/feeds/notifications/${user.id}/_read`;
-    const response = await this.ajax.request(endpoint, {
-      method: 'POST',
-      data: JSON.stringify([notification]),
-      contentType: 'application/json'
-    });
-    // Mark the local item as read as well
-    const item = this.store.peekAll('notification').findBy('streamId', notification);
-    if (item) {
-      set(item, 'isRead', true);
-    }
+    const endpoint = `/feeds/notifications/${user.remoteId}/_read`;
+    try {
+      await this.fetch.request(endpoint, {
+        method: 'POST',
+        body: JSON.stringify([notification]),
+        contentType: 'application/json'
+      });
+    } catch (error) { } // eslint-disable-line no-empty
   }
-});
+}

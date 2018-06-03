@@ -5,27 +5,75 @@ const svgoUniqueIds = require('svgo-plugin-unify-ids');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
+    hinting: EmberApp.env() === 'test',
+    tests: EmberApp.env() === 'test',
+
+    babel: {
+      comments: false,
+      plugins: ['transform-object-rest-spread']
+    },
+
     vendorFiles: {
       'jquery.js': null
     },
+
+    fingerprint: {
+      exclude: [
+        'OneSignalSDKWorker.js',
+        'OneSignalSDKUpdaterWorker.js',
+        'hulu-embed-frame.html'
+      ]
+    },
+
+    sourcemaps: {
+      enabled: EmberApp.env() === 'production',
+      extensions: ['js']
+    },
+
     sassOptions: {
-      includePaths: ['node_modules/bootstrap/scss'],
-      sourceMapEmbed: true,
-      sourcemap: true
+      includePaths: ['node_modules/bootstrap/scss']
     },
-    autoprefixer: {
-      sourcemap: true
+
+    orbit: {
+      packages: [
+        '@orbit/jsonapi',
+        '@orbit/indexeddb-bucket',
+        '@orbit/indexeddb'
+      ]
     },
+
+    pollyjs: {
+      enabled: EmberApp.env() !== 'production'
+    },
+
     svgJar: {
-      persist: false,
+      sourceDirs: ['public/svgs'],
       optimizer: {
         plugins: [
           { removeTitle: true },
           { removeDesc: true },
           { removeXMLNS: true },
+          { convertShapeToPath: false },
           { uniqueIds: svgoUniqueIds }
         ]
       }
+    },
+
+    'ember-service-worker': {
+      versionStrategy: 'every-build',
+      registrationStrategy: 'inline',
+      enabled: EmberApp.env() === 'production'
+    },
+
+    'ember-cli-password-strength': {
+      bundleZxcvbn: false
+    },
+
+    'ember-bootstrap': {
+      bootstrapVersion: 4,
+      importBootstrapFont: false,
+      importBootstrapCSS: false,
+      // @TODO: Treeshaking
     }
   });
 
@@ -41,6 +89,19 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
+  app.import('node_modules/algoliasearch/dist/algoliasearchLite.min.js', {
+    using: [
+      { transformation: 'amd', as: 'algoliasearch' }
+    ]
+  });
+  app.import('node_modules/text-clipper/dist/index.js', {
+    using: [
+      { transformation: 'cjs', as: 'text-clipper' }
+    ]
+  });
   app.import('node_modules/hoverintent/dist/hoverintent.min.js');
+  app.import('node_modules/getstream/dist/js/getstream.js');
+  app.import('node_modules/autosize/dist/autosize.js');
+  app.import('node_modules/clipboard/dist/clipboard.min.js');
   return app.toTree();
 };

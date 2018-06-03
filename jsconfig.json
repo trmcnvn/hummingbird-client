@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+  },
+  "include": [
+    "app/**/*",
+    "lib/**/*",
+    "tests/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "tmp",
+    "dist",
+    "lib/**/node_modules"
+  ]
+}

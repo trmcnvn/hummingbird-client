@@ -1,0 +1,42 @@
+& {
+  svg {
+    animation: spinning 1s linear infinite;
+    will-change: transform;
+  }
+
+  &--tiny, &--tiny > svg {
+    width: rem(10px);
+    height: rem(10px);
+  }
+
+  &--small, &--small > svg {
+    width: rem(20px);
+    height: rem(20px);
+  }
+
+  &--large, &--large > svg {
+    width: rem(40px);
+    height: rem(40px);
+  }
+
+  &--purple > svg {
+    fill: $purple; // @Theme
+  }
+
+  &--white > svg {
+    fill: $white; // @Theme
+  }
+
+  &--center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+@keyframes spinning {
+  to {
+    transform: rotate(360deg);
+  }
+}

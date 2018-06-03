@@ -1,0 +1,208 @@
+shared-addon:
+  media-rating:
+    awful: "Awful"
+    meh: "Meh"
+    good: "Good"
+    great: "Great"
+  media-rankings:
+    popularity: "{length, select,
+      short {#{rank} Most Popular}
+      full {{type, select,
+        anime {Rank #{rank} (Most Popular Anime)}
+        manga {Rank #{rank} (Most Popular Manga)}
+        other {}}}
+      other {}}"
+    rating: "{length, select,
+      short {#{rank} Highest Rated}
+      full {{type, select,
+        anime {Rank #{rank} (Highest Rated Anime)}
+        manga {Rank #{rank} (Highest Rated Manga)}
+        other {}}}
+      other {}}"
+  read-more:
+    more: 'more'
+    less: 'less'
+  search-popper:
+    header: "Top Results"
+    results:
+      header: "{type, select,
+        media {Media}
+        groups {Groups}
+        users {User}
+        other {}}"
+      more: "Expand"
+      items:
+        members: "{count} Members"
+        # @TODO: Subtype should expand into a select here
+        media: "{subtype}, {type, select,
+          anime {Anime}
+          manga {Manga}
+          other {}}"
+        followers: "{count} Followers"
+  footer:
+    contact: "Contact"
+    terms: "Terms"
+  group-activity:
+    header: "My Groups"
+    view-more: "View All"
+    guest: "Anyone can create and discover groups. Each group centers around a topic or activity."
+    join-kitsu: "Join Kitsu!"
+    empty: "Groups are a great way to discuss topics or activities. You can explore groups <a href={link}>here</a>."
+  app-feed:
+    activity-likes:
+      reactions: "Likes"
+    editor:
+      placeholder: "Share a link, photos, or your thoughts"
+      message-placeholder: "Write your message here..."
+      actions:
+        images: "Images"
+        images-tooltip: "Upload Images"
+        media: "Media"
+        media-tooltip: "Tag Media"
+        emoji: "Emoji"
+        help-tooltip: "Post Help"
+        nsfw: "NSFW"
+        spoiler: "Spoiler"
+        post: "Post"
+        unit: "Tag {type, select,
+          anime {Episode}
+          manga {Chapter}
+          other {}}"
+      help:
+        title: "Editor Help"
+      media:
+        title: "Media Search"
+        subtitle: "When you tag a media, it will also be posted to the media's feed"
+      attachments:
+        embed:
+          preview: "This is a preview of your embed"
+          remove: "Remove this embed"
+        media:
+          remove: "Remove this media tag"
+      media-search:
+        placeholder: "Search {type, select,
+          anime {anime}
+          manga {manga}
+          other {}} titles..."
+    feed:
+      new-activities: "{number} {number, plural,
+        one {new activity}
+        other {new activities}}"
+      filters:
+        all: "All Activity"
+        media: "Media Activity"
+        user: "User Activity"
+        following: "Following Activity"
+      notice:
+        header: "Welcome to your {type, select,
+          anime {Anime}
+          manga {Manga}
+          other {}} Feed!"
+        info: "As you update your <a href={link}>{type, select,
+          anime {anime}
+          manga {manga}
+          other {}} library</a>, you'll see what others are saying about the shows you're watching."
+        button: "Okay, got it"
+    items:
+      post:
+        meta:
+          media: "Because you recently watched {title}"
+        group: "GROUP"
+        edited: "edited"
+        view-more: "View More"
+        view-less: "View Less"
+        gate:
+          combo:
+            label: "Contains spoilers and NSFW content."
+            hover: "My body is ready!"
+          nsfw:
+            label: "This post contains NSFW content."
+            hover: "My body is ready!"
+          spoiler:
+            label: "This post contains spoilers."
+            hover: "I can handle the truth!"
+        media:
+          spoiler: "{type, select,
+            anime {Ep.}
+            manga {Ch.}
+            other {}} {number}"
+        uploads:
+          gif: "GIF"
+          download: "Direct Link"
+        actions:
+          followers: "{count} Followers"
+          copy: "Copy Link"
+          copied: "Copied to clipboard"
+          follow: "Follow Post"
+          follow-help: "Receive notifications about this post"
+          unfollow: "Unfollow Post"
+          unfollow-help: "You'll no longer receive notifications about this post"
+          hide-group: "Hide Posts from {name}"
+          hide-group-help: "Future posts from this group will no longer appear in your following feed"
+          unhide-group: "Show Posts from {name}"
+          unhide-group-help: "Future posts from this group will now appear in your following feed"
+          hide-user: "Hide Posts from @{name}"
+          hide-user-help: "Future posts by this user will no longer appear in your following feed"
+          unhide-user: "Show Posts from @{name}"
+          unhide-user-help: "Future posts by this user will now appear in your following feed"
+          hide-media: "Hide Posts about {name}"
+          hide-media-help: "Future posts about this media won't appear in your following or media feed"
+          unhide-media: "Show Posts about {name}"
+          unhide-media-help: "Future posts about this media will appear in your following or media feed"
+          hide-gate: "Show Post Content"
+          show-gate: "Hide Post Content"
+          pin: "Pin Post"
+          pin-help: "Pin your post to your profile page"
+          unpin: "Unpin Post"
+          unpin-help: "Remove this pinned post from your profile page"
+          edit: "Edit Post"
+          delete: "Delete Post"
+          deleted: "The post was deleted"
+          report: "Report Post"
+          reported: "Your report has been submitted"
+          block: "Block @{name}"
+          block-help: "You'll no longer see this users posts and they won't be able to interact with you"
+          blocked: "You've blocked @{name}"
+        comments:
+          show-previous: "Show Previous Comments"
+          show-previous-replies: "Show Previous Replies"
+          view-all: "View All Comments"
+          view-parent: "View Parent Comment"
+          count: "{number} of {total}"
+          reply: "Reply"
+          sort:
+            likes: "Likes"
+            replies: "Replies"
+            oldest: "Oldest"
+          actions:
+            edit: "Edit Comment"
+            delete: "Delete Comment"
+            report: "Report Comment"
+            deleted: "The comment was deleted"
+  confirm-modal:
+    title: "Confirm Action"
+    body: "Are you sure you want to do this?"
+    close: "Close"
+    confirm: "Confirm"
+  report-modal:
+    header: "Report Content"
+    has-reported: "You've already reported this content"
+    reason: "What's the reason?"
+    reasons:
+      nsfw: "NSFW"
+      offensive: "Offensive"
+      spoiler: "Spoiler"
+      bullying: "Bullying"
+      other: "Other"
+    placeholder:
+      required: "What's the reason you're reporting this content? (Required)"
+      optional: "Any additional information? (Optional)"
+    close: "Close"
+    report: "Report"
+  user-badge:
+    mod: "MOD"
+    staff: "STAFF"
+    pro: "PRO"
+  errors:
+    feed-request: "There was an issue requesting your feed."
+    request: "There was an issue with the request. Please try again!"

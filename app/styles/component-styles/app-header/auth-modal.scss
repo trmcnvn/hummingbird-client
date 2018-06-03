@@ -1,0 +1,86 @@
+& {
+  .modal-body {
+    @include themify($themes) {
+      background-color: themed('white');
+    }
+    padding: rem(15px);
+
+    h6 {
+      font-weight: 700;
+      margin-bottom: rem(10px);
+    }
+
+    p {
+      font-size: rem(14px);
+    }
+
+    button {
+      width: 100%;
+      margin-bottom: rem(5px);
+      &:last-child { margin-bottom: 0; }
+    }
+
+    &.sign-up-modal {
+      @include themify($themes) {
+        background-color: themed('white');
+      }
+      padding: rem(20px);
+
+      .faded {
+        opacity: 0.4;
+      }
+
+      h6 {
+        font-weight: bold;
+        margin-bottom: rem(10px);
+      }
+
+      p {
+        font-size: rem(14px);
+      }
+
+      fieldset {
+        position: relative;
+      }
+
+      input {
+        border: none;
+        border-bottom: rem(1px) solid #eee !important;
+        border-radius: 0;
+      }
+
+      .password-strength {
+        &-0, &-1, &-2, &-3, &-4 {
+          width: rem(130px);
+          height: rem(130px);
+          display: inline-block;
+          background-size: cover;
+          position: absolute;
+          top: rem(-65px);
+          right: rem(-50px);
+        }
+
+        &-0 {
+          background-image: url('/images/password-0.gif');
+        }
+        &-1 {
+          background-image: url('/images/password-1.gif');
+        }
+        &-2 {
+          background-image: url('/images/password-2.gif');
+        }
+        &-3 {
+          background-image: url('/images/password-3.gif');
+        }
+        &-4 {
+          background-image: url('/images/password-4.gif');
+        }
+      }
+
+      button {
+        width: 100%;
+        padding: rem(10px);
+      }
+    }
+  }
+}

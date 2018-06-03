@@ -1,0 +1,66 @@
+& {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  svg {
+    width: rem(20px);
+    height: rem(20px);
+    stroke-width: rem(1px);
+    @include themify($themes) {
+      stroke: themed('gray-600');
+    }
+  }
+
+  .left-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .reply-action {
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-right: rem(10px);
+      font-size: rem(12px);
+      position: relative;
+
+      @include themify($themes) {
+        color: themed('secondary-text');
+      }
+
+      svg {
+        position: relative;
+        margin-right: rem(5px);
+      }
+    }
+  }
+
+  .right-actions {
+    cursor: pointer;
+    svg {
+      stroke-width: rem(3px);
+      @include themify($themes) {
+        fill: themed('gray-600');
+      }
+    }
+
+    .dropdown-toggle {
+      &::after {
+        content: none;
+      }
+    }
+
+    .dropdown-item {
+      font-size: rem(12px);
+      small {
+        display: block;
+        margin-top: rem(5px);
+        @include themify($themes) {
+          color: themed('secondary-text');
+        }
+      }
+    }
+  }
+}

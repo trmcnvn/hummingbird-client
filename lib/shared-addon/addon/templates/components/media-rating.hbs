@@ -1,0 +1,11 @@
+{{#if shouldRenderPopper}}
+  {{! @TODO: Render the rating component within the popper }}
+{{/if}}
+
+{{#if shouldRenderDropdown}}
+  {{! @TODO: Rating Dropdown Button }}
+{{else}}
+  {{#kitsu-ui/button onClick=(toggle-action "shouldRenderPopper" this)}}
+    {{yield}}
+  {{/kitsu-ui/button}}
+{{/if}}

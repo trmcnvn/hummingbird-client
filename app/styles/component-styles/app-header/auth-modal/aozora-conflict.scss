@@ -1,0 +1,49 @@
+& {
+  .conflict-option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+
+    border: rem(1px) solid;
+    border-radius: rem(3px);
+
+    @include themify($themes) {
+      border-color: themed('gray-500');
+      color: themed('text');
+    }
+
+    padding: rem(15px) rem(20px);
+    font-size: rem(14px);
+    font-weight: bold;
+    margin-bottom: rem(15px);
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      box-shadow: 0 0 rem(15px) rgba(0, 0, 0, 0.10);
+    }
+
+    .avatar-image {
+      height: rem(35px);
+      width: rem(35px);
+    }
+
+    .conflict-title {
+      display: flex;
+      flex-direction: column;
+      margin-left: rem(10px);
+      width: 100%;
+    }
+
+    .conflict-count {
+      font-weight: normal;
+      font-size: rem(12px);
+    }
+
+    .conflict-logo {
+      height: rem(30px);
+    }
+  }
+}

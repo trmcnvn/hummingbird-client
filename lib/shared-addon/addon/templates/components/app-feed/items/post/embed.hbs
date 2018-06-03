@@ -1,0 +1,29 @@
+{{#if isVideo}}
+  {{#if shouldRenderVideo}}
+    {{#if requiresIFrame}}
+      <iframe src={{videoSrc}} class="embed-video"></iframe>
+    {{else}}
+      <video controls autoplay src={{videoSrc}} class="embed-video"></video>
+    {{/if}}
+  {{else}}
+    <a class="embed-video" href={{embed.url}} rel="nofollow noopener" {{action "revealVideo"}}>
+      {{ui-image image=embed.image.url}}
+      <div class="embed-video-overlay"></div>
+      <div class="embed-video-info">
+        {{embed.site.name}} - {{truncate embed.title 50}}
+      </div>
+      {{svg-jar "youtube"}}
+    </a>
+  {{/if}}
+{{else}}
+  <a class="embed-article {{orientation}}" href={{embed.url}} target="_blank" rel="nofollow noopener">
+    {{ui-image image=(or embed.image.url embed.image)}}
+    {{#unless (eq embed.kind "image")}}
+      <div class="embed-info">
+        <div class="embed-sitename">{{embed.site.name}}</div>
+        <div class="embed-title">{{truncate embed.title 140}}</div>
+        <div class="embed-description">{{truncate embed.description 200}}</div>
+      </div>
+    {{/unless}}
+  </a>
+{{/if}}

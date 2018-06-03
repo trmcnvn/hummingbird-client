@@ -1,0 +1,46 @@
+{{#unless @hideMeta}}
+  {{#if (and @category (eq @key "trending"))}}
+    <h6>{{t "explore.titles.trending-category" category=@category.title type=@type}}</h6>
+  {{else}}
+    <h6>{{t (concat "explore.titles." @key) category=@category.title type=@type}}</h6>
+  {{/if}}
+{{/unless}}
+
+<div class="media-list-container">
+  <div class="container">
+    <div class="row">
+      {{#ui-pagination onPagination=(action "onPagination") shouldPaginate=shouldPaginate}}
+        {{#each (or media (or (if isWorking (range 0 limit) (array)))) as |item|}}
+          {{media-poster
+            media=item
+            isLoading=isWorking
+            hasLibraryInteraction=true
+            hasInformationHover=true
+          }}
+        {{else}}
+          <p>{{t "explore.empty-content"}}</p>
+        {{/each}}
+
+        {{#if (and media (lt media.length 5))}}
+          {{#each (range 0 (dec 5 media.length)) as |index|}}
+            {{media-poster}}
+          {{/each}}
+        {{/if}}
+      {{/ui-pagination}}
+    </div>
+  </div>
+</div>
+
+{{#unless (or @hideMeta (and (not isWorking) (eq media.length 0)))}}
+  <div class="media-list-more">
+    {{#if (is-empty @category)}}
+      {{#link-to-kitsu viewMoreRoute @type @key}}
+        {{t "explore.view-more"}}
+      {{/link-to-kitsu}}
+    {{else}}
+      {{#link-to-kitsu viewMoreRoute @type @category.slug @key}}
+        {{t "explore.view-more"}}
+      {{/link-to-kitsu}}
+    {{/if}}
+  </div>
+{{/unless}}

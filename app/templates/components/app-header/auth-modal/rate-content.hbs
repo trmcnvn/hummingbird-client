@@ -1,0 +1,52 @@
+{{#modal.body class=styleNamespace}}
+  <h6>{{t "application.authentication.rate-content.header"}}</h6>
+  <p>{{t "application.authentication.rate-content.info"}}</p>
+  <input type="search" class="form-control" placeholder={{t "application.authentication.rate-content.search-placeholder"}}
+    value={{query}} oninput={{perform updateQuery value="target.value"}} />
+
+  {{#bs-tab onChange=(action "tabChanged") as |tab|}}
+    {{#tab.pane title=(t "general.anime")}}
+      <div class="tab-container">
+        {{#if fetchMedia.isRunning}}
+          {{ui-spinner center=true class="my-2"}}
+        {{else}}
+          {{#ui-pagination onPagination=(action "onPagination")}}
+            {{#each anime as |anime|}}
+              {{app-header/auth-modal/rate-content/media-item
+                item=anime
+                onCreate=(action "onCreate")
+              }}
+            {{/each}}
+          {{/ui-pagination}}
+        {{/if}}
+      </div>
+    {{/tab.pane}}
+
+    {{#tab.pane title=(t "general.manga")}}
+      <div class="tab-container">
+        {{#if fetchMedia.isRunning}}
+          {{ui-spinner center=true class="my-2"}}
+        {{else}}
+          {{#ui-pagination onPagination=(action "onPagination")}}
+            {{#each manga as |manga|}}
+              {{app-header/auth-modal/rate-content/media-item
+                item=manga
+                onCreate=(action "onCreate")
+              }}
+            {{/each}}
+          {{/ui-pagination}}
+        {{/if}}
+      </div>
+    {{/tab.pane}}
+  {{/bs-tab}}
+
+  <div class="progress-section">
+    {{#ui-button isDisabled=(not-eq numRatedLeft 0) onClick=(action "transitionToComponent" "find-friends")}}
+      {{#if (not-eq numRatedLeft 0)}}
+        {{t "application.authentication.rate-content.rate-more" num=numRatedLeft}}
+      {{else}}
+        {{t "application.authentication.rate-content.continue"}}
+      {{/if}}
+    {{/ui-button}}
+  </div>
+{{/modal.body}}

@@ -1,0 +1,20 @@
+{{#modal.body class=styleNamespace}}
+  <h6>{{t "application.authentication.import-progress.header"}}</h6>
+  <p>
+    {{t "application.authentication.import-progress.info-0" site=siteName}}
+    {{#if isAccountCreation}}
+      {{t "application.authentication.import-progress.safely"}}
+    {{/if}}
+  </p>
+  <p>{{t "application.authentication.import-progress.info-1"}}</p>
+
+  {{#if isAccountCreation}}
+    {{#ui-button onClick=(action "transitionToComponent" "find-friends")}}
+      {{t "application.authentication.import-progress.continue"}}
+    {{/ui-button}}
+  {{else}}
+    {{#ui-button onClick=(action closeModal)}}
+      {{t "application.authentication.import-progress.finish"}}
+    {{/ui-button}}
+  {{/if}}
+{{/modal.body}}

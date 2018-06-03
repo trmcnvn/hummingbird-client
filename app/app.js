@@ -4,28 +4,43 @@ import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
 
 import './ext/engines-ext';
+import './ext/orbit-ext';
+import './ext/array-ext';
 
 const App = Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
   Resolver,
+
   // eslint-disable-next-line ember/avoid-leaking-state-in-ember-objects
   engines: {
-    kitsuDashboard: {
+    dashboard: {
       dependencies: {
-        services: ['session'],
+        services: ['algolia', 'analytics', 'cache', 'experiments', 'fetch', 'intl',
+          'notification-messages', 'raven', 'router', 'session', 'store'],
         externalRoutes: {
-          'kitsu-explore': 'kitsu-explore.index'
+          'explore': 'explore.explore'
         }
       }
     },
-    kitsuExplore: {
+    explore: {
       dependencies: {
-        services: ['ajax', 'intl', 'session', 'store', 'query-cache'],
-        externalRoutes: {
-          'kitsu-anime': 'kitsu-anime.show',
-          'kitsu-manga': 'kitsu-manga.show'
-        }
+        services: ['algolia', 'analytics', 'fetch', 'intl', 'router', 'session', 'store']
+      }
+    },
+    feedback: {
+      dependencies: {
+        services: ['analytics', 'intl', 'fetch', 'router', 'session']
+      }
+    },
+    media: {
+      dependencies: {
+        services: ['analytics', 'intl', 'router', 'session', 'store']
+      }
+    },
+    profile: {
+      dependencies: {
+        services: ['analytics', 'intl', 'router', 'session', 'store']
       }
     }
   }

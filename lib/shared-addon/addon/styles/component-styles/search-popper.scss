@@ -1,0 +1,57 @@
+& {
+  &.popper {
+    margin-top: rem(2px);
+    width: 100%;
+    min-width: rem(600px);
+    max-height: 80vh;
+    border-radius: rem(3px);
+    box-shadow: 0 0 rem(15px) rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: $zIndex-popper;
+
+    @include themify($themes) {
+      background-color: themed('white');
+    }
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search-header {
+    display: flex;
+    background-color: #efeef1; // @theme
+    min-height: rem(45px);
+
+    &.with-back {
+      .back-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+        width: rem(40px);
+
+        &:hover { svg { stroke: #333; } }
+        svg {
+          position: relative;
+          top: rem(2px);
+          width: rem(30px);
+          height: rem(30px);
+          stroke: #acacac;
+        }
+      }
+      p { padding-left: 0; }
+    }
+
+    p {
+      padding: rem(10px);
+      font-size: rem(16px);
+      margin-bottom: 0;
+    }
+  }
+
+  .group-wrapper {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+}

@@ -1,0 +1,20 @@
+& {
+  margin-bottom: rem(50px);
+
+  .media-list-container {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+
+    .container > .row > .ember-view {
+      width: rem(155px);
+      height: rem(220px);
+    }
+  }
+
+  .media-list-more {
+    float: right;
+    font-size: rem(12px);
+    margin-right: rem(10px);
+  }
+}

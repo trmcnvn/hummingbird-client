@@ -1,0 +1,110 @@
+$themes: (
+  light: (
+    'white': #fff,
+    'gray-100': #f8f9fa,
+    'gray-200': #e9ecef,
+    'gray-300': #dee2e6,
+    'gray-400': #ced4da,
+    'gray-500': #adb5bd,
+    'gray-600': #6c757d,
+    'gray-700': #495057,
+    'gray-800': #343a40,
+    'gray-900': #212529,
+    'black': #000,
+
+    'purple': #443443,
+    'purple-dark': #402f3f,
+    'purple-darker': #332532,
+
+    'blue': #007ace,
+    'indigo': #5c6ac4,
+    'pink': #e83e8c,
+    'red': #DA5E51,
+    'orange': #D95E40,
+    'yellow': #eec200,
+    'green': #16a085,
+    'teal': #47c1bf,
+    'cyan': #17a2b8,
+
+    'background': #f7f7f7,
+    'text': #464646,
+    'secondary-text': #999,
+    'active': darken(#fff, 5%),
+    'primary': #D95E40
+  )
+);
+
+/*
+  Example:
+
+  @include themify($themes) {
+    color: themed('text');
+    border-color: themed('gray-200');
+  }
+*/
+@mixin themify($themes: $themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+// Bootstrap variables
+// @TODO - Figure out how to apply these based on the theme.
+$white:    map-get(map-get($themes, 'light'), 'white');
+$gray-100: map-get(map-get($themes, 'light'), 'gray-100');
+$gray-200: map-get(map-get($themes, 'light'), 'gray-200');
+$gray-300: map-get(map-get($themes, 'light'), 'gray-300');
+$gray-400: map-get(map-get($themes, 'light'), 'gray-400');
+$gray-500: map-get(map-get($themes, 'light'), 'gray-500');
+$gray-600: map-get(map-get($themes, 'light'), 'gray-600');
+$gray-700: map-get(map-get($themes, 'light'), 'gray-700');
+$gray-800: map-get(map-get($themes, 'light'), 'gray-800');
+$gray-900: map-get(map-get($themes, 'light'), 'gray-900');
+$black:    map-get(map-get($themes, 'light'), 'black');
+
+$blue:    map-get(map-get($themes, 'light'), 'blue');
+$indigo:  map-get(map-get($themes, 'light'), 'indigo');
+$purple:  map-get(map-get($themes, 'light'), 'purple');
+$pink:    map-get(map-get($themes, 'light'), 'pink');
+$red:     map-get(map-get($themes, 'light'), 'red');
+$orange:  map-get(map-get($themes, 'light'), 'orange');
+$yellow:  map-get(map-get($themes, 'light'), 'yellow');
+$green:   map-get(map-get($themes, 'light'), 'green');
+$teal:    map-get(map-get($themes, 'light'), 'teal');
+$cyan:    map-get(map-get($themes, 'light'), 'cyan');
+
+$primary:       map-get(map-get($themes, 'light'), 'orange');
+$secondary:     map-get(map-get($themes, 'light'), 'purple');
+$success:       map-get(map-get($themes, 'light'), 'green');
+$info:          map-get(map-get($themes, 'light'), 'cyan');
+$warning:       map-get(map-get($themes, 'light'), 'yellow');
+$danger:        map-get(map-get($themes, 'light'), 'red');
+$light:         map-get(map-get($themes, 'light'), 'gray-100');
+$dark:          map-get(map-get($themes, 'light'), 'purple-dark');
+
+$body-bg: map-get(map-get($themes, 'light'), 'background');
+$body-color: map-get(map-get($themes, 'light'), 'text');
+
+$modal-content-bg: map-get(map-get($themes, 'light'), 'background');
+$modal-backdrop-opacity: .9;
+
+// Kitsu custom variables
+$rating-awful: rgba(231, 76, 60, 1);
+$rating-meh: rgba(230, 126, 34, 1);
+$rating-good: rgba(243, 156, 18, 1);
+$rating-great: rgba(26, 188, 156, 1);
+
+$want-to-watch: #2980b9;
+$currently-watching: #8e44ad;

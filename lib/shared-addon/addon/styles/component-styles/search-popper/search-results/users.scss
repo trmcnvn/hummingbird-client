@@ -1,0 +1,39 @@
+& {
+  padding: rem(5px) rem(10px);
+
+  &:hover {
+    @include themify($themes) {
+      background-color: themed('active');
+    }
+  }
+
+  a {
+    display: flex;
+    width: 100%;
+    @include themify($themes) {
+      color: themed('text');
+      &:hover, &:active, &:focus { color: themed('text') !important; }
+    }
+  }
+
+  img {
+    height: rem(50px);
+    width: rem(50px);
+    border-radius: 999em;
+    @include themify($themes) {
+      background-color: themed('purple');
+    }
+  }
+
+  h5 {
+    font-size: rem(16px);
+  }
+
+  .followers {
+    display: block;
+    margin-top: rem(5px);
+    font-size: rem(12px);
+    font-style: italic;
+    color: lighten($body-color, 25%);
+  }
+}

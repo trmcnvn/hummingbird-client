@@ -1,0 +1,46 @@
+{{quick-update}}
+
+<div class="container dashboard-container">
+  <div class="row">
+    {{! Left Sidebar }}
+    <div class="pl-0 col-sm dashboard-sidebar dashboard-sidebar--left">
+      {{! Feed List }}
+      {{feed-list
+        activeType=feedType
+        onClick=(action "setFeedType")}}
+
+      {{! Group Activity }}
+      {{group-activity}}
+    </div>
+
+    {{! Feed }}
+    <div class="px-0 col-sm dashboard-feed">
+      {{! Onboarding notice }}
+      {{#if (and session.hasSession (and (eq feedType "global/global") (eq session.currentUser.postsCount 0)))}}
+        {{feed-notice name=session.currentUser.name}}
+      {{/if}}
+
+      {{! Feed }}
+      {{app-feed
+        feed=feedPath
+        interestType=feedInterest
+        extraFilters=feedFilters}}
+    </div>
+
+    {{! Right sidebar }}
+    <div class="pr-0 col-sm dashboard-sidebar">
+      {{! Announcements }}
+      {{app-announcements}}
+
+      {{! Onboarding }}
+      {{#if (and session.hasSession (not session.currentUser.feedCompleted))}}
+        {{user-checklist}}
+      {{/if}}
+
+      {{! Ad Unit: @TODO }}
+
+      {{! Footer }}
+      {{app-footer}}
+    </div>
+  </div>
+</div>

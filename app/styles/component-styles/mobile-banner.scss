@@ -1,0 +1,26 @@
+& {
+  @extend .alert-info;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+
+  border: 0;
+  border-radius: 0;
+
+  text-align: center;
+
+  @include themify($themes) {
+    color: themed('secondary-text');
+    background-color: themed('purple-dark');
+  }
+
+  .close {
+    svg {
+      @include themify($themes) {
+        stroke: themed('secondary-text');
+      }
+    }
+  }
+}

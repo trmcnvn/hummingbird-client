@@ -1,0 +1,187 @@
+& {
+  padding: rem(15px);
+  font-size: rem(16px);
+
+  &.folded {
+    cursor: pointer;
+    @include themify($themes) {
+      color: themed('gray-600');
+    }
+  }
+
+  &.expanded {
+    .editor-header {
+      margin-bottom: rem(15px);
+    }
+  }
+
+  .editor-header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+
+    img {
+      width: rem(36px);
+      height: rem(36px);
+      margin-right: rem(10px);
+    }
+
+    .placeholder, .name {
+      vertical-align: middle;
+    }
+
+    .name {
+      font-weight: 700;
+      @include themify($themes) {
+        color: themed('orange');
+      }
+    }
+  }
+
+  .editor-body {
+    display: flex;
+
+    textarea {
+      border: none;
+      width: 100%;
+      min-height: rem(80px);
+    }
+  }
+
+  .editor-attachments {
+    margin-top: rem(5px);
+    margin-bottom: rem(5px);
+
+    .embed-preview {
+      .embed-meta {
+        display: flex;
+        justify-content: space-between;
+        padding-top: rem(5px);
+        padding-bottom: rem(5px);
+        font-size: rem(12px);
+        border-top: rem(1px) solid;
+
+        @include themify($themes) {
+          color: themed('secondary-text');
+          border-color: themed('gray-300');
+        }
+
+        .clear-embed {
+          cursor: pointer;
+          svg {
+            width: rem(15px);
+            height: rem(15px);
+          }
+        }
+      }
+    }
+
+    .media-preview {
+      position: relative;
+
+      .clear-media {
+        position: absolute;
+        top: 0;
+        right: rem(5px);
+        cursor: pointer;
+        svg {
+          width: rem(15px);
+          height: rem(15px);
+        }
+      }
+
+      .media {
+        margin: 0 !important;
+      }
+
+      .media-unit {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: rem(10px);
+        margin-bottom: rem(10px);
+
+        input {
+          width: auto;
+          margin-left: rem(15px);
+        }
+      }
+    }
+  }
+
+  .editor-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: rem(15px);
+    border-top: rem(1px) solid;
+
+    @include themify($themes) {
+      border-color: themed('gray-300');
+    }
+
+    .left-actions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .uploads, .media-tag, .emoji, .help {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: rem(14px);
+        min-height: rem(30px);
+        margin-right: rem(15px);
+
+        svg {
+          width: rem(20px);
+          height: rem(20px);
+          margin-right: rem(5px);
+        }
+
+        &.disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+      }
+
+      .emoji {
+        filter: grayscale(100%);
+        img {
+          width: rem(20px);
+          height: rem(20px);
+        }
+      }
+
+      .help {
+        svg {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .right-actions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .custom-checkbox {
+        margin-right: rem(10px);
+      }
+
+      .post-button {
+        font-size: rem(14px);
+      }
+    }
+  }
+
+  .modal-title {
+    small {
+      display: block;
+      font-size: rem(12px);
+      @include themify($themes) {
+        color: themed('secondary-text');
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{{#if fetchComments.isRunning}}
+  <div class="loading">
+    {{ui-spinner size="small" center=true}}
+  </div>
+{{else if (gt comments.length 0)}}
+  {{#if (or hasMoreComments isPermalinkPage)}}
+    <div class="actions">
+      <div class="left-actions">
+        {{#if isPermalinkPage}}
+          {{#if @comment}}
+            {{#if @comment.parent}}
+              <a href={{href-to "posts" @comment.post.remoteId}} class="pagination-action">
+                {{t "shared-addon.app-feed.items.post.comments.view-all"}}
+              </a>
+              &nbsp;&mdash;&nbsp;
+              <a href={{href-to "comments" @comment.parent.remoteId}} class="pagination-action">
+                {{t "shared-addon.app-feed.items.post.comments.view-parent"}}
+              </a>
+            {{else}}
+              <a href={{href-to "posts" @comment.post.remoteId}} class="pagination-action">
+                {{t "shared-addon.app-feed.items.post.comments.view-all"}}
+              </a>
+            {{/if}}
+          {{else}}
+            {{#bs-dropdown as |dd|}}
+              {{#dd.toggle}}
+                {{t (concat "shared-addon.app-feed.items.post.comments.sort." selectedSort)}}
+              {{/dd.toggle}}
+              {{#dd.menu as |ddm|}}
+                {{#each sortOptions as |option|}}
+                  <a class="dropdown-item {{if (eq selectedSort option) "active"}}" href="#" {{action "changeSort" option}}>
+                    {{t (concat "shared-addon.app-feed.items.post.comments.sort." option)}}
+                  </a>
+                {{/each}}
+              {{/dd.menu}}
+            {{/bs-dropdown}}
+          {{/if}}
+        {{else}}
+          <a href="#" class="pagination-action {{if executePaginationQuery.isRunning "disabled"}}" {{action "onPagination"}}>
+            {{t "shared-addon.app-feed.items.post.comments.show-previous"}}
+          </a>
+        {{/if}}
+      </div>
+      <div class="right-actions">
+        <div class="count">
+          {{t "shared-addon.app-feed.items.post.comments.count" number=comments.length total=comments.firstObject._meta.count}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+
+  <div class="comments">
+    {{#if (and executePaginationQuery.isRunning (not isPermalinkPage))}}
+      {{ui-spinner size="small" center=true class="my-2"}}
+    {{/if}}
+    {{#if (and isPermalinkPage (not @comment))}}
+      {{#ui-pagination onPagination=(action "onPagination")}}
+        {{#each comments as |comment|}}
+          {{app-feed/items/post/comment
+            comment=comment
+            post=post
+            onDelete=(action "onDelete")}}
+        {{/each}}
+      {{/ui-pagination}}
+    {{else}}
+      {{#each comments as |comment|}}
+        {{app-feed/items/post/comment
+          comment=comment
+          post=post
+          onDelete=(action "onDelete")}}
+      {{/each}}
+    {{/if}}
+  </div>
+{{/if}}

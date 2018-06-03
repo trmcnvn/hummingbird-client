@@ -1,0 +1,103 @@
+& {
+  padding: rem(10px) rem(20px) 0;
+  border-bottom: 1px solid;
+
+  @include themify($themes) {
+    border-color: themed('gray-300');
+  }
+
+  .avatar {
+    img {
+      width: rem(35px);
+      height: rem(35px);
+    }
+  }
+
+  .media-body {
+    display: flex;
+    flex-direction: column;
+
+    .comment-body {
+      .username {
+        display: flex;
+        flex-direction: column;
+
+        font-size: rem(14px);
+        font-weight: 700;
+        margin-bottom: rem(5px);
+
+        .timestamps {
+          margin-top: rem(2px);
+
+          @include themify($themes) {
+            color: themed('secondary-text');
+          }
+        }
+      }
+      .comment-content {
+        font-size: rem(14px);
+        margin-bottom: 0;
+        p:last-child {
+          margin-bottom: rem(5px);
+        }
+
+        .view-more {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: rem(10px) rem(0px);
+          cursor: pointer;
+
+          @include themify($themes) {
+            color: themed('orange');
+          }
+        }
+      }
+    }
+
+    .comment-actions {
+      margin-top: rem(5px);
+      margin-bottom: rem(5px);
+    }
+
+    .comment-replies {
+      @include themify($themes) {
+        background-color: darken(themed('background'), 0.75%);
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: rem(10px) rem(20px) 0;
+
+        .left-actions {
+          display: flex;
+          align-items: center;
+
+          .pagination-action {
+            font-size: rem(12px);
+            &.disabled {
+              cursor: not-allowed;
+              @include themify($themes) {
+                color: themed('secondary-text');
+              }
+            }
+          }
+        }
+
+        .right-actions {
+          display: flex;
+          align-items: center;
+
+          .count {
+            font-size: rem(12px);
+            @include themify($themes) {
+              color: themed('secondary-text');
+            }
+          }
+        }
+      }
+    }
+  }
+}

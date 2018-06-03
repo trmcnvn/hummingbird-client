@@ -1,0 +1,46 @@
+{{#with model.category as |category|}}
+  <div class="col-sm pl-0">
+    {{favorite-category-button category=category}}
+    <h3>
+      {{t "explore.titles.category.index" category=category.title type=type}}
+    </h3>
+
+    {{#if (not (is-empty category.description))}}
+      {{read-more text=category.description limit=250}}
+    {{/if}}
+
+    {{explore-search type=type}}
+
+    {{! Newly Released }}
+    {{media-list
+      key="newly-released"
+      type=type
+      category=category
+      sort="-startDate"
+      filters=(hash status="current")
+      limit=15
+      viewMoreRoute="explore.explore.category.more"
+    }}
+
+    {{! Most Watched/Read }}
+    {{media-list
+      key="trending"
+      type=type
+      category=category
+      limit=15
+      viewMoreRoute="explore.explore.category.more"
+    }}
+
+    {{! Most Popular }}
+    {{media-list
+      key="most-popular"
+      type=type
+      category=category
+      sort="-userCount"
+      limit=15
+      viewMoreRoute="explore.explore.category.more"
+    }}
+  </div>
+
+  {{related-category-sidebar category=category favorites=model.favorites}}
+{{/with}}

@@ -1,0 +1,110 @@
+& {
+  position: absolute;
+  top: rem(42px);
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  height: rem(270px);
+
+  @include themify($themes) {
+    background-color: themed('purple-darker');
+    border-bottom: rem(1px) solid darken(themed('purple-darker'), 3%);
+  }
+
+  .swiper-container {
+    overflow: visible;
+    width: 100%;
+
+    .swiper-slide {
+      width: initial;
+      overflow: hidden;
+    }
+  }
+
+  .quick-update-spinner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: rem(200px);
+  }
+
+  header {
+    width: 100%;
+    margin-top: rem(15px);
+
+    h6 {
+      display: inline-block;
+      font-size: rem(16px);
+      margin-bottom: 0;
+      line-height: rem(26px);
+      font-weight: 400;
+      @include themify($themes) {
+        color: darken(themed('gray-500'), 3%);
+      }
+    }
+
+    .dropdown {
+      display: inline-block;
+      margin-left: rem(10px);
+      margin-bottom: rem(15px);
+    }
+
+    .dropdown-toggle {
+      padding: rem(3px) rem(5px);
+      font-size: rem(12px);
+      border-radius: .25rem;
+
+      @include themify($themes) {
+        color: darken(themed('gray-500'), 3%);
+        border: 1px solid darken(themed('gray-500'), 3%);
+      }
+    }
+  }
+
+  .hint-card {
+    width: rem(305px);
+    height: rem(200px);
+    border-radius: rem(3px);
+    margin-right: rem(15px);
+    overflow: hidden;
+
+    padding: rem(15px);
+    font-size: rem(14px);
+    border: none;
+
+    p {
+      a {
+        display: contents;
+      }
+    }
+
+    .discover-button {
+      display: block;
+      position: absolute;
+      bottom: rem(15px);
+      left: rem(15px);
+      right: rem(15px);
+      font-size: rem(14px);
+      padding: rem(10px);
+    }
+  }
+
+  .empty-panel {
+    width: rem(305px);
+    height: rem(200px);
+    border-radius: rem(3px);
+    margin-right: rem(15px);
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: rem(2px) dashed rgba(255, 255, 255, 0.2); // @Theme
+
+    svg {
+      width: rem(50px);
+      height: rem(50px);
+      stroke: rgba(255, 255, 255, 0.1); // @Theme
+    }
+  }
+}

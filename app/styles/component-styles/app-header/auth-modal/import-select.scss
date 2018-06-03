@@ -1,0 +1,44 @@
+& {
+  .import-option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    border: rem(1px) solid;
+    border-radius: rem(3px);
+
+    @include themify($themes) {
+      border-color: themed('gray-500');
+      color: themed('text');
+    }
+
+    padding: rem(15px) rem(20px);
+    font-size: rem(14px);
+    font-weight: bold;
+    margin-bottom: rem(15px);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      box-shadow: 0 0 rem(15px) rgba(0, 0, 0, 0.10);
+    }
+  }
+
+  .import-logo {
+    width: rem(130px);
+    display: inline-block;
+    margin-right: rem(15px);
+    img {
+      width: 100%;
+    }
+  }
+
+  .import-title {
+    @include themify($themes) {
+      color: themed('text');
+    }
+    display: inline-block;
+  }
+}

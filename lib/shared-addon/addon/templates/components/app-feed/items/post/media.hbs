@@ -1,0 +1,22 @@
+<div class="{{styleNamespace}} media">
+  <a href={{href-to @media.type @media.slug}} class="mr-3">
+    {{ui-image image=(get-image @media.posterImage "small")}}
+  </a>
+  <div class="media-body">
+    <h5 class="my-0">
+      <a href={{href-to @media.type @media.slug}}>
+        {{computed-title @media}}
+      </a>
+      {{#if @spoiledUnit}}
+        &mdash;
+        {{! @TODO: Episode link }}
+        <a href="#">
+          {{t "shared-addon.app-feed.items.post.media.spoiler" type=@media.type number=@spoiledUnit.number}}
+          {{unitText}}
+        </a>
+      {{/if}}
+    </h5>
+    {{media-rankings media=@media class="rankings"}}
+    <p>{{truncate @media.synopsis 200}}</p>
+  </div>
+</div>

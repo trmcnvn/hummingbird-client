@@ -1,0 +1,23 @@
+{{#modal.body class=styleNamespace}}
+  <h6>{{t "application.authentication.find-friends.header"}}</h6>
+  <p>{{t "application.authentication.find-friends.info"}}</p>
+
+  <div class="my-2">
+    {{#if session.currentUser.facebookId}}
+      {{#ui-button buttonClass="btn-facebook" onClick=(perform disconnectFacebook) isDisabled=isWorking isLoading=disconnectFacebook.isRunning}}
+        {{svg-jar "facebook"}}
+        {{t "application.authentication.find-friends.facebook-disconnect"}}
+      {{/ui-button}}
+    {{else}}
+      {{#ui-button buttonClass="btn-facebook" onClick=(perform connectFacebook) isDisabled=isWorking isLoading=connectFacebook.isRunning}}
+        {{svg-jar "facebook"}}
+        {{t "application.authentication.find-friends.facebook-connect"}}
+      {{/ui-button}}
+    {{/if}}
+    <p class="social-description">{{t "application.authentication.find-friends.facebook-description" htmlSafe=true}}</p>
+  </div>
+
+  {{#ui-button onClick=(perform createNetwork) isDisabled=isWorking isLoading=createNetwork.isRunning}}
+    {{t "application.authentication.find-friends.finished"}}
+  {{/ui-button}}
+{{/modal.body}}

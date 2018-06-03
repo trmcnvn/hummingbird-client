@@ -1,0 +1,8 @@
+{{#bs-modal open=@isModalShown onHidden=@onHidden class=styleNamespace as |modal|}}
+  {{component currentComponent
+    modal=modal
+    data=modalComponentData
+    closeModal=@onHidden
+    changeComponent=(action "changeComponent")
+  }}
+{{/bs-modal}}

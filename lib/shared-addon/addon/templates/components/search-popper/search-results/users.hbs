@@ -1,0 +1,9 @@
+<a href={{href-to "profile" (or @record.slug @record.id)}}>
+  {{ui-avatar image=(get-image @record.avatar "medium") alt=@record.name class="mr-3"}}
+  <div class="media-body">
+    <h5 class="my-0">{{@record.name}}</h5>
+    <span class="followers">
+      {{t "shared-addon.search-popper.results.items.followers" count=@record.followersCount}}
+    </span>
+  </div>
+</a>

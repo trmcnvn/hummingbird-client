@@ -1,0 +1,64 @@
+<div class="left-actions">
+  <div class="reply-action">
+    {{svg-jar "message-square"}}
+    {{t "shared-addon.app-feed.items.post.comments.reply"}}
+  </div>
+  {{app-feed/activity-likes
+    activity=@comment
+    likedCount=@comment.likesCount
+    onLike=(action @onLike)
+    onDislike=(action @onDislike)}}
+</div>
+
+<div class="right-actions">
+  {{#bs-dropdown onShow=(perform fetchGroupMember) as |dd|}}
+    {{#dd.toggle}}
+      {{svg-jar "more-horizontal"}}
+    {{/dd.toggle}}
+    {{#dd.menu align="right" as |ddm|}}
+      {{#if fetchGroupMember.isRunning}}
+        {{ui-spinner center=true class="my-2"}}
+      {{else}}
+        <a class="dropdown-item" href={{href-to "comments" @comment.remoteId}} data-clipboard-text={{compute (action "getCopyLink") (href-to "comments" @comment.remoteId)}} {{action "noop"}}>
+          {{t "shared-addon.app-feed.items.post.actions.copy"}}
+        </a>
+        {{#if canMutateComment}}
+          {{! @TODO }}
+          <a class="dropdown-item" href="#">
+            {{t "shared-addon.app-feed.items.post.comments.actions.edit"}}
+          </a>
+          <a class="dropdown-item" href="#" {{action (mut showDeleteModal) true}}>
+            {{t "shared-addon.app-feed.items.post.comments.actions.delete"}}
+          </a>
+          {{confirm-modal
+            open=showDeleteModal
+            onConfirm=(action "deleteComment")
+            onClose=(action (mut showDeleteModal) false)}}
+        {{/if}}
+        {{#unless (is-current-user @comment.user)}}
+          <a class="dropdown-item" href="#" {{action (mut showReportModal) true}}>
+            {{t "shared-addon.app-feed.items.post.comments.actions.report"}}
+          </a>
+          {{report-modal
+            open=showReportModal
+            type=(if @post.targetGroup "report-group" "report")
+            record=@comment
+            group=@post.targetGroup
+            onCreate=(action "reportCreated")
+            onClose=(action (mut showReportModal) false)}}
+
+          {{#unless isUserBlocked}}
+            <a class="dropdown-item" href="#" {{action (mut showBlockModal) true}}>
+              {{t "shared-addon.app-feed.items.post.actions.block" name=@comment.user.name}}
+              <small>{{t "shared-addon.app-feed.items.post.actions.block-help"}}</small>
+            </a>
+            {{confirm-modal
+              open=showBlockModal
+              onConfirm=(perform blockUser)
+              onClose=(action (mut showBlockModal) false)}}
+          {{/unless}}
+        {{/unless}}
+      {{/if}}
+    {{/dd.menu}}
+  {{/bs-dropdown}}
+</div>

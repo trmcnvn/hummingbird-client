@@ -1,0 +1,26 @@
+{{#if shouldPaginate}}
+  {{#if sentinelOnTop}}
+    {{#if (and isLoading showSpinner)}}
+      <div class="{{styleNamespace}} pagination-spinner">
+        {{ui-spinner size=spinnerSize center=true}}
+      </div>
+    {{/if}}
+    {{! Sentinel }}
+    <div id={{viewportDivId}} class="{{styleNamespace}} pagination-sentinel"></div>
+  {{/if}}
+
+  {{! Content }}
+  {{yield isLoading}}
+
+  {{#unless sentinelOnTop}}
+    {{! Sentinel }}
+    <div id={{viewportDivId}} class="{{styleNamespace}} pagination-sentinel"></div>
+    {{#if (and isLoading showSpinner)}}
+      <div class="{{styleNamespace}} pagination-spinner">
+        {{ui-spinner size=spinnerSize center=true}}
+      </div>
+    {{/if}}
+  {{/unless}}
+{{else}}
+  {{yield}}
+{{/if}}

@@ -1,0 +1,33 @@
+{{#click-outside action=(action "outsideWasClicked")}}
+  {{#ember-popper-targeting-parent class=(concat styleNamespace " popper") placement=placement renderInPlace=renderInPlace}}
+    {{#if isPrimaryPage}}
+      <div class="search-header">
+        <p>{{t "shared-addon.search-popper.header"}}</p>
+      </div>
+      <div class="group-wrapper">
+        {{#each groups as |group|}}
+          {{component "search-popper/search-results"
+            type=group
+            query=query
+            onTransitionToPage=(action "transitionToPage")
+          }}
+        {{/each}}
+      </div>
+    {{else}}
+      <div class="search-header with-back">
+        <span class="back-button" {{action "transitionToPrimary"}}>{{svg-jar "chevron-left"}}</span>
+        <p>{{t "shared-addon.search-popper.results.header" type=group}}</p>
+      </div>
+      <div class="group-wrapper">
+        {{component "search-popper/search-results"
+          type=group
+          response=response
+          records=response.hits
+          query=query
+          isFullPage=true
+          onBack=(action "transitionToPrimary")
+        }}
+      </div>
+    {{/if}}
+  {{/ember-popper-targeting-parent}}
+{{/click-outside}}

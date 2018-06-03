@@ -1,13 +1,2 @@
-// Bootstrap
-@import "bootstrap";
-
-// Kitsu
-// @TODO: Split into files
-.card {
-  border-radius: .25rem;
-  margin-bottom: .75rem;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.09);
-  color: #464646;
-  background-color: #fff;
-}
+@import "variables";
+@import "manifest";

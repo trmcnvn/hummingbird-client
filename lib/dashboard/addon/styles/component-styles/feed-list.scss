@@ -1,0 +1,38 @@
+& {
+  margin-bottom: rem(30px);
+
+  a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    border-radius: rem(3px);
+    margin-bottom: rem(5px);
+    padding: rem(10px);
+    font-size: rem(14px);
+    line-height: rem(20px);
+
+    @include themify($themes) {
+      color: themed('text');
+    }
+
+    &:hover {
+      @include themify($themes) {
+        background-color: themed('active');
+      }
+    }
+
+    &.active {
+      border: rem(1px) solid;
+      @include themify($themes) {
+        background-color: themed('white');
+        border-color: themed('gray-300');
+      }
+    }
+
+    .emoji {
+      font-size: rem(20px);
+      width: rem(35px);
+    }
+  }
+}

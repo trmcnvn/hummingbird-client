@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    {{#if model.notifications.isRunning}}
+      {{ui-spinner center=true size="large"}}
+    {{else}}
+      <ul class="list-unstyled w-100">
+        {{#ui-pagination onPagination=(perform onPagination)}}
+          {{#each notifications as |notification|}}
+            {{app-header/notifications/item notification=notification}}
+          {{/each}}
+        {{/ui-pagination}}
+      </ul>
+    {{/if}}
+  </div>
+</div>

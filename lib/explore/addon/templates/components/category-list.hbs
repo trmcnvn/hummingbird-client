@@ -1,0 +1,35 @@
+<ul class="list-unstyled categories-list">
+  {{#each @categories as |item|}}
+    <li>
+      {{#link-to-kitsu "explore.explore.category" item.slug}}
+        {{item.title}}
+      {{/link-to-kitsu}}
+    </li>
+  {{/each}}
+</ul>
+
+{{#if showModal}}
+  <div class="categories-more">
+    <a href="#" {{action (mut isModalShown) true}}>{{t "explore.sidebar.more-categories"}}</a>
+  </div>
+
+  {{#bs-modal open=isModalShown onHidden=(action (mut isModalShown) false) as |modal|}}
+    {{#modal.header}}
+      <h5 class="modal-title">
+        {{t "explore.modal.title"}}
+      </h5>
+    {{/modal.header}}
+    {{#modal.body}}
+      {{#if fetchCategories.isRunning}}
+        {{ui-spinner size="large" center=true}}
+      {{else}}
+        {{#each sortedCategories as |category|}}
+          {{category-list/modal-item
+            category=category
+            onTransition=(action (mut isModalShown) false)
+          }}
+        {{/each}}
+      {{/if}}
+    {{/modal.body}}
+  {{/bs-modal}}
+{{/if}}

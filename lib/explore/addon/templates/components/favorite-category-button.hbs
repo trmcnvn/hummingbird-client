@@ -1,0 +1,14 @@
+{{#if fetchFavoriteState.isIdle}}
+  {{#ui-button
+    buttonClass=styleNamespace
+    isLoading=fetchFavoriteState.isRunning
+    isDestructive=isFavorited
+    onClick=(action "onClick")
+  }}
+    {{#if isFavorited}}
+      {{t "explore.favorite-button.remove"}}
+    {{else}}
+      {{t "explore.favorite-button.add"}}
+    {{/if}}
+  {{/ui-button}}
+{{/if}}

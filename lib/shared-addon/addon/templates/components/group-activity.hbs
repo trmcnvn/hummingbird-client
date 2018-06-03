@@ -1,0 +1,57 @@
+<h6>
+  {{t "shared-addon.group-activity.header"}}
+</h6>
+
+{{#if session.hasSession}}
+  {{#if fetchGroups.isRunning}}
+    {{ui-spinner center=true size="large" class="my-4"}}
+  {{else if fetchGroups.last.value}}
+    <ul class="list-unstyled">
+      {{#each fetchGroups.last.value as |groupMember|}}
+        {{#with groupMember.group as |group|}}
+          <li>
+            {{! @TODO: Groups link }}
+            <a href="#" class="group">
+              <span class="avatar">
+                {{ui-avatar image=(get-image group.avatar "small")}}
+              </span>
+              <span class="name">{{group.name}}</span>
+              <span class="counter">
+                {{#if (gt groupMember.unreadCount 99)}}
+                  {{format-number 99}}+
+                {{else}}
+                  {{format-number groupMember.unreadCount fallback="-"}}
+                {{/if}}
+              </span>
+            </a>
+          </li>
+        {{/with}}
+      {{/each}}
+
+      {{#with (object-at 0 fetchGroups.last.value) as |object|}}
+        {{! @Orbit }}
+        {{#if (gt object._meta.count 8)}}
+          <li>
+            {{! @TODO: User groups link }}
+            <a href="#" class="group view-more">{{t "shared-addon.group-activity.view-more"}}</a>
+          </li>
+        {{/if}}
+      {{/with}}
+    </ul>
+  {{else}}
+    <p class="empty">
+      {{! @TODO: Group link }}
+      {{t "shared-addon.group-activity.empty"
+        link="#"
+        htmlSafe=true}}
+    </p>
+  {{/if}}
+{{else}}
+  {{! Guest }}
+  <p class="guest">
+    {{t "shared-addon.group-activity.guest"}}
+    <a href="#" {{action "openAuthModal"}}>
+      {{t "shared-addon.group-activity.join-kitsu"}}
+    </a>
+  </p>
+{{/if}}

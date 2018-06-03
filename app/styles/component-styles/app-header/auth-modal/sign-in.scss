@@ -1,0 +1,59 @@
+& {
+  .authentication-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: rem(15px);
+
+      button {
+        min-width: rem(240px);
+        min-height: rem(46px);
+        padding: rem(10px);
+      }
+    }
+
+    .alternative-text {
+      font-size: 80%;
+      font-weight: normal;
+      margin-bottom: rem(15px);
+    }
+
+    form {
+      width: 100%;
+
+      input {
+        width: 100% !important;
+        border: rem(1px) solid #e5e5e5; // @theme
+        border-radius: 0;
+        outline: 0;
+        padding: rem(10px);
+
+        &[type="text"] {
+          border-bottom: none;
+          border-top-left-radius: rem(3px);
+          border-top-right-radius: rem(3px);
+        }
+        &[type="password"] {
+          border-top: none;
+          border-bottom-left-radius: rem(3px);
+          border-bottom-right-radius: rem(3px);
+        }
+      }
+
+      a {
+        font-size: rem(12px);
+        float: right;
+        margin-top: rem(10px);
+        margin-bottom: rem(10px);
+      }
+
+      button {
+        min-height: rem(38px);
+      }
+    }
+  }
+}

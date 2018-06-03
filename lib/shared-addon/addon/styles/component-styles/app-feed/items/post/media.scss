@@ -1,0 +1,37 @@
+& {
+  margin: rem(10px) rem(20px) rem(5px);
+  padding: rem(10px);
+  border: rem(1px) solid;
+  border-radius: rem(3px);
+  overflow: hidden;
+
+  @include themify($themes) {
+    background-color: themed('background');
+    border-color: themed('gray-300');
+  }
+
+  img {
+    max-width: rem(100px);
+    max-height: rem(100px);
+    border-radius: rem(3px);
+  }
+
+  h5 {
+    font-weight: 700;
+    font-size: rem(16px);
+  }
+
+  .rankings {
+    margin-top: rem(5px);
+    margin-bottom: rem(5px);
+  }
+
+  p {
+    font-size: rem(12px);
+    margin-bottom: 0;
+
+    @include themify($themes) {
+      color: themed('secondary-text');
+    }
+  }
+}

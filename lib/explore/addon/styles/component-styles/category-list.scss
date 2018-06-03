@@ -1,0 +1,32 @@
+& {
+  .categories-list {
+    display: flex;
+    flex-flow: column wrap;
+    max-height: rem(375px);
+    margin-bottom: rem(42px);
+    font-size: rem(12px);
+    font-weight: rem(600px);
+    overflow: hidden;
+    white-space: nowrap;
+
+    @include media-mobile() {
+      align-content: space-between;
+    }
+
+    a {
+      color: inherit;
+      font-family: inherit;
+    }
+  }
+
+  .categories-more {
+    position: absolute;
+    bottom: rem(20px);
+    right: rem(20px);
+    font-size: rem(12px);
+  }
+
+  .edit-favorite-categories {
+    font-size: rem(12px);
+  }
+}

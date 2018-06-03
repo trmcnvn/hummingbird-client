@@ -1,0 +1,44 @@
+& {
+  padding: 0 !important;
+
+  .register-cover {
+    background: url('/images/register_head.png') 50%;
+    background-size: cover;
+    height: rem(233px);
+  }
+
+  .modal-wrapper {
+    padding: rem(30px);
+    .btn-facebook {
+      width: 100%;
+      min-height: rem(60px);
+      margin-bottom: rem(10px);
+
+      .text-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        font-size: rem(16px);
+        text-align: left;
+
+        margin-left: rem(10px);
+
+        .subtext {
+          font-size: rem(12px);
+          color: rgba(255, 255, 255, 0.65);
+        }
+      }
+    }
+
+    .secondary-links {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: rem(40px);
+    }
+
+    .privacy-copy {
+      font-size: rem(12px);
+      color: #797979; // @Theme
+    }
+  }
+}

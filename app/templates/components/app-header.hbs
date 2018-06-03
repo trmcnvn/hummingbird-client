@@ -1,0 +1,115 @@
+{{#bs-navbar type="dark" backgroundColor="dark" classNames=(concat styleNamespace " sticky-top") as |navbar|}}
+  <div class="container px-0">
+    {{navbar.toggle}}
+    <a href={{href-to "dashboard"}} class="navbar-brand" onclick={{action "transitionToDashboard"}}>
+      {{svg-jar "kitsu"}}
+    </a>
+    {{#navbar.content}}
+      {{#navbar.nav class="mr-auto" as |nav|}}
+        {{#if session.hasSession}}
+          {{#nav.item}}
+            {{! @TODO }}
+            <a href="#" class="nav-link">
+              {{t "application.header.library"}}
+            </a>
+          {{/nav.item}}
+        {{/if}}
+        {{#nav.dropdown class=(if isExploreRoute "active") as |dd|}}
+          {{#dd.toggle}}
+            {{t "application.header.browse"}}
+          {{/dd.toggle}}
+          {{#dd.menu as |ddm|}}
+            {{#ddm.link-to "explore.explore" "anime"}}
+              {{t "application.header.browse-items.anime"}}
+            {{/ddm.link-to}}
+            {{#ddm.link-to "explore.explore" "manga"}}
+              {{t "application.header.browse-items.manga"}}
+            {{/ddm.link-to}}
+          {{/dd.menu}}
+        {{/nav.dropdown}}
+        {{#nav.item}}
+          {{! @TODO }}
+          <a href="#" class="nav-link">
+            {{t "application.header.groups"}}
+          </a>
+        {{/nav.item}}
+        {{#nav.dropdown class=(if isFeedbackRoute "active") as |dd|}}
+          {{#dd.toggle}}
+            {{t "application.header.feedback"}}
+          {{/dd.toggle}}
+          {{#dd.menu as |ddm|}}
+            {{#ddm.link-to "feedback.bugs"}}
+              {{t "application.header.feedback-items.bugs"}}
+            {{/ddm.link-to}}
+            {{#ddm.link-to "feedback.feature-requests"}}
+              {{t "application.header.feedback-items.feature-requests"}}
+            {{/ddm.link-to}}
+            {{#ddm.link-to "feedback.database-requests"}}
+              {{t "application.header.feedback-items.database-requests"}}
+            {{/ddm.link-to}}
+            {{#ddm.link-to "feedback.mobile-bugs"}}
+              {{t "application.header.feedback-items.mobile-bugs"}}
+            {{/ddm.link-to}}
+            {{#ddm.link-to "feedback.mobile-features"}}
+              {{t "application.header.feedback-items.mobile-features"}}
+            {{/ddm.link-to}}
+          {{/dd.menu}}
+        {{/nav.dropdown}}
+      {{/navbar.nav}}
+      <form class="form-inline">
+        {{svg-jar "search"}}
+        <input class="form-control" type="search" placeholder={{t "application.header.search-placeholder"}}
+          value={{query}} oninput={{action (mut query) value="target.value"}} />
+        {{search-popper query=query placement="bottom"}}
+      </form>
+      {{#navbar.nav as |nav|}}
+        {{#if session.hasSession}}
+          {{#nav.item}}
+            {{app-header/notifications notification=notification}}
+          {{/nav.item}}
+          {{#nav.dropdown as |dd|}}
+            {{#dd.toggle class="pr-0 user-dropdown"}}
+              {{ui-avatar image=(get-image session.currentUser.avatar "small") size="small"}}
+            {{/dd.toggle}}
+            {{#dd.menu align="right" as |ddm|}}
+              <a href={{href-to "profile" session.currentUser.linkableId}} class="dropdown-item">
+                {{t "application.header.user.profile"}}
+              </a>
+              {{! @TODO }}
+              <a href="#" class="dropdown-item">
+                {{t "application.header.user.settings"}}
+              </a>
+              {{! @TODO }}
+              {{#if session.currentUser.isStaff}}
+                <a href="#" class="dropdown-item">
+                  {{t "application.header.user.admin"}}
+                </a>
+              {{/if}}
+              {{ddm.divider}}
+              <a href="#" class="dropdown-item" {{action "invalidateSession"}}>
+                {{t "application.header.user.logout"}}
+              </a>
+            {{/dd.menu}}
+          {{/nav.dropdown}}
+        {{else}}
+          {{#nav.item}}
+            <a id="sign-up-header-link" class="nav-link" href="#" {{action "openModal" "social-auth"}} data-test-sign-up-header>
+              {{t "application.header.sign-up"}}
+            </a>
+          {{/nav.item}}
+          {{#nav.item}}
+            <a class="nav-link" href="#" {{action "openModal" "sign-in"}} data-test-sign-in-header>
+              {{t "application.header.sign-in"}}
+            </a>
+          {{/nav.item}}
+        {{/if}}
+      {{/navbar.nav}}
+    {{/navbar.content}}
+  </div>
+{{/bs-navbar}}
+
+{{app-header/auth-modal
+  isModalShown=isModalShown
+  modalComponent=modalComponent
+  onHidden=(action (mut isModalShown) false)
+}}

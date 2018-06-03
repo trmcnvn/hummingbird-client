@@ -1,0 +1,17 @@
+& {
+  border: rem(2px) dashed;
+  border-radius: rem(3px);
+  padding: rem(15px);
+  font-size: rem(12px);
+  margin-bottom: rem(25px);
+
+  @include themify($themes) {
+    border-color: themed('gray-300');
+  }
+
+  span {
+    @include themify($themes) {
+      color: themed('text');
+    }
+  }
+}

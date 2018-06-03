@@ -1,0 +1,55 @@
+& {
+  border-top: rem(1px) solid;
+
+  @include themify($themes) {
+    border-color: themed('gray-300');
+    background-color: lighten(themed('background'), 1%);
+  }
+
+  .loading {
+    padding: rem(10px) rem(20px);
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: rem(10px) rem(20px) 0;
+
+    .left-actions {
+      display: flex;
+      align-items: center;
+      .dropdown-toggle {
+        font-size: rem(12px);
+        @include themify($themes) {
+          color: themed('secondary-text');
+        }
+      }
+      .dropdown-item {
+        font-size: rem(12px);
+      }
+
+      .pagination-action {
+        font-size: rem(12px);
+        &.disabled {
+          cursor: not-allowed;
+          @include themify($themes) {
+            color: themed('secondary-text');
+          }
+        }
+      }
+    }
+
+    .right-actions {
+      display: flex;
+      align-items: center;
+
+      .count {
+        font-size: rem(12px);
+        @include themify($themes) {
+          color: themed('secondary-text');
+        }
+      }
+    }
+  }
+}

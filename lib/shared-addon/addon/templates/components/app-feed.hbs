@@ -1,0 +1,77 @@
+{{#if showPostCreation}}
+  {{app-feed/editor
+    targetInterest=(capitalize @interestType)
+    targerUser=@targetUser
+    targetGroup=@targetGroup
+    media=@targetMedia
+    unitNumber=@unitNumber
+    onPostCreated=(perform onPostCreated)
+  }}
+{{/if}}
+
+{{! Realtime Activities Count }}
+{{#if (gt newActivities.length 0)}}
+  <div class="new-activities card" {{action (perform fetchNewActivities)}}>
+    {{#if fetchNewActivities.isRunning}}
+      {{ui-spinner size="small" center=true}}
+    {{else}}
+      {{t "shared-addon.app-feed.feed.new-activities" number=newActivities.length}}
+    {{/if}}
+  </div>
+{{/if}}
+
+{{! Filters }}
+<div class="feed-actions">
+  {{#bs-dropdown as |dd|}}
+    {{#dd.toggle}}
+      {{t (concat "shared-addon.app-feed.feed.filters." selectedFilter)}}
+    {{/dd.toggle}}
+    {{#dd.menu align="right" as |ddm|}}
+      {{#each filterOptions as |filter|}}
+        <a class="dropdown-item {{if (eq selectedFilter filter) "active"}}" href="#" {{action "setFilter" filter}}>
+          {{t (concat "shared-addon.app-feed.feed.filters." filter)}}
+        </a>
+      {{/each}}
+    {{/dd.menu}}
+  {{/bs-dropdown}}
+</div>
+
+{{! Feed Notice }}
+{{#if (and showNotice interestType)}}
+  <div class="feed-notice card">
+    {{svg-jar (concat "kitsu-" interestType)}}
+    <div class="content">
+      <h5>{{t "shared-addon.app-feed.feed.notice.header" type=interestType}}</h5>
+      <p>
+        {{! @TODO: Profile library link }}
+        {{t "shared-addon.app-feed.feed.notice.info"
+          type=interestType
+          link="#"
+          htmlSafe=true}}
+      </p>
+      {{#ui-button onClick=(action "dismissNotice")}}
+        {{t "shared-addon.app-feed.feed.notice.button"}}
+      {{/ui-button}}
+    </div>
+    <span class="close" {{action "dismissNotice"}}>{{svg-jar "x"}}</span>
+  </div>
+{{/if}}
+
+{{! Feed Activities }}
+{{#if (and fetchFeed.isRunning (not (or fetchNewActivities.isRunning fetchNextPage.isRunning)))}}
+  {{! @TODO: Skeletonize }}
+  {{ui-spinner size="large" center=true}}
+{{else if (gt records.length 0)}}
+  {{#ui-pagination onPagination=(perform fetchNextPage) spinnerSize="large"}}
+    {{#each records as |item index|}}
+      {{#with (compute (action "getActivityType") (object-at 0 item.activities)) as |type|}}
+        {{#occludable-component estimatedHeight=600 rootMargin=(hash bottom=600)}}
+          {{component (concat "app-feed/items/" type)
+            item=item
+            feed=feed
+            onDelete=(action "onDelete" item)}}
+        {{/occludable-component}}
+      {{/with}}
+    {{/each}}
+  {{/ui-pagination}}
+{{/if}}

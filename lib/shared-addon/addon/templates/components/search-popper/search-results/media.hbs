@@ -1,0 +1,18 @@
+<a href={{href-to @record.kind @record.slug}} {{action "onClickAction" @record}}>
+  {{ui-image alt=(computed-title @record) image=(get-image @record.posterImage "medium") class="mr-3"}}
+  <div class="media-body">
+    <h5 class="my-0">{{computed-title @record}}</h5>
+    <span class="synopsis">{{truncate @record.synopsis 100 true}}</span>
+    <span class="types">
+      {{#if (gt @record.averageRating 0)}}
+        <span class="rating {{ratingClass}}">{{math-floor @record.averageRating}}%</span>
+        &mdash;
+      {{/if}}
+      {{#if @record.year}}
+        {{@record.year}}
+        &mdash;
+      {{/if}}
+      {{t "shared-addon.search-popper.results.items.media" type=@record.kind subtype=(capitalize @record.subtype)}}
+    </span>
+  </div>
+</a>

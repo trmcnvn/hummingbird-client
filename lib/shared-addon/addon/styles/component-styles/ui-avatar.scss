@@ -1,0 +1,20 @@
+& {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 999em;
+
+  &--small {
+    width: rem(25px);
+    height: rem(25px);
+  }
+
+  &--medium {
+    width: rem(75px);
+    height: rem(75px);
+  }
+
+  &--large {
+    width: rem(100px);
+    height: rem(100px);
+  }
+}

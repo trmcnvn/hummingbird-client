@@ -1,0 +1,59 @@
+& {
+  margin-bottom: rem(15px);
+
+  .card {
+    padding: rem(20px);
+
+    h6 {
+      font-size: rem(14px);
+      font-weight: 700;
+      text-align: left;
+      padding-bottom: rem(15px);
+
+      @include themify($themes) {
+        border-bottom: rem(1px) solid themed('gray-300');
+      }
+    }
+
+    .steps-remaining {
+      font-size: rem(14px);
+      margin-bottom: rem(15px);
+
+      .progress {
+        margin-top: rem(10px);
+        height: rem(10px);
+        border-radius: rem(3px);
+        .progress-bar {
+          border-radius: rem(3px);
+        }
+      }
+    }
+
+    .step {
+      @include themify($themes) {
+        border-bottom: rem(1px) solid themed('gray-300');
+      }
+      padding-bottom: rem(10px);
+      margin-bottom: rem(10px);
+      font-size: rem(14px);
+
+      &--complete {
+        @include themify($themes) {
+          color: themed('gray-400');
+        }
+        text-decoration: line-through;
+      }
+
+      &:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .step-status {
+        float: left;
+        margin-right: rem(10px);
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+& {
+  .nav-item { cursor: pointer; }
+
+  input {
+    margin-bottom: 15px;
+  }
+
+  .tab-content {
+    max-height: rem(400px);
+    overflow: auto;
+    margin-bottom: rem(10px);
+  }
+
+  .tab-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: rem(10px);
+  }
+
+  .media-item {
+    padding: { left: 0; right: rem(10px); }
+    margin-bottom: rem(15px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+
+    img {
+      width: rem(138px);
+      height: rem(203px);
+      border-radius: rem(3px);
+      @include themify($themes) {
+        background-color: themed('purple');
+      }
+    }
+
+    small {
+      white-space: nowrap;
+    }
+  }
+
+  .rating-container {
+    width: 100% !important;
+    height: auto;
+    padding: 0;
+
+    button {
+      padding: rem(4px) !important;
+      font-size: rem(12px);
+      max-height: rem(28px);
+      background-color: $want-to-watch;
+      border-color: $want-to-watch;
+      &:hover {
+        background-color: darken($want-to-watch, 5%);
+      }
+    }
+  }
+}

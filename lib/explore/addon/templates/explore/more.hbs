@@ -1,0 +1,10 @@
+<div class="col-sm pl-0">
+  <h3>{{t (concat "explore.titles." key) type=model.type category=null}}</h3>
+  {{explore-search type=model.type}}
+  {{explore-more key=key type=model.type}}
+</div>
+
+{{general-category-sidebar
+  categories=model.categories
+  favorites=model.favorites
+}}

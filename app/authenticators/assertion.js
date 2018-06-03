@@ -1,17 +1,17 @@
 import Base from 'kitsu/authenticators/oauth2';
-import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import { run } from '@ember/runloop';
+import { service } from '@ember-decorators/service';
 import RSVP from 'rsvp';
 
-export default Base.extend({
-  torii: service(),
+export default class Assertion extends Base {
+  @service torii;
 
   authenticate(provider, options = {}) {
     return new RSVP.Promise(async (resolve, reject) => {
-      const providerResponse = await this.torii.open(provider, options);
-      const data = { grant_type: 'assertion', assertion: providerResponse.accessToken, provider };
       try {
+        const providerResponse = await this.torii.open(provider, options);
+        const data = { grant_type: 'assertion', assertion: providerResponse.accessToken, provider };
         let response = await this.makeRequest(this.serverTokenEndpoint, data);
         run(() => {
           const expiresIn = response['expires_in'];
@@ -23,8 +23,8 @@ export default Base.extend({
           resolve(response);
         });
       } catch (error) {
-        run(null, reject, error.responseJSON || error.responseText || error);
+        run(null, reject, (error && error.responseJSON) || (error && error.responseText) || error);
       }
     });
   }
-});
+}

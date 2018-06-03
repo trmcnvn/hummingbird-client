@@ -1,0 +1,45 @@
+& {
+  margin-top: rem(10px);
+  margin-bottom: rem(20px);
+  width: auto;
+
+  .input-wrapper {
+    position: relative;
+    width: 100%;
+
+    &:hover {
+      > svg { stroke: #333; }
+    }
+
+    > svg {
+      position: absolute;
+      left: rem(10px);
+      top: rem(13px);
+      width: rem(25px);
+      height: rem(25px);
+      stroke: #acacac;
+    }
+
+    input {
+      height: rem(50px);
+      line-height: rem(50px);
+      outline: 0;
+      text-indent: 0;
+      box-shadow: none;
+      border: rem(1px) solid #f0f0f0;
+      border-radius: rem(5px);
+      padding-left: rem(40px);
+      padding-right: rem(40px);
+
+      &:focus {
+        border-color: #f0f0f0;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .meta-info {
+    font-size: rem(12px);
+    margin-top: rem(12px);
+  }
+}

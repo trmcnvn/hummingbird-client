@@ -1,0 +1,35 @@
+& {
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    input {
+      display: flex;
+      flex: 1;
+      margin-right: rem(15px);
+    }
+
+    .dropdown-toggle {
+      @include themify($themes) {
+        color: themed('text');
+      }
+    }
+  }
+
+  .results {
+    margin-top: rem(15px);
+    padding-top: rem(5px);
+    border-top: rem(1px) solid;
+    @include themify($themes) {
+      border-color: themed('gray-300');
+    }
+
+    overflow: scroll;
+    max-height: rem(450px);
+
+    &.working {
+      opacity: 0.6;
+    }
+  }
+}

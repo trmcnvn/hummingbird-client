@@ -1,0 +1,24 @@
+& {
+  .group-header {
+    font-size: rem(12px);
+    padding: rem(10px);
+    background-color: #faf9fa;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    // @Theme
+    border-top: rem(1px) solid $gray-300;
+    border-bottom: rem(1px) solid $gray-300;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  ul {
+    margin-bottom: 0;
+  }
+}

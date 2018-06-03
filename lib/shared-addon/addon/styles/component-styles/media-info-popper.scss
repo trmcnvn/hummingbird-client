@@ -1,0 +1,81 @@
+& {
+  &.popper {
+    background-color: $purple;
+    color: lighten($purple, 60);
+    border-radius: rem(3px);
+    padding: .75rem 1rem 1rem;
+    position: relative;
+    height: rem(232px);
+    width: rem(342px);
+    display: flex;
+    flex-direction: column;
+
+    .media-meta {
+      .media-title {
+        font-size: rem(16px);
+        font-weight: 400;
+      }
+
+      .media-year {
+        opacity: 0.5;
+      }
+    }
+
+    .media-ratings {
+      margin-bottom: rem(5px);
+      height: rem(24px);
+      &.percent-quarter-1 {
+        color: $rating-awful;
+      }
+      &.percent-quarter-2 {
+        color: $rating-meh;
+      }
+      &.percent-quarter-3 {
+        color: $rating-good;
+      }
+      &.percent-quarter-4 {
+        color: $rating-great;
+      }
+    }
+
+    .media-synopsis {
+      margin-top: rem(5px);
+      font-size: rem(12px);
+      height: 100%;
+      overflow: hidden;
+      background-image: linear-gradient(to bottom,
+        lighten($purple, 60),
+        lighten($purple, 60) 75%,
+        $purple
+      );
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .popper-arrow {
+      border-top: rem(10px) solid transparent;
+      border-bottom: rem(10px) solid transparent;
+      position: absolute;
+      top: .0rem;
+    }
+
+    &[x-placement="right"] {
+      left: rem(15px) !important;
+      .popper-arrow {
+        left: rem(-10px);
+        border-right: rem(10px) solid $purple;
+      }
+    }
+    &[x-placement="left"] {
+      right: rem(15px) !important;
+      .popper-arrow {
+        right: rem(-10px);
+        border-left: rem(10px) solid $purple;
+      }
+      @media (max-width: 990px) {
+        left: rem(-15px);
+      }
+    }
+  }
+}

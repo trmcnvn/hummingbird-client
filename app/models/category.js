@@ -1,14 +1,17 @@
-import Base from 'kitsu/models/-base';
-import attr from 'ember-data/attr';
-import { belongsTo, hasMany } from 'ember-data/relationships';
+import Model from 'kitsu/mixins/models/base';
+import { attr, hasOne, hasMany } from 'kitsu/decorators/orbit';
 
-export default Base.extend({
-  description: attr('string'),
-  slug: attr('string'),
-  title: attr('string'),
+export default class Category extends Model {
+  @attr('number') childCount;
+  @attr('string') description;
+  @attr('object') image;
+  @attr('boolean') nsfw;
+  @attr('string') slug;
+  @attr('string') title;
+  @attr('number') totalMediaCount;
 
-  parent: belongsTo('category', { inverse: null }),
+  @hasOne('category') parent;
 
-  anime: hasMany('anime'),
-  manga: hasMany('manga')
-});
+  @hasMany('anime', { inverse: 'categories' }) anime;
+  @hasMany('manga', { inverse: 'categories' }) manga;
+}

@@ -3,22 +3,69 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Kitsu</title>
+    <meta http-equiv="Accept-CH" content="DPR, Width, Viewport-Width">
     <meta name="keywords" content="anime, manga, kitsu, hummingbird, anime news">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="YKitj6wgNvrB_gq_M8vbT0JmLHEONWRZN29H96TROf0">
 
     {{content-for "head"}}
 
+    <link rel="preconnect" href="https://media.kitsu.io">
+    <link rel="preconnect" href="https://kitsu.imgix.net">
+
+    <link rel="preload" href="{{rootURL}}assets/vendor.css" as="style">
+    <link rel="preload" href="{{rootURL}}assets/kitsu.css" as="style">
+    <link rel="preload" href="{{rootURL}}assets/vendor.js" as="script">
+    <link rel="preload" href="{{rootURL}}assets/kitsu.js" as="script">
+
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/kitsu.css">
+
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+    <link rel="mark-icon" href="/safari-pinned-tab.svg" color="#F75239">
+
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default-3.6,Intl.~locale.en-US,IntersectionObserver,fetch&flags=gated&unknown=polyfill&rum=0"></script>
+    <script async src="https://www.googleadservices.com/pagead/conversion_async.js"></script>
+    <script async src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"></script>
+
     <script>
+      window.kitsu = window.kitsu || {};
+      var theme = 'theme-light';
+      if (window.localStorage) {
+        var cache = window.localStorage.getItem('kitsu-theme');
+        if (cache) {
+          theme = cache || theme;
+        }
+      }
+      window.onload = function() {
+        document.body.classList.add(theme);
+      };
       window.prerenderReady = false;
     </script>
+
+    <meta name="application-name" content="Kitsu">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@HeyKitsu">
+    <meta name="fb:app_id" content="1683064425356437">
+    <meta name="slack-app-id" content="A1PT7UT29">
+    <meta name="og:site_name" content="Kitsu">
 
     {{content-for "head-footer"}}
   </head>
   <body>
+    <noscript>
+      <div class="d-flex justify-content-center">
+        <div class="jumbotron">
+          <h1 class="display-4">Hey, There!</h1>
+          <p>Please enable JavaScript to be able to use Kitsu!</p>
+          <p>Thanks!</p>
+        </div>
+      </div>
+    </noscript>
+
     {{content-for "body"}}
 
     <script src="{{rootURL}}assets/vendor.js"></script>

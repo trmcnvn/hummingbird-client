@@ -1,0 +1,228 @@
+& {
+  width: rem(305px);
+  height: rem(200px);
+  border-radius: rem(3px);
+  margin-right: rem(15px);
+  overflow: hidden;
+
+  &:hover {
+    .action-wrapper {
+      transform: translate(0, 0);
+    }
+
+    .card-meta {
+      transform: translate(rem(-75px), 0);
+      .title-info {
+        h6 {
+          a { top: 20px; }
+          small { display: none; }
+        }
+      }
+    }
+  }
+
+  .action-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    width: rem(305px);
+
+    transform: translate(0, rem(-125px));
+    transition: transform .2s ease;
+    will-change: transform;
+
+    @include themify($themes) {
+      background-color: themed('background');
+      box-shadow: 0 rem(1px) rem(10px) rgba(0, 0, 0, 0.8); // @Theme
+    }
+
+    textarea {
+      height: rem(60px);
+      width: 100%;
+      border: none;
+      resize: none;
+      padding: rem(15px);
+      font-size: rem(12px);
+      border-radius: rem(3px);
+
+      @include themify($themes) {
+        border-bottom: rem(1px) solid themed('gray-300');
+      }
+    }
+
+    .meta-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: rem(4px) rem(10px);
+
+      a {
+        font-size: rem(12px);
+
+        @include themify($themes) {
+          color: themed('secondary-text');
+          &:hover {
+            color: themed('orange');
+          }
+        }
+      }
+
+      .update-wrapper {
+        display: flex;
+        align-items: center;
+
+        button {
+          display: flex;
+          align-items: center;
+
+          font-size: rem(13px);
+          font-weight: 700;
+          padding: rem(8px) rem(16px);
+
+          .checkmark {
+            width: rem(18px);
+            height: rem(18px);
+            margin-right: rem(5px);
+
+            @include themify($themes) {
+              stroke: rgba(0, 0, 0, 0.5); // @Theme
+            }
+          }
+        }
+
+        .edit-modal {
+          svg {
+            width: rem(15px);
+            margin-right: rem(10px);
+            vertical-align: middle;
+
+            @include themify($themes) {
+              stroke: themed('gray-600');
+              &:hover {
+                stroke: themed('orange');
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .card-meta {
+    position: absolute;
+    bottom: rem(10px);
+    left: rem(10px);
+    right: rem(20px);
+    text-align: left;
+    display: flex;
+    z-index: 1;
+    overflow: hidden;
+
+    transform: translate(0, 0);
+    transition: transform .2s ease;
+    will-change: transform;
+
+    img {
+      width: rem(60px);
+      height: rem(80px);
+      overflow: hidden;
+      border-radius: rem(3px);
+    }
+
+    .title-info {
+      @include themify($themes) {
+        color: themed('white');
+      }
+
+      h6 {
+        margin-bottom: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @include themify($themes) {
+          color: themed('white');
+        }
+
+        a {
+          position: absolute;
+          top: 0;
+          transition: top .2s ease;
+          will-change: top;
+
+          display: inline-block;
+          width: 100%;
+
+          font-size: rem(14px);
+          font-weight: 700;
+          white-space: nowrap;
+
+          text-overflow: ellipsis;
+          overflow: hidden;
+
+          @include themify($themes) {
+            color: themed('white');
+          }
+        }
+
+        small {
+          position: absolute;
+          top: rem(20px);
+          display: block;
+          font-size: rem(12px);
+          opacity: 0.6;
+        }
+      }
+
+      .card-progress {
+        position: absolute;
+        left: 15px;
+        right: 15px;
+        bottom: 0;
+        font-size: rem(12px);
+        max-width: rem(200px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        .progress {
+          height: 5px;
+          margin-bottom: 5px;
+          background-color: rgba(255, 255, 255, .15); // @Theme
+          border-radius: 999em;
+
+          .progress-bar {
+            border-radius: 999em;
+            @include themify($themes) {
+              background-color: themed('green');
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .card-poster {
+    position: relative;
+
+    .poster-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: rem(200px);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.9) 100%);
+    }
+
+    img {
+      width: 100%;
+      min-height: rem(200px);
+      object-fit: cover;
+    }
+  }
+}

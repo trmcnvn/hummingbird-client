@@ -1,0 +1,134 @@
+<div class="left-actions">
+  {{app-feed/activity-likes
+    activity=@post
+    likedCount=@post.postLikesCount
+    onLike=(action @onLike)
+    onDislike=(action @onDislike)
+    class="likes"}}
+</div>
+
+<div class="right-actions">
+  {{#if (and @isGated (gt @post.commentsCount 0))}}
+    <div class="comment-count">
+      {{svg-jar "message-square"}}
+      {{@post.commentsCount}}
+    </div>
+  {{/if}}
+  <div class="actions">
+    {{#bs-dropdown onShow=(perform fetchRecords) as |dd|}}
+      {{#dd.toggle}}
+        {{svg-jar "more-horizontal"}}
+      {{/dd.toggle}}
+      {{#dd.menu align="right" as |ddm|}}
+        {{#if fetchRecords.isRunning}}
+          {{ui-spinner center=true class="my-2"}}
+        {{else}}
+          <a class="dropdown-item" href={{href-to "posts" @post.remoteId}} data-clipboard-text={{compute (action "getCopyLink") (href-to "posts" @post.remoteId)}} {{action "noop"}}>
+            {{t "shared-addon.app-feed.items.post.actions.copy"}}
+          </a>
+          {{#if @isGated}}
+            <a class="dropdown-item" href="#" {{action @toggleGate}}>
+              {{#if @isGateShown}}
+                {{t "shared-addon.app-feed.items.post.actions.hide-gate"}}
+              {{else}}
+                {{t "shared-addon.app-feed.items.post.actions.show-gate"}}
+              {{/if}}
+            </a>
+          {{/if}}
+          {{#unless (is-current-user @post.user)}}
+            <a class="dropdown-item" href="#" {{action (perform followPost)}}>
+              {{#if isPostFollowed}}
+                {{t "shared-addon.app-feed.items.post.actions.unfollow"}}
+                <small>{{t "shared-addon.app-feed.items.post.actions.unfollow-help"}}</small>
+              {{else}}
+                {{t "shared-addon.app-feed.items.post.actions.follow"}}
+                <small>{{t "shared-addon.app-feed.items.post.actions.follow-help"}}</small>
+              {{/if}}
+            </a>
+          {{/unless}}
+          {{#if isOnTimeline}}
+            {{#if (and @post.targetGroup groupMemberRecord)}}
+              <a class="dropdown-item" href="#" {{action (perform hideGroup)}}>
+                {{#if groupMemberRecord.hidden}}
+                  {{t "shared-addon.app-feed.items.post.actions.unhide-group" name=@post.targetGroup.name}}
+                  <small>{{t "shared-addon.app-feed.items.post.actions.unhide-group-help"}}</small>
+                {{else}}
+                  {{t "shared-addon.app-feed.items.post.actions.hide-group" name=@post.targetGroup.name}}
+                  <small>{{t "shared-addon.app-feed.items.post.actions.hide-group-help"}}</small>
+                {{/if}}
+              </a>
+            {{else if (and userFollowRecord (not (is-current-user @post.user)))}}
+              <a class="dropdown-item" href="#" {{action (perform hideUser)}}>
+                {{#if userFollowRecord.hidden}}
+                  {{t "shared-addon.app-feed.items.post.actions.unhide-user" name=@post.user.name}}
+                  <small>{{t "shared-addon.app-feed.items.post.actions.unhide-user-help"}}</small>
+                {{else}}
+                  {{t "shared-addon.app-feed.items.post.actions.hide-user" name=@post.user.name}}
+                  <small>{{t "shared-addon.app-feed.items.post.actions.hide-user-help"}}</small>
+                {{/if}}
+              </a>
+            {{/if}}
+          {{/if}}
+          {{#if (and (or isOnInterest (eq @reason "media")) @post.media)}}
+            <a class="dropdown-item" href="#" {{action (perform hideMedia)}}>
+              {{#if mediaIgnoreRecord}}
+                {{t "shared-addon.app-feed.items.post.actions.unhide-media" name=(computed-title @post.media)}}
+                <small>{{t "shared-addon.app-feed.items.post.actions.unhide-media-help"}}</small>
+              {{else}}
+                {{t "shared-addon.app-feed.items.post.actions.hide-media" name=(computed-title @post.media)}}
+                <small>{{t "shared-addon.app-feed.items.post.actions.hide-media-help"}}</small>
+              {{/if}}
+            </a>
+          {{/if}}
+          {{#if (is-current-user @post.user)}}
+            <a class="dropdown-item" href="#" {{action (perform pinPost)}}>
+              {{#if isPostPinned}}
+                {{t "shared-addon.app-feed.items.post.actions.unpin"}}
+                <small>{{t "shared-addon.app-feed.items.post.actions.unpin-help"}}</small>
+              {{else}}
+                {{t "shared-addon.app-feed.items.post.actions.pin"}}
+                <small>{{t "shared-addon.app-feed.items.post.actions.pin-help"}}</small>
+              {{/if}}
+            </a>
+          {{/if}}
+          {{#if canMutatePost}}
+            {{! @TODO }}
+            <a class="dropdown-item" href="#">
+              {{t "shared-addon.app-feed.items.post.actions.edit"}}
+            </a>
+            <a class="dropdown-item" href="#" {{action (mut showDeleteModal) true}}>
+              {{t "shared-addon.app-feed.items.post.actions.delete"}}
+            </a>
+            {{confirm-modal
+              open=showDeleteModal
+              onConfirm=(action "deletePost")
+              onClose=(action (mut showDeleteModal) false)}}
+          {{/if}}
+          {{#unless (is-current-user @post.user)}}
+            <a class="dropdown-item" href="#" {{action (mut showReportModal) true}}>
+              {{t "shared-addon.app-feed.items.post.actions.report"}}
+            </a>
+            {{report-modal
+              open=showReportModal
+              type=(if @post.targetGroup "report-group" "report")
+              record=@post
+              group=@post.targetGroup
+              onCreate=(action "reportCreated")
+              onClose=(action (mut showReportModal) false)}}
+
+            {{#unless isUserBlocked}}
+              <a class="dropdown-item" href="#" {{action (mut showBlockModal) true}}>
+                {{t "shared-addon.app-feed.items.post.actions.block" name=@post.user.name}}
+                <small>{{t "shared-addon.app-feed.items.post.actions.block-help"}}</small>
+              </a>
+              {{confirm-modal
+                open=showBlockModal
+                onConfirm=(perform blockUser)
+                onClose=(action (mut showBlockModal) false)}}
+            {{/unless}}
+          {{/unless}}
+        {{/if}}
+      {{/dd.menu}}
+    {{/bs-dropdown}}
+  </div>
+</div>

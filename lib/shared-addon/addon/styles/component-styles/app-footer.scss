@@ -1,0 +1,42 @@
+& {
+  margin-top: rem(1px);
+
+  .applinks {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .socials {
+    display: inline-block;
+    margin-top: rem(10px);
+    padding-top: rem(10px);
+    opacity: 0.6;
+
+    @include themify($themes) {
+      border-top: rem(1px) solid themed('gray-300');
+    }
+
+    .social-item {
+      margin-right: rem(5px);
+      svg {
+        width: rem(20px);
+        height: rem(20px);
+        @include themify($themes) {
+          stroke: themed('text');
+        }
+      }
+    }
+  }
+
+  .links {
+    font-size: rem(12px);
+    margin-top: rem(5px);
+
+    .link {
+      margin-right: rem(5px);
+      @include themify($themes) {
+        color: themed('text');
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{{#modal.body class=styleNamespace}}
+  <div class="register-cover"></div>
+  <div class="modal-wrapper">
+    <p class="intro">{{t "application.authentication.social-auth.intro"}}</p>
+    <div class="action">
+      {{#ui-button buttonClass="btn-facebook" onClick=(perform authenticateWithFacebook) isLoading=authenticateWithFacebook.isRunning}}
+        {{svg-jar "facebook"}}
+        <div class="text-wrapper">
+          {{t "application.authentication.social-auth.facebook"}}
+          <span class="subtext">
+            {{t "application.authentication.social-auth.wont-post"}}
+          </span>
+        </div>
+      {{/ui-button}}
+
+      <div class="secondary-links">
+        <a href="#" {{action "transitionToComponent" "sign-up"}} data-test-sign-up-link>
+          {{t "application.authentication.social-auth.sign-up"}}
+        </a>
+        <span>
+          {{t "application.authentication.social-auth.question"}}
+          <a href="#" {{action "transitionToComponent" "sign-in"}} data-test-sign-in-link>
+            {{t "application.authentication.social-auth.login"}}
+          </a>
+        </span>
+      </div>
+
+      <div class="privacy-copy">
+        <p>{{t "application.authentication.social-auth.privacy"}}</p>
+        <p>{{t "application.authentication.social-auth.agreement" htmlSafe=true}}</p>
+      </div>
+    </div>
+  </div>
+{{/modal.body}}

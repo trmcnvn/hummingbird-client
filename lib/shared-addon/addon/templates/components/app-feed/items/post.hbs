@@ -1,0 +1,40 @@
+{{#if post}}
+  <div class="{{styleNamespace}} card">
+    {{! Meta Tags }}
+    {{#if (is-participating-in "feed_reasons")}}
+      {{! Media Reason }}
+      {{#if (and post.media (eq activity.reason "media"))}}
+        <div class="post-meta">
+          {{t "shared-addon.app-feed.items.post.meta.media" title=(computed-title post.media)}}
+        </div>
+      {{/if}}
+    {{/if}}
+
+    {{! @TODO: Pinned Post }}
+
+    {{! Header }}
+    {{app-feed/items/post/header
+      post=post
+      showGroupAvatar=showGroupAvatar}}
+
+    {{! Content }}
+    {{app-feed/items/post/content
+      post=post
+      feed=@feed
+      reason=activity.reason
+      isPermalinkPage=isPermalinkPage
+      isContentGated=isContentGated
+      onGate=(action "onGate")
+      onLike=(perform onLike)
+      onDislike=(perform onDislike)
+      onDelete=(perform deletePost)}}
+
+    {{! Comments }}
+    {{#unless isGateShown}}
+      {{app-feed/items/post/comment-container
+        post=post
+        comment=@comment
+        isPermalinkPage=isPermalinkPage}}
+    {{/unless}}
+  </div>
+{{/if}}

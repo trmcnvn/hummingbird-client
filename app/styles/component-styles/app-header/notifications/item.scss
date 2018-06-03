@@ -1,0 +1,48 @@
+& {
+  .media {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    padding: rem(15px);
+    font-size: rem(12px);
+    border-bottom: 1px solid;
+    transition: all .2s ease-in-out;
+
+    @include themify($themes) {
+      border-color: themed('gray-300');
+      background-color: themed('background');
+      color: themed('text');
+      &:hover {
+        background-color: darken(themed('background'), 5%);
+      }
+    }
+
+    .new-dot {
+      display: none;
+    }
+
+    .media-body {
+      line-height: rem(20px);
+    }
+
+    small {
+      display: block;
+      opacity: 0.6;
+    }
+
+    &.new {
+      @include themify($themes) {
+        background-color: themed('white');
+      }
+
+      .new-dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: linear-gradient(rgba(237, 72, 95, 1), rgba(242, 124, 54, 1)); // @Theme
+        border-radius: 50%;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{{#if @hasLink}}
+  {{#link-to-kitsu "explore.explore.category" @category.slug invokeAction=@onTransition}}
+    {{@category.title}}
+  {{/link-to-kitsu}}
+{{else}}
+  <span class="modal-item-title">
+    {{@category.title}}
+  </span>
+{{/if}}
+
+{{#if (gt @category.childCount 0)}}
+  <span class="modal-item-expand" {{action "toggleExpansion"}}>
+    {{svg-jar (if isExpanded "minus-square" "plus-square")}}
+  </span>
+
+  {{#if isExpanded}}
+    {{#if fetchChildren.isRunning}}
+      {{ui-spinner center=true}}
+    {{else}}
+      {{#each sortedChildren as |child|}}
+        {{category-list/modal-item
+          category=child
+          hasLink=true
+          onTransition=onTransition
+          class="modal-item-child"
+        }}
+      {{/each}}
+    {{/if}}
+  {{/if}}
+{{/if}}

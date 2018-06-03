@@ -1,0 +1,87 @@
+& {
+  position: relative;
+
+  h6 {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: rem(14px);
+    padding-bottom: rem(10px);
+  }
+
+  .group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: rem(5px);
+    padding: rem(5px);
+
+    @include themify($themes) {
+      color: themed('text');
+    }
+
+    &:hover {
+      @include themify($themes) {
+        background-color: themed('active');
+      }
+    }
+
+    .avatar {
+      margin-right: rem(10px);
+      display: flex;
+      align-items: center;
+
+      img {
+        width: rem(20px);
+        height: rem(20px);
+        border-radius: rem(3px);
+      }
+    }
+
+    .name {
+      flex: 1 1;
+      font-weight: 700;
+      font-size: rem(12px);
+      line-height: rem(25px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-right: rem(20px);
+
+      @include themify($themes) {
+        color: themed('text');
+      }
+    }
+
+    .counter {
+      position: absolute;
+      right: rem(5px);
+      top: rem(9px);
+      font-size: rem(12px);
+
+      @include themify($themes) {
+        color: themed('gray-700');
+      }
+    }
+  }
+
+  .view-more {
+    text-align: center;
+    display: block;
+    font-size: rem(12px);
+    text-transform: lowercase;
+
+    @include themify($themes) {
+      color: themed('text');
+    }
+
+    &:hover {
+      @include themify($themes) {
+        background-color: themed('active');
+      }
+    }
+  }
+
+  .empty, .guest {
+    font-size: rem(14px);
+  }
+}

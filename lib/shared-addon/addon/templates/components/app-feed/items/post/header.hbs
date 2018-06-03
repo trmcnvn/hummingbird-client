@@ -1,0 +1,59 @@
+{{! Avatars }}
+<div class="avatars">
+  <a href={{href-to "profile" post.user.linkableId}}>
+    {{ui-avatar image=(get-image post.user.avatar "medium") size="medium"}}
+  </a>
+  {{#if (and post.targetUser (not (eq post.targetUser.remoteId post.user.remoteId)))}}
+    <a href={{href-to "profile" post.targetUser.linkableId}} class="target-avatar">
+      {{ui-avatar image=(get-image post.targetUser.avatar "medium") size="medium"}}
+    </a>
+  {{else if (and post.targetGroup showGroupAvatar)}}
+    {{! @TODO: Group Page Link }}
+    <a href="#" class="group-avatar">
+      {{ui-image image=(get-image post.targetGroup.avatar "medium") size="medium"}}
+    </a>
+  {{/if}}
+</div>
+
+{{! Authors }}
+<div class="authors">
+  <div class="author-names">
+    <a href={{href-to "profile" post.user.linkableId}}>
+    {{post.user.name}}
+    </a>
+    {{user-badge post.user}}
+
+    {{#if (and post.targetUser (not (eq post.targetUser.remoteId post.user.remoteId)))}}
+      <span class="target-user">
+        <small>to</small>
+        <a href={{href-to "profile" post.targetUser.linkableId}}>
+          {{post.targetUser.name}}
+        </a>
+        {{user-badge post.user}}
+      </span>
+    {{/if}}
+
+    {{#if (and post.targetGroup showGroupAvatar)}}
+      <span class="target-group">
+        <small>to</small>
+        {{! @TODO: Group Link }}
+        <a href="#">
+          {{post.targetGroup.name}}
+        </a>
+        <span class="badge badge-secondary">{{t "shared-addon.app-feed.items.post.group"}}</span>
+      </span>
+    {{/if}}
+  </div>
+
+  {{! Timestamps }}
+  <a class="timestamps" href={{href-to "posts" post.remoteId}}>
+    <small>
+      {{format-relative post.createdAt interval=60000}}
+      {{#if post.editedAt}}
+        &middot;
+        {{t "shared-addon.app-feed.items.post.edited"}}
+        {{format-relative post.editedAt interval=60000}}
+      {{/if}}
+    </small>
+  </a>
+</div>

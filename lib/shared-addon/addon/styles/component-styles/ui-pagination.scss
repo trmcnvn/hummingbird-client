@@ -1,0 +1,12 @@
+& {
+  width: 100%;
+
+  &.pagination-spinner {
+    margin: { top: 2rem; bottom: 2rem; }
+  }
+
+  &.pagination-sentinel {
+    height: rem(1px);
+    background-color: transparent;
+  }
+}

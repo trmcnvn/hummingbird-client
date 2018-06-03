@@ -1,0 +1,32 @@
+{{#modal.body class=styleNamespace}}
+  <h6>{{t "application.authentication.import-select.header"}}</h6>
+  <p>{{t "application.authentication.import-select.info"}}</p>
+
+  <a href="#" class="import-option" {{action "transitionTo" "import-file" "MyAnimeList XML"}}>
+    <span class="import-logo">
+      <img data-src="/images/mal.png" class="lazyload" />
+    </span>
+    <span class="import-title">
+      {{t "application.authentication.import-select.myanimelist"}}
+    </span>
+  </a>
+
+  <a href="#" class="import-option" {{action "transitionTo" "import-file" "Anilist"}}>
+    <span class="import-logo">
+      <img data-src="/images/ani.png" class="lazyload" />
+    </span>
+    <span class="import-title">
+      {{t "application.authentication.import-select.anilist"}}
+    </span>
+  </a>
+
+  {{#if isAccountCreation}}
+    {{#ui-button onClick=(action "transitionTo" "rate-content")}}
+      {{t "application.authentication.import-select.skip"}}
+    {{/ui-button}}
+  {{else}}
+    {{#ui-button onClick=(action closeModal)}}
+      {{t "application.authentication.import-select.close"}}
+    {{/ui-button}}
+  {{/if}}
+{{/modal.body}}

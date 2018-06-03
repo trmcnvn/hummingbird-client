@@ -1,0 +1,21 @@
+{{ui-image image=(get-image @item.posterImage "small") alt=@item.canonicalTitle}}
+<small>{{@item.canonicalTitle}}</small>
+<span class="rating-container">
+  <div class="my-1">
+    {{media-rating/simple-rating
+      onRating=(perform addRatedMedia)
+      isDisabled=addRatedMedia.isRunning
+    }}
+  </div>
+  {{#ui-button
+    onClick=(perform addWantedMedia)
+    isDisabled=(or isWorking addWantedMedia.last.isSuccessful)
+    isLoading=addWantedMedia.isRunning
+  }}
+    {{#if addWantedMedia.last.isSuccessful}}
+      {{t "application.authentication.rate-content.added"}}
+    {{else}}
+      {{t "application.authentication.rate-content.wanted" type=@item.type}}
+    {{/if}}
+  {{/ui-button}}
+</span>

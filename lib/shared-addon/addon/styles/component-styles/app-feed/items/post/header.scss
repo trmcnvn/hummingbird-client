@@ -1,0 +1,60 @@
+& {
+  padding: rem(20px) rem(20px) rem(10px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .avatars {
+    margin-right: rem(15px);
+    a {
+      position: relative;
+      z-index: 200;
+    }
+
+    img {
+      width: rem(40px);
+      height: rem(40px);
+      opacity: 1;
+      transition: opacity .2s ease-in-out;
+      will-change: opacity;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+
+    .target-avatar, .group-avatar {
+      z-index: 100;
+      margin-left: rem(-20px);
+      transition: margin .2s ease-in-out;
+    }
+
+    &:hover {
+      .target-avatar, .group-avatar {
+        margin-left: rem(0px);
+      }
+    }
+  }
+
+  .authors {
+    display: flex;
+    flex-direction: column;
+
+    .badge {
+      position: relative;
+      top: rem(-2px);
+    }
+
+    a {
+      font-weight: 700;
+    }
+
+    .timestamps {
+      font-size: rem(14px);
+
+      @include themify($themes) {
+        color: themed('secondary-text');
+      }
+    }
+  }
+}

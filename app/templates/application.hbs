@@ -1,1 +1,19 @@
+{{! ember-cli-head }}
+{{head-layout}}
+
+{{! loading bar }}
+{{#if routeIsLoading}}
+  <div class="top-loading-bar"></div>
+{{/if}}
+
+{{! header }}
+{{app-header notification=notification}}
+
+{{! outlet - engines/host }}
 {{outlet}}
+
+{{! ember-cli-notifications }}
+{{notification-container position="top-right" class="app-notification-container"}}
+
+{{! mobile nag }}
+{{mobile-banner}}

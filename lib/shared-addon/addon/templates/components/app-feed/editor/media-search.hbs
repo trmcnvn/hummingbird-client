@@ -1,0 +1,30 @@
+<div class="actions">
+  <input class="form-control" type="search" placeholder={{t "shared-addon.app-feed.editor.media-search.placeholder" type=selectedType}}
+    value={{query}} oninput={{action "updateQuery" value="target.value"}} autofocus />
+  {{#bs-dropdown as |dd|}}
+    {{#dd.toggle}}
+      {{t (concat "general." selectedType)}}
+    {{/dd.toggle}}
+    {{#dd.menu as |ddm|}}
+      {{#each types as |type|}}
+        <a class="dropdown-item {{if (eq selectedType type) "active"}}" href="#" {{action "updateType" type}}>
+          {{t (concat "general." type)}}
+        </a>
+      {{/each}}
+    {{/dd.menu}}
+  {{/bs-dropdown}}
+</div>
+
+<div class="results {{if fetchSelectedMedia.isRunning "working"}}">
+  {{#if (and fetchMedia.isRunning (not onPagination.isRunning))}}
+    {{ui-spinner center=true class="my-2"}}
+  {{else if (gt records.length 0)}}
+    {{#ui-pagination onPagination=(perform onPagination)}}
+      {{#each records as |record|}}
+        {{search-popper/search-results/media
+          record=record
+          onClick=(perform fetchSelectedMedia)}}
+      {{/each}}
+    {{/ui-pagination}}
+  {{/if}}
+</div>

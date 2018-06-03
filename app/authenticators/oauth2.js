@@ -1,23 +1,23 @@
 import OAuth2PasswordGrant from 'ember-simple-auth/authenticators/oauth2-password-grant';
-import { set } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { service } from '@ember-decorators/service';
 import config from 'kitsu/config/environment';
 
-export default OAuth2PasswordGrant.extend({
-  refreshAccessTokens: true,
-  session: service(),
+export default class OAuth2 extends OAuth2PasswordGrant {
+  refreshAccessTokens = true;
+  @service session;
 
-  init() {
-    this._super(...arguments);
+  constructor() {
+    super(...arguments);
     const host = config.kitsu.APIHost || '';
-    set(this, 'serverTokenEndpoint', `${host}/api/oauth/token`);
-    set(this, 'serverTokenRevocationEndpoint', `${host}/api/oauth/revoke`);
-  },
+    this.serverTokenEndpoint = `${host}/api/oauth/token`;
+    this.serverTokenRevocationEndpoint = `${host}/api/oauth/revoke`;
+  }
 
   makeRequest(url, data, headers = {}) {
-    this.session.authorize('authorizer:application', (name, value) => {
-      headers[name] = value;
-    });
-    return this._super(url, data, headers);
+    const { access_token: accessToken } = this.session.authData;
+    if (accessToken) {
+      headers['Authorization'] = `Bearer ${accessToken}`;
+    }
+    return super.makeRequest(url, data, headers);
   }
-});
+}

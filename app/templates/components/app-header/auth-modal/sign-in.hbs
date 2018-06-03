@@ -1,0 +1,32 @@
+{{#modal.body class=styleNamespace}}
+  <h6>{{t "application.authentication.sign-in.welcome"}}</h6>
+  <p>
+    {{t "application.authentication.sign-in.help-text"}}
+    <a href="#" {{action "transitionToComponent" "social-auth"}}>
+      {{t "application.authentication.sign-in.create"}}
+    </a>
+  </p>
+  <div class="authentication-actions">
+    <div class="social-buttons">
+      {{#ui-button buttonClass="btn-facebook" onClick=(perform authenticateWithFacebook) isLoading=authenticateWithFacebook.isRunning}}
+        {{svg-jar "facebook"}}
+        {{t "application.authentication.sign-in.facebook"}}
+      {{/ui-button}}
+    </div>
+    <span class="alternative-text">{{t "application.authentication.sign-in.alternative"}}</span>
+    <form data-test-sign-in-form>
+      <fieldset class="form-group">
+        <input class="form-control" type="text" placeholder={{t "application.authentication.sign-in.email"}}
+          value={{identification}} oninput={{action (mut identification) value="target.value"}} autofocus data-test-username />
+        <input class="form-control" type="password" placeholder={{t "application.authentication.sign-in.password"}}
+          value={{password}} oninput={{action (mut password) value="target.value"}} data-test-password />
+        {{#link-to "password-reset" invokeAction=closeModal}}
+          {{t "application.authentication.sign-in.forgot"}}
+        {{/link-to}}
+      </fieldset>
+      {{#ui-button onClick=(perform authenticate) isLoading=authenticate.isRunning isDisabled=isButtonDisabled}}
+        {{t "application.authentication.sign-in.login"}}
+      {{/ui-button}}
+    </form>
+  </div>
+{{/modal.body}}

@@ -1,0 +1,34 @@
+{{#bs-modal open=@open onHidden=(action @onClose) class=styleNamespace as |modal|}}
+  {{#modal.header}}
+    <h5 class="modal-title">
+      {{t "shared-addon.report-modal.header"}}
+    </h5>
+  {{/modal.header}}
+  {{#modal.body}}
+    {{#if hasReported}}
+      <div class="alert alert-danger">
+        {{t "shared-addon.report-modal.has-reported"}}
+      </div>
+    {{/if}}
+    {{#power-select
+      placeholder=(t "shared-addon.report-modal.reason")
+      renderInPlace=true
+      searchEnabled=false
+      options=reasonOptions
+      selected=selectedReason
+      onchange=(action (mut selectedReason)) as |reason|}}
+      {{t (concat "shared-addon.report-modal.reasons." reason)}}
+    {{/power-select}}
+    {{textarea-autosize
+      onInput=(action (mut message))
+      placeholder=(t (concat "shared-addon.report-modal.placeholder." messagePlaceholderKey))}}
+  {{/modal.body}}
+  {{#modal.footer}}
+    <button class="btn btn-danger" {{action (action @onClose)}}>
+      {{t "shared-addon.report-modal.close"}}
+    </button>
+    {{#ui-button onClick=(perform createReport) isDisabled=(not canSubmitReport)}}
+      {{t "shared-addon.report-modal.report"}}
+    {{/ui-button}}
+  {{/modal.footer}}
+{{/bs-modal}}

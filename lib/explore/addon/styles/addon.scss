@@ -1,0 +1,32 @@
+@import "../../../app/styles/variables";
+@import "pod-styles";
+
+.explore-sidebar {
+  max-width: rem(300px);
+  padding: 0;
+
+  @include media-mobile() {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .card {
+    padding: rem(20px);
+    position: sticky;
+    top: rem(62px);
+
+    @include media-mobile() {
+      position: relative;
+    }
+  }
+
+  h5 {
+    font-size: rem(14px);
+    padding-bottom: rem(10px);
+    border-bottom: rem(1px) solid rgba(0, 0, 0, 0.09);
+  }
+
+  p {
+    font-size: rem(12px);
+  }
+}

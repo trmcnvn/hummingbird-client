@@ -1,0 +1,25 @@
+{{#unless isFullPage}}
+  <div class="group-header">
+    <p>{{t "shared-addon.search-popper.results.header" type=@type}}</p>
+    {{#if (gt response.nbHits hitsPerPage)}}
+      <a class="view-more-link" href="#" {{action "viewMore"}}>
+        <span class="badge badge-dark mr-1">{{response.nbHits}}</span>
+        {{t "shared-addon.search-popper.results.more"}}
+      </a>
+    {{/if}}
+  </div>
+{{/unless}}
+
+{{#if (and (is-empty records) fetchResults.isRunning)}}
+  {{ui-spinner center=true class="my-4"}}
+{{else}}
+  <ul class="list-unstyled">
+    {{#ui-pagination onPagination=(perform onPagination) shouldPaginate=shouldPaginate}}
+      {{#each records as |record|}}
+        {{component (concat "search-popper/search-results/" @type)
+          record=record
+        }}
+      {{/each}}
+    {{/ui-pagination}}
+  </ul>
+{{/if}}

@@ -1,0 +1,21 @@
+{{#modal.body class=styleNamespace}}
+  <h6>{{t "application.authentication.aozora-conflict.header"}}</h6>
+  <p>{{t "application.authentication.aozora-conflict.info"}}</p>
+
+  {{#each-in conflicts as |site account|}}
+    <a href="#" class="conflict-option" {{action (perform resolveConflict site)}}>
+      {{ui-avatar image=account.avatar size="small"}}
+      <span class="conflict-title">
+        <span class="conflict-name">{{account.name}}</span>
+        <span class="conflict-count">
+          {{t "application.authentication.aozora-conflict.count" count=(format-number account.library_entries)}}
+        </span>
+      </span>
+      {{#if (eq site "aozora")}}
+        <img data-src="/images/aozora.png" class="conflict-logo lazyload" />
+      {{else}}
+        <img data-src="/images/kitsu.png" class="conflict-logo lazyload" />
+      {{/if}}
+    </a>
+  {{/each-in}}
+{{/modal.body}}

@@ -1,0 +1,15 @@
+& {
+  margin-bottom: rem(10px);
+
+  .post-meta {
+    padding: rem(10px);
+    font-size: rem(12px);
+    text-align: center;
+    border-bottom: rem(1px) solid;
+
+    @include themify($themes) {
+      color: themed('secondary-text');
+      border-color: themed('gray-300');
+    }
+  }
+}

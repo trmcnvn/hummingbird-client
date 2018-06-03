@@ -1,0 +1,123 @@
+& {
+  padding: 0;
+  margin-bottom: rem(20px);
+  border-bottom: rem(1px) solid;
+  border-radius: 0;
+  max-height: rem(42px);
+
+  @include themify($themes) {
+    border-color: darken(themed('purple-dark'), 5%);
+  }
+
+  .row {
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+
+  .navbar-brand > svg {
+    position: relative;
+    width: rem(85px);
+    height: rem(42px);
+    display: inline-block;
+    g {
+      g:last-child {
+        fill: #fd755c;
+      }
+    }
+  }
+
+  .nav-item {
+    font-size: rem(14px);
+    line-height: rem(24px);
+    &:focus { outline: 0; }
+
+    .nav-link {
+      padding-top: .425rem;
+      padding-bottom: .425rem;
+      padding-right: .425rem;
+
+      &:hover, &:active, &:focus {
+        outline: 0;
+        @include themify($themes) {
+          color: themed('white') !important;
+        }
+      }
+    }
+
+    .subtext {
+      @include themify($themes) {
+        color: themed('gray-700') !important;
+      }
+    }
+
+    .dropdown-item.header {
+      &:hover, &:active, &:focus {
+        background-color: inherit !important;
+      }
+    }
+  }
+
+  form {
+    position: relative;
+    max-width: rem(200px);
+
+    @include media-mobile() {
+      display: none;
+    }
+
+    .feather-search {
+      position: absolute;
+      left: rem(7px);
+      top: rem(6px);
+      width: rem(14px);
+      height: rem(14px);
+      @include themify($themes) {
+        stroke: #a99fa8;
+      }
+    }
+
+    input[type="search"] {
+      @include themify($themes) {
+        background-color: themed('purple-darker');
+        color: #edf0f1;
+        &::placeholder {
+          color: #a99fa8;
+          opacity: 0.5;
+        }
+      }
+
+      height: rem(25px);
+      width: rem(200px);
+      padding-left: rem(30px);
+
+      border: none;
+      border-radius: rem(3px);
+      outline: 0;
+
+      font-size: rem(13px);
+
+      &:focus, &:active {
+        box-shadow: none;
+
+        @include themify($themes) {
+          background-color: darken(themed('purple-darker'), 5%);
+          border-color: #edf0f1;
+        }
+      }
+    }
+
+    .popper {
+      top: 15px !important;
+      left: -100px !important;
+    }
+  }
+
+  .user-dropdown {
+    position: relative;
+    top: rem(-1px);
+
+    &:after {
+      content: none;
+    }
+  }
+}

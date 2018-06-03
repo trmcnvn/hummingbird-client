@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="favorite-categories">
+    <h5 class="text-uppercase">
+      {{t "explore.sidebar.favorite-categories"}}
+    </h5>
+    {{#if @favorites.isRunning}}
+      {{ui-spinner center=true}}
+    {{else}}
+      {{#if @favorites.value}}
+        {{category-list categories=(map-by "category" @favorites.value) showModal=false}}
+      {{else}}
+        <p>{{t "explore.sidebar.empty-favorites"}}</p>
+      {{/if}}
+    {{/if}}
+  </div>
+
+  <div class="categories">
+    <h5 class="text-uppercase">
+      {{t "explore.sidebar.related"}}
+    </h5>
+    {{#if fetchCategories.isRunning}}
+      {{ui-spinner center=true}}
+    {{else if categories}}
+      {{category-list categories=categories}}
+    {{/if}}
+  </div>
+</div>

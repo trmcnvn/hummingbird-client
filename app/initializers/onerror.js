@@ -7,10 +7,10 @@ export function initialize() {
     if (error.name === 'SecurityError' && error.code === 18) {
       return later(() => window.location.reload(), 1);
     }
+
     // Log to browser console
     console.error(error);
-    // Throw if were in a testing environment
-    if (Ember.testing) { throw error; }
+    throw error;
   };
 }
 

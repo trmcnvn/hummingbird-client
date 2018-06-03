@@ -1,0 +1,63 @@
+& {
+  .card {
+    display: block;
+    padding: rem(20px);
+    font-size: rem(14px);
+    margin-bottom: rem(15px);
+
+    &:hover {
+      .dismiss-announcement {
+        display: block;
+      }
+    }
+
+    h6 {
+      font-size: rem(14px);
+      font-weight: 700;
+      text-align: left;
+      padding-bottom: rem(15px);
+      @include themify($themes) {
+        border-bottom: rem(1px) solid themed('gray-300');
+      }
+    }
+
+    .featured-image {
+      margin-bottom: rem(15px);
+      img {
+        border-radius: rem(3px);
+        width: 100%;
+      }
+    }
+
+    a {
+      font-size: rem(12px);
+      text-transform: uppercase;
+      width: 100%;
+    }
+
+    .dismiss-announcement {
+      position: absolute;
+      top: rem(15px);
+      right: rem(15px);
+      cursor: pointer;
+      display: none;
+      border-radius: rem(3px);
+      padding: rem(5px);
+      &:hover {
+        svg {
+          @include themify($themes) {
+            stroke: themed('orange');
+          }
+        }
+      }
+
+      svg {
+        width: rem(20px);
+        height: rem(20px);
+        @include themify($themes) {
+          stroke: themed('gray-500');
+        }
+      }
+    }
+  }
+}

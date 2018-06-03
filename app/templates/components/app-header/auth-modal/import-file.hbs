@@ -1,0 +1,24 @@
+{{#modal.body class=styleNamespace}}
+  <h6>{{t "application.authentication.import-file.header" site=siteName}}</h6>
+  <p>{{t "application.authentication.import-file.info" site=siteName}}</p>
+
+  <form>
+    <fieldset class="form-group">
+      <input id="import-file" type="file" onchange={{action "selectFile"}} hidden />
+      {{#ui-button onClick=(action "triggerClick" "import-file") isDisabled=createImport.isRunning}}
+        {{t "application.authentication.import-file.button"}}
+        {{#if selectedFileName}}
+          ({{truncate selectedFileName 20}})
+        {{/if}}
+      {{/ui-button}}
+    </fieldset>
+  </form>
+
+  {{#ui-button buttonClass="action-button" onClick=(action "transitionTo" "import-select") isDisabled=createImport.isRunning}}
+    {{t "application.authentication.import-file.back"}}
+  {{/ui-button}}
+
+  {{#ui-button buttonClass="action-button" onClick=(perform createImport) isDisabled=(is-empty selectedFile) isLoading=createImport.isRunning}}
+    {{t "application.authentication.import-file.start" site=siteName}}
+  {{/ui-button}}
+{{/modal.body}}
