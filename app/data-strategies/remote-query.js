@@ -13,10 +13,9 @@ export default {
       target: 'remote',
       action: 'pull',
 
-      blocking: false,
-
-      filter(transform) {
-        return !(transform.options && transform.options.blocking);
+      blocking(query) {
+        console.debug('query:', query); // @Debug
+        return !!(query.options && query.options.blocking);
       }
     });
   }

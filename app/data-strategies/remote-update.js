@@ -12,12 +12,12 @@ export default {
       target: 'remote',
       action: 'push',
 
-      blocking: false,
+      blocking(query) {
+        return !!(query.options && query.options.blocking);
+      },
 
       filter(transform) {
-        const isLocal = transform.options && transform.options.local;
-        const isBlocking = transform.options && transform.options.blocking;
-        return !isLocal && !isBlocking
+        return !(transform.options && transform.options.local);
       },
 
       catch() {
