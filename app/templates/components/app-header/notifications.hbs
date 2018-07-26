@@ -7,8 +7,8 @@
 </a>
 
 {{#if shouldRenderPopper}}
-  {{#click-outside action=(action "outsideWasClicked")}}
-    {{#ember-popper-targeting-parent class="notification-popper" placement="bottom-end" renderInPlace=shouldRenderPopper}}
+  {{#bs-popover class=(concat styleNamespace " notification-popper") placement="bottom-end" autoPlacement=false fade=false visible=true triggerElement="a.notifications"}}
+    {{#click-outside action=(action (mut shouldRenderPopper) false)}}
       {{#if (and fetchNotifications.isRunning onPagination.isIdle)}}
         {{ui-spinner center=true class="my-4"}}
       {{else}}
@@ -38,6 +38,6 @@
           </ul>
         {{/if}}
       {{/if}}
-    {{/ember-popper-targeting-parent}}
-  {{/click-outside}}
+    {{/click-outside}}
+  {{/bs-popover}}
 {{/if}}

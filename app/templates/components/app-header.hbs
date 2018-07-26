@@ -56,11 +56,11 @@
           {{/dd.menu}}
         {{/nav.dropdown}}
       {{/navbar.nav}}
-      <form class="form-inline">
+      <form id="kitsu-header-search" class="form-inline">
         {{svg-jar "search"}}
         <input class="form-control" type="search" placeholder={{t "application.header.search-placeholder"}}
           value={{query}} oninput={{action (mut query) value="target.value"}} />
-        {{search-popper query=query placement="bottom"}}
+        {{search-popper query=query placement="bottom" eventTarget="#kitsu-header-search" eventType="click"}}
       </form>
       {{#navbar.nav as |nav|}}
         {{#if session.hasSession}}

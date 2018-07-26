@@ -106,9 +106,9 @@
       }
     }
 
-    .popper {
-      top: 15px !important;
-      left: -100px !important;
+    .popover {
+      top: rem(15px) !important;
+      left: rem(-100px) !important;
     }
   }
 

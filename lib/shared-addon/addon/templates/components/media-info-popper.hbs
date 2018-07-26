@@ -1,7 +1,7 @@
 {{yield}}
 
-{{#if (and isEnabled showDialog)}}
-  {{#ember-popper-targeting-parent class=(concat styleNamespace " popper") placement=@placement}}
+{{#if isEnabled}}
+  {{#bs-popover class=(concat styleNamespace " popper") placement=@placement triggerEvents="hover" fade=false delayShow=250}}
     <div class="media-meta">
       <span class="media-title">{{computed-title @media true}}</span>
       <span class="media-year">{{@media.year}}</span>
@@ -13,6 +13,5 @@
     {{/if}}
     {{media-rankings media=media length="short"}}
     <div class="media-synopsis">{{@media.synopsis}}</div>
-    <div class="popper-arrow" x-arrow></div>
-  {{/ember-popper-targeting-parent}}
+  {{/bs-popover}}
 {{/if}}

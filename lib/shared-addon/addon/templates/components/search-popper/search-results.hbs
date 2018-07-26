@@ -10,11 +10,11 @@
   </div>
 {{/unless}}
 
-{{#if (and (is-empty records) fetchResults.isRunning)}}
+{{#if (and (not onPagination.isRunning) fetchResults.isRunning)}}
   {{ui-spinner center=true class="my-4"}}
 {{else}}
   <ul class="list-unstyled">
-    {{#ui-pagination onPagination=(perform onPagination) shouldPaginate=shouldPaginate}}
+    {{#ui-pagination onPagination=(perform onPagination) shouldPaginate=isFullPage}}
       {{#each records as |record|}}
         {{component (concat "search-popper/search-results/" @type)
           record=record

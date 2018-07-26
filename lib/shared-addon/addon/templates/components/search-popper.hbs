@@ -1,5 +1,6 @@
-{{#click-outside action=(action "outsideWasClicked")}}
-  {{#ember-popper-targeting-parent class=(concat styleNamespace " popper") placement=placement renderInPlace=renderInPlace}}
+{{! Private API -- `_triggerEvents` set to an empty array to disable all event listeners for the popover. }}
+{{#click-outside action=(action "outsideWasClicked") except-selector=eventTarget}}
+  {{#bs-popover class=styleNamespace placement=placement fade=false visible=true renderInPlace=true _triggerEvents=(array)}}
     {{#if isPrimaryPage}}
       <div class="search-header">
         <p>{{t "shared-addon.search-popper.header"}}</p>
@@ -21,13 +22,12 @@
       <div class="group-wrapper">
         {{component "search-popper/search-results"
           type=group
-          response=response
-          records=response.hits
           query=query
+          initialResponse=response
           isFullPage=true
           onBack=(action "transitionToPrimary")
         }}
       </div>
     {{/if}}
-  {{/ember-popper-targeting-parent}}
+  {{/bs-popover}}
 {{/click-outside}}

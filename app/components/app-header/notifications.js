@@ -127,11 +127,6 @@ export default class Notifications extends Component {
   }
 
   @action
-  outsideWasClicked() {
-    this.set('shouldRenderPopper', false);
-  }
-
-  @action
   showPopper() {
     this.markNotifications('seen');
     this.toggleProperty('shouldRenderPopper');

@@ -18,7 +18,7 @@ export default class Notifications extends Route {
 
   beforeModel() {
     if (!this.session.isAuthenticated()) {
-      return this.transitionTo('explore.explore');
+      return this.transitionTo('explore.explore', 'anime');
     }
   }
 

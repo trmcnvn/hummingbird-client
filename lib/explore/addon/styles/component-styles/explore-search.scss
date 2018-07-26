@@ -7,10 +7,6 @@
     position: relative;
     width: 100%;
 
-    &:hover {
-      > svg { stroke: #333; }
-    }
-
     > svg {
       position: absolute;
       left: rem(10px);
