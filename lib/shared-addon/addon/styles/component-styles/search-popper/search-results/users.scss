@@ -34,6 +34,8 @@
     margin-top: rem(5px);
     font-size: rem(12px);
     font-style: italic;
-    color: lighten($body-color, 25%);
+    @include themify($themes) {
+      color: lighten(themed('text'), 25%);
+    }
   }
 }

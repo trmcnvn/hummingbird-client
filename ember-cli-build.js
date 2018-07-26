@@ -99,7 +99,6 @@ module.exports = function(defaults) {
       { transformation: 'cjs', as: 'text-clipper' }
     ]
   });
-  app.import('node_modules/hoverintent/dist/hoverintent.min.js');
   app.import('node_modules/getstream/dist/js/getstream.js');
   app.import('node_modules/autosize/dist/autosize.js');
   app.import('node_modules/clipboard/dist/clipboard.min.js');

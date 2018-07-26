@@ -1,13 +1,13 @@
 import Component from './sign-up';
-import layout from '../../../templates/components/app-header/auth-modal/sign-up';
+import template from '../../../templates/components/app-header/auth-modal/sign-up';
 import { task } from 'ember-concurrency-decorators';
 import { service } from '@ember-decorators/service';
+import { layout } from '@ember-decorators/component';
 import { isPresent } from '@ember/utils';
 import { assert } from '@ember/debug';
 
+@layout(template)
 export default class AozoraAccountDetails extends Component {
-  layout = layout;
-
   @service intl;
   @service raven;
   @service session;

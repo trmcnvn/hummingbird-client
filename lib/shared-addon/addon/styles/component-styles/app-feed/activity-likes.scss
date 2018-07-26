@@ -67,7 +67,7 @@
   .modal-body {
     ul {
       max-height: rem(400px);
-      overflow: scroll;
+      overflow-y: auto;
       margin-bottom: 0;
     }
 
