@@ -1,23 +1,21 @@
 import Service from '@ember/service';
-import { service } from '@ember-decorators/service';
-import RSVP from 'rsvp';
 
 export default class Cache extends Service {
-  @service store;
+  canUseLocalStorage = !!window.localStorage;
 
   get(key) {
-    return this.store.source.bucket.getItem('kitsu-cache').then(cache => {
-      return RSVP.resolve(cache[key]);
-    }).catch(() => RSVP.resolve(null));
+    if (!this.canUseLocalStorage) { return null; }
+    let value = window.localStorage.getItem('kitsu-cache');
+    value = JSON.parse(value) || {};
+    return value[key];
   }
 
   set(key, value) {
-    this.store.source.bucket.getItem('kitsu-cache').then(cache => {
-      const data = { ...cache, [key]: value };
-      this.store.source.bucket.setItem('kitsu-cache', data).catch(() => {});
-    }).catch(() => {
-      const data = { [key]: value };
-      this.store.source.bucket.setItem('kitsu-cache', data).catch(() => {});
-    });
+    if (!this.canUseLocalStorage) { return null; }
+    let object = window.localStorage.getItem('kitsu-cache');
+    object = JSON.parse(object) || {};
+    const data = { ...object, [key]: value };
+    window.localStorage.setItem('kitsu-cache', JSON.stringify(data));
+    return value;
   }
 }

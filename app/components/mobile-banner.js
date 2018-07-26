@@ -19,16 +19,15 @@ export default class MobileBanner extends Component {
   @or('isAndroid', 'isApple') isPhone;
 
   didReceiveAttrs() {
-    this.cache.get('mobile-banner').then(date => {
-      if ((new Date()) < date) {
-        this.set('shouldRender', false);
-      }
+    const date = this.cache.get('mobile-banner');
+    if ((new Date()) < date) {
+      this.set('shouldRender', false);
+    }
 
-      const isAndroid = ANDROID_PHONE_PATTERN.test(navigator.userAgent);
-      const isApple = APPLE_PHONE_PATTERN.test(navigator.userAgent);
-      this.set('isAndroid', isAndroid);
-      this.set('isApple', isApple);
-    });
+    const isAndroid = ANDROID_PHONE_PATTERN.test(navigator.userAgent);
+    const isApple = APPLE_PHONE_PATTERN.test(navigator.userAgent);
+    this.set('isAndroid', isAndroid);
+    this.set('isApple', isApple);
   }
 
   @action
