@@ -1,13 +1,13 @@
 {{#if @media.popularityRank}}
-  {{#link-to-kitsu "explore.explore.more" @media.type "most-popular" class="ranking ranking-popularity"}}
+  <a href={{href-to "explore.explore.more" @media.type "most-popular"}} class="ranking ranking-popularity">
     {{svg-jar "heart"}}
     {{t "shared-addon.media-rankings.popularity" length=length type=@media.type rank=@media.popularityRank}}
-  {{/link-to-kitsu}}
+  </a>
 {{/if}}
 
 {{#if @media.ratingRank}}
-  {{#link-to-kitsu "explore.explore.more" @media.type "highest-rated" class="ranking ranking-rating"}}
+  <a href={{href-to "explore.explore.more" @media.type "highest-rated"}} class="ranking ranking-rating">
     {{svg-jar "star"}}
     {{t "shared-addon.media-rankings.rating" length=length type=@media.type rank=@media.ratingRank}}
-  {{/link-to-kitsu}}
+  </a>
 {{/if}}

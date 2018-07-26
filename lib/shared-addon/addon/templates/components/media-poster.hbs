@@ -5,7 +5,7 @@
     <div class="image-container">
       {{ui-image image=@media.posterImage.medium}}
       <div class="image-overlay">
-        {{link-to-kitsu "" (concat @media.type ".show") @media.slug}}
+        <a href={{href-to @media.type @media.slug}}></a>
         {{#if @hasLibraryInteraction}}
           {{! @TODO: Library button }}
         {{/if}}

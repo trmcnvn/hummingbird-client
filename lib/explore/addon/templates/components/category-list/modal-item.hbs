@@ -1,7 +1,7 @@
 {{#if @hasLink}}
-  {{#link-to-kitsu "explore.explore.category" @category.slug invokeAction=@onTransition}}
+  <a href={{href-to "explore.explore.category" @category.slug}} {{action (action @onTransition)}}>
     {{@category.title}}
-  {{/link-to-kitsu}}
+  </a>
 {{else}}
   <span class="modal-item-title">
     {{@category.title}}

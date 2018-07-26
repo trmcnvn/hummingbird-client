@@ -1,9 +1,9 @@
 <ul class="list-unstyled categories-list">
   {{#each @categories as |item|}}
     <li>
-      {{#link-to-kitsu "explore.explore.category" item.slug}}
+      <a href={{href-to "explore.explore.category" item.slug}}>
         {{item.title}}
-      {{/link-to-kitsu}}
+      </a>
     </li>
   {{/each}}
 </ul>

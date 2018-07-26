@@ -3,7 +3,6 @@ import Resolver from './resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
 
-import './ext/engines-ext';
 import './ext/orbit-ext';
 import './ext/array-ext';
 

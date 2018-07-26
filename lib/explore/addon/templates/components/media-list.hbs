@@ -34,13 +34,13 @@
 {{#unless (or @hideMeta (and (not isWorking) (eq media.length 0)))}}
   <div class="media-list-more">
     {{#if (is-empty @category)}}
-      {{#link-to-kitsu viewMoreRoute @type @key}}
+      <a href={{href-to viewMoreRoute @type @key}}>
         {{t "explore.view-more"}}
-      {{/link-to-kitsu}}
+      </a>
     {{else}}
-      {{#link-to-kitsu viewMoreRoute @type @category.slug @key}}
+      <a href={{href-to viewMoreRoute @type @category.slug @key}}>
         {{t "explore.view-more"}}
-      {{/link-to-kitsu}}
+      </a>
     {{/if}}
   </div>
 {{/unless}}

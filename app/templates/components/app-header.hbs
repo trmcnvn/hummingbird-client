@@ -19,12 +19,12 @@
             {{t "application.header.browse"}}
           {{/dd.toggle}}
           {{#dd.menu as |ddm|}}
-            {{#ddm.link-to "explore.explore" "anime"}}
+            <a href={{href-to "explore.explore" "anime"}} class="dropdown-item">
               {{t "application.header.browse-items.anime"}}
-            {{/ddm.link-to}}
-            {{#ddm.link-to "explore.explore" "manga"}}
+            </a>
+            <a href={{href-to "explore.explore" "manga"}} class="dropdown-item">
               {{t "application.header.browse-items.manga"}}
-            {{/ddm.link-to}}
+            </a>
           {{/dd.menu}}
         {{/nav.dropdown}}
         {{#nav.item}}
@@ -38,21 +38,21 @@
             {{t "application.header.feedback"}}
           {{/dd.toggle}}
           {{#dd.menu as |ddm|}}
-            {{#ddm.link-to "feedback.bugs"}}
+            <a href={{href-to "feedback.bugs"}} class="dropdown-item">
               {{t "application.header.feedback-items.bugs"}}
-            {{/ddm.link-to}}
-            {{#ddm.link-to "feedback.feature-requests"}}
+            </a>
+            <a href={{href-to "feedback.feature-requests"}} class="dropdown-item">
               {{t "application.header.feedback-items.feature-requests"}}
-            {{/ddm.link-to}}
-            {{#ddm.link-to "feedback.database-requests"}}
+            </a>
+            <a href={{href-to "feedback.database-requests"}} class="dropdown-item">
               {{t "application.header.feedback-items.database-requests"}}
-            {{/ddm.link-to}}
-            {{#ddm.link-to "feedback.mobile-bugs"}}
+            </a>
+            <a href={{href-to "feedback.mobile-bugs"}} class="dropdown-item">
               {{t "application.header.feedback-items.mobile-bugs"}}
-            {{/ddm.link-to}}
-            {{#ddm.link-to "feedback.mobile-features"}}
+            </a>
+            <a href={{href-to "feedback.mobile-features"}} class="dropdown-item">
               {{t "application.header.feedback-items.mobile-features"}}
-            {{/ddm.link-to}}
+            </a>
           {{/dd.menu}}
         {{/nav.dropdown}}
       {{/navbar.nav}}

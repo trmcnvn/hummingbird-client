@@ -20,9 +20,9 @@
           value={{identification}} oninput={{action (mut identification) value="target.value"}} autofocus data-test-username />
         <input class="form-control" type="password" placeholder={{t "application.authentication.sign-in.password"}}
           value={{password}} oninput={{action (mut password) value="target.value"}} data-test-password />
-        {{#link-to "password-reset" invokeAction=closeModal}}
+        <a href={{href-to "password-reset"}} {{action (action closeModal)}}>
           {{t "application.authentication.sign-in.forgot"}}
-        {{/link-to}}
+        </a>
       </fieldset>
       {{#ui-button onClick=(perform authenticate) isLoading=authenticate.isRunning isDisabled=isButtonDisabled}}
         {{t "application.authentication.sign-in.login"}}
