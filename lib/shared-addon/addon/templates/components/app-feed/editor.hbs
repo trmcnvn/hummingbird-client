@@ -1,4 +1,4 @@
-{{#click-outside action=(action "closeEditor") except-selector=".editor-media-modal"}}
+{{#click-outside action=(action "closeEditor") except-selector=".editor-media-modal, .emoji-editor-popover"}}
   <div class="{{styleNamespace}} card {{if isExpanded "expanded" "folded"}}" {{action "openEditor"}}>
     <div class="editor-header">
       {{ui-avatar image=(get-image session.currentUser.avatar "medium")}}
@@ -77,7 +77,11 @@
             {{bs-tooltip title=(t "shared-addon.app-feed.editor.actions.media-tooltip")}}
           </span>
           <span class="emoji">
-            <img src="https://twemoji.maxcdn.com/2/72x72/1f600.png">
+            <img id="emoji-editor-action" src="https://twemoji.maxcdn.com/2/72x72/1f600.png">
+            {{app-feed/editor/emoji-selector
+              triggerElement="#emoji-editor-action"
+              popoverClass="emoji-editor-popover"
+              onClick=(action "insertEmoji")}}
             {{bs-tooltip title=(t "shared-addon.app-feed.editor.actions.emoji")}}
           </span>
           <span class="help" {{action (mut showHelpModal) true}}>
@@ -124,7 +128,7 @@
 {{/bs-modal}}
 
 {{! Help Modal }}
-{{#bs-modal open=showHelpModal onHidden=(action (mut showHelpModal) false) as |modal|}}
+{{#bs-modal open=showHelpModal onHidden=(action (mut showHelpModal) false) class=(concat styleNamespace " editor-help-modal") as |modal|}}
   {{#modal.header}}
     <h5 class="modal-title">
       {{t "shared-addon.app-feed.editor.help.title"}}

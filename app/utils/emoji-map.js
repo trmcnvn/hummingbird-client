@@ -9014,8 +9014,15 @@ export const EMOJI_MAP = {
 };
 
 export const EMOJI_CODES = Object.freeze(Object.keys(EMOJI_MAP));
+export const EMOJI_BY_CATEGORY = Object.freeze(EMOJI_CODES.reduce((prev, curr) => {
+  const category = EMOJI_MAP[curr].category;
+  prev[category] = prev[category] || [];
+  prev[category].push(Object.assign({ key: curr }, EMOJI_MAP[curr]));
+  return prev;
+}, {}));
 
 export default {
   EMOJI_MAP,
-  EMOJI_CODES
+  EMOJI_CODES,
+  EMOJI_BY_CATEGORY
 };

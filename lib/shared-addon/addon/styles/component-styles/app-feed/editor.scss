@@ -1,6 +1,9 @@
 & {
-  padding: rem(15px);
   font-size: rem(16px);
+
+  &.card {
+    padding: rem(15px);
+  }
 
   &.folded {
     cursor: pointer;
@@ -43,6 +46,7 @@
 
     textarea {
       border: none;
+      outline: none;
       width: 100%;
       min-height: rem(80px);
     }
@@ -182,6 +186,13 @@
       @include themify($themes) {
         color: themed('secondary-text');
       }
+    }
+  }
+
+  &.editor-help-modal {
+    .modal-body {
+      max-height: rem(500px);
+      overflow-y: scroll;
     }
   }
 }

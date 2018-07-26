@@ -1,0 +1,47 @@
+& {
+  .popover-body { padding: 0; }
+  .arrow::after {
+    @include themify($themes) {
+      border-top-color: themed('active');
+    }
+  }
+
+  .emojis {
+    max-height: rem(250px);
+    overflow-y: auto;
+    padding: rem(5px);
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    .emoji {
+      cursor: pointer;
+      font-size: rem(20px);
+      padding: rem(2px);
+    }
+  }
+
+  .categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    @include themify($themes) {
+      background-color: themed('active');
+    }
+
+    .category {
+      cursor: pointer;
+      padding: rem(5px);
+      font-size: rem(20px);
+      opacity: 0.5;
+      filter: grayscale(100%);
+
+      &.active {
+        opacity: 1;
+        filter: none;
+      }
+    }
+  }
+}

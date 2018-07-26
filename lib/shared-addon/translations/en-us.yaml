@@ -72,7 +72,7 @@ shared-addon:
         title: "Editor Help"
       media:
         title: "Media Search"
-        subtitle: "When you tag a media, it will also be posted to the media's feed"
+        subtitle: "When you tag a media, your post will also be posted to that media's feed"
       attachments:
         embed:
           preview: "This is a preview of your embed"
@@ -84,6 +84,17 @@ shared-addon:
           anime {anime}
           manga {manga}
           other {}} titles..."
+      emoji-selector:
+        categories: "{category, select,
+          symbols {Symbols}
+          people {People}
+          objects {Objects}
+          travel_and_places {Travel & Places}
+          food_and_drink {Food & Drink}
+          flags {Flags}
+          animals_and_nature {Animals & Nature}
+          activity {Activity}
+          other {}}"
     feed:
       new-activities: "{number} {number, plural,
         one {new activity}
