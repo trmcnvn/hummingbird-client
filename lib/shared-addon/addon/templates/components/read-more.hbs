@@ -1,11 +1,12 @@
 {{if isExpanded (html-safe @text) truncatedText}}
+
 {{#if hasBlock}}
   {{yield (hash
     isExpanded=isExpanded
     wasTruncated=shouldTruncate
     toggle=(toggle-action "isExpanded" this)
   )}}
-{{else}}
+{{else if shouldTruncate}}
   <a class="d-inline-block" href="#" {{action (toggle "isExpanded" this)}}>
     {{#if isExpanded}}
       {{t lessText}}
