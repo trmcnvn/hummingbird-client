@@ -174,7 +174,7 @@ export default class Application extends Route.extend(ApplicationRouteMixin) {
     if (accessToken) {
       const application = getOwner(this);
       const remote = application.lookup('data-source:remote');
-      remote.defaultFetchHeaders['Authorization'] = `Bearer ${accessToken}`;
+      remote.defaultFetchSettings.headers['Authorization'] = `Bearer ${accessToken}`;
     }
   }
 
