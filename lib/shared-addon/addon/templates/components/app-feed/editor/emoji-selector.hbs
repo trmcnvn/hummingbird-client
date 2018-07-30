@@ -3,6 +3,7 @@
     {{#each selectedEmojis as |emoji|}}
       <span class="emoji" {{action "emojiSelected" emoji.char}}>
         {{html-safe emoji.char}}
+        {{bs-tooltip title=(concat ":" emoji.key ":")}}
       </span>
     {{/each}}
   </div>

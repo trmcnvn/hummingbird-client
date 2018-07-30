@@ -17,6 +17,7 @@
           maxlength=maxLength
           placeholder=(t "shared-addon.app-feed.editor.message-placeholder")
           onInput=(action "processMessage")}}
+        {{app-feed/editor/user-selector visible=showUserSelector query=userSelectorQuery}}
       </div>
 
       <div class="editor-attachments">
