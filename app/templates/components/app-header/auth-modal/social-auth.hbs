@@ -27,7 +27,7 @@
 
       <div class="privacy-copy">
         <p>{{t "application.authentication.social-auth.privacy"}}</p>
-        <p>{{t "application.authentication.social-auth.agreement" htmlSafe=true}}</p>
+        <p onclick={{action "handleTransition"}}>{{t "application.authentication.social-auth.agreement" link=(href-to "terms") htmlSafe=true}}</p>
       </div>
     </div>
   </div>

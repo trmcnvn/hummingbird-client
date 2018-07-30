@@ -18,4 +18,4 @@ lib/**/node_modules
 npm-debug.log*
 testem.log
 .vscode/
-TODO.md
+TODO

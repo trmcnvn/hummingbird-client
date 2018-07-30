@@ -2,6 +2,7 @@ import Component from './-base';
 import { task } from 'ember-concurrency-decorators';
 import { service } from '@ember-decorators/service';
 import { underscore } from '@orbit/utils';
+import { action } from '@ember-decorators/object';
 
 export default class SocialAuth extends Component {
   @service intl;
@@ -32,4 +33,12 @@ export default class SocialAuth extends Component {
       }
     }
   };
+
+  @action
+  handleTransition(event) {
+    const { target } = event;
+    if (target.tagName === 'A') {
+      this.closeModal();
+    }
+  }
 }

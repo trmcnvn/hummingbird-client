@@ -40,7 +40,7 @@ application:
       question: "Have an account?"
       login: "Login"
       privacy: "If you sign up with Facebook, we'll start you off with a network by automatically matching you with your followers/followees or friends already on Kitsu. Don't worry, we'll never post to Facebook without your permission."
-      agreement: "By signing up you indicate that you have read and agree to the <a href=\"/terms\">Terms of Service</a> and <a href=\"/terms\">Privacy Policy</a>."
+      agreement: "By signing up you indicate that you have read and agree to the <a href={link}>Terms of Service</a>."
     sign-in:
       welcome: "Welcome back!"
       help-text: "Login to your Kitsu account below. If you need an account,"
