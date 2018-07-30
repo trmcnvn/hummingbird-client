@@ -11,6 +11,7 @@ module('Acceptance | authentication', function(hooks) {
 
   test('should be able to sign up', async function(assert) {
     this.polly.configure({ recordIfMissing: false });
+    assert.notOk(currentSession().session.isAuthenticated);
 
     await visit('/terms');
     await click('[data-test-sign-up-header]');
@@ -28,6 +29,7 @@ module('Acceptance | authentication', function(hooks) {
 
   test('should be able to sign in', async function(assert) {
     this.polly.configure({ recordIfMissing: false });
+    assert.notOk(currentSession().session.isAuthenticated);
 
     await visit('/terms');
     await click('[data-test-sign-in-header]');

@@ -57,7 +57,12 @@ export default {
     injections.name = 'remote';
     injections.host = config.kitsu.APIHost;
     injections.namespace = 'api/edge';
-    injections.defaultFetchSettings = { timeout: 10000 };
+    injections.defaultFetchSettings = {
+      timeout: 10000,
+      headers: {
+        'content-type': 'application/vnd.api+json'
+      }
+    };
     injections.SerializerClass = KitsuSerializer;
     injections.requestQueueSettings = { autoProcess: false };
     injections.syncQueueSettings = { autoProcess: false };
