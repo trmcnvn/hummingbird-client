@@ -15,8 +15,20 @@ const App = Application.extend({
   engines: {
     dashboard: {
       dependencies: {
-        services: ['algolia', 'analytics', 'cache', 'experiments', 'fetch', 'intl',
-          'notification-messages', 'raven', 'router', 'session', 'store'],
+        services: [
+          'algolia',
+          'analytics',
+          'cache',
+          'dataCoordinator',
+          'experiments',
+          'fetch',
+          'intl',
+          'notification-messages',
+          'raven',
+          'router',
+          'session',
+          'store'
+        ],
         externalRoutes: {
           'explore': 'explore.explore'
         }

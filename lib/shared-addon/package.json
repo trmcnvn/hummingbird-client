@@ -20,6 +20,7 @@
     "ember-click-outside": "*",
     "ember-power-select": "*",
     "ember-fr-markdown-file": "*",
-    "ember-cli-showdown": "*"
+    "ember-cli-showdown": "*",
+    "ember-file-upload": "*"
   }
 }

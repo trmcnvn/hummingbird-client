@@ -15,7 +15,7 @@
     "ember-composable-helpers": "*",
     "ember-truth-helpers": "*",
     "ember-href-to": "*",
-    "ember-cli-swiper": "1.0.1"
+    "ember-cli-swiper": "*"
   },
   "ember-addon": {
     "paths": [

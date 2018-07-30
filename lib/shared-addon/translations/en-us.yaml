@@ -52,6 +52,8 @@ shared-addon:
     activity-likes:
       reactions: "Likes"
     editor:
+      errors:
+        failed-upload: "There was an issue uploading one of your images."
       placeholder: "Share a link, photos, or your thoughts"
       message-placeholder: "Write your message here..."
       actions:
@@ -79,6 +81,8 @@ shared-addon:
           remove: "Remove this embed"
         media:
           remove: "Remove this media tag"
+        uploads:
+          progress: "Uploading... {progress}%"
       media-search:
         placeholder: "Search {type, select,
           anime {anime}
