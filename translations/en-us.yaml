@@ -141,13 +141,13 @@ application:
         comment_like: "liked your comment."
         invited: "invited you to a group."
         vote: "liked your <a href={link}>{title}</a> reaction."
-        aired: "{type, select,
+        aired: "<a href={unitLink}>{type, select,
           chapter {Chapter}
           episode {Episode}
-          other {}} {number} of {media} {type, select,
+          other {}} {number}</a> of <a href={mediaLink}>{media}</a> {type, select,
           chapter {Released}
           episode {Aired}
-          other {}}!"
+          other {}}."
   mobile-banner:
     info: "Get a better experience using the official Kitsu mobile application"
   errors:

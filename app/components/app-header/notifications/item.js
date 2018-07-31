@@ -23,6 +23,11 @@ export default class Item extends Component {
     return this.notification.activities.get('firstObject');
   }
 
+  @computed('activity')
+  get isUser() {
+    return this.activity.actor.type === 'user';
+  }
+
   @computed('notification.activities.[]')
   get others() {
     return this.notification.activities.slice(1).reject(activity => (
@@ -135,9 +140,14 @@ export default class Item extends Component {
         });
       }
       case 'aired': {
+        const media = this.activity.actor;
         return this.intl.t('application.notifications.items.verbs.aired', {
+          type: this.activity.subject.type,
           number: this.activity.subject.number,
-          media: getComputedTitle(this.session.currentUser, this.activity.actor)
+          unitLink: '#', // @TODO: This should be the unit page
+          mediaLink: hrefTo(this, media.type, media.slug, queryParams),
+          media: getComputedTitle(this.session.currentUser, media),
+          htmlSafe: true
         });
       }
       default: {

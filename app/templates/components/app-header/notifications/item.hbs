@@ -1,26 +1,30 @@
 {{#if activity.actor}}
   <a href={{computedLink}} class="media {{if (not notification.isRead) "new"}}" onclick={{action closePopper}}>
     <span class="new-dot"></span>
-    {{ui-avatar image=(get-image activity.actor.avatar "small") size="small" class="ml-2 mr-3"}}
+    {{#if isUser}}
+      {{ui-avatar image=(get-image activity.actor.avatar "small") size="small" class="ml-2 mr-3"}}
+    {{else}}
+      {{ui-image image=(get-image activity.actor.posterImage "small") class="ml-2 mr-3 poster-image"}}
+    {{/if}}
     <div class="media-body">
-      <a href={{href-to "profile" activity.actor.linkableId}}>{{activity.actor.name}}</a>
-
-      {{! It's grouped with others }}
-      {{#if (gt othersCount 0)}}
-        {{#if (eq othersCount 1)}}
-          {{#with (object-at 0 others) as |other|}}
-            {{#if other.actor}}
-              {{t "application.notifications.items.others"}}
-              <a href={{href-to "profile" other.actor.linkableId}}>{{other.actor.name}}</a>
-            {{else}}
-              {{t "application.notifications.items.others-unknown"}}
-            {{/if}}
-          {{/with}}
-        {{else}}
-          {{t "application.notifications.items.others-count" count=othersCount htmlSafe=true}}
+      {{#if isUser}}
+        <a href={{href-to "profile" activity.actor.linkableId}}>{{activity.actor.name}}</a>
+        {{! It's grouped with others }}
+        {{#if (gt othersCount 0)}}
+          {{#if (eq othersCount 1)}}
+            {{#with (object-at 0 others) as |other|}}
+              {{#if other.actor}}
+                {{t "application.notifications.items.others"}}
+                <a href={{href-to "profile" other.actor.linkableId}}>{{other.actor.name}}</a>
+              {{else}}
+                {{t "application.notifications.items.others-unknown"}}
+              {{/if}}
+            {{/with}}
+          {{else}}
+            {{t "application.notifications.items.others-count" count=othersCount htmlSafe=true}}
+          {{/if}}
         {{/if}}
       {{/if}}
-
       {{compute (action "notificationText") activity.verb}}
       <small>{{format-relative activity.time interval=1000}}</small>
     </div>
