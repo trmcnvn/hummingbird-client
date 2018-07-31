@@ -83,6 +83,10 @@ shared-addon:
           remove: "Remove this media tag"
         uploads:
           progress: "Uploading... {progress}%"
+          dropzone:
+            valid: "Drop files here to start uploading..."
+            invalid: "You're trying to drop invalid files. We only accept PNG, JPG, GIF"
+          remove: "Remove Upload"
       media-search:
         placeholder: "Search {type, select,
           anime {anime}

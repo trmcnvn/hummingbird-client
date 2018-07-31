@@ -99,7 +99,10 @@ export default class Notifications extends Component {
     if (newActivities.length > 0) {
       this.fetchNotifications.perform({ limit: newActivities.length }, true).then(records => {
         records.forEach(record => {
-          const actor = record.activities.firstObject.actor.name;
+          const activity = record.activities.firstObject;
+          if (!activity) { return; }
+
+          const actor = activity.actor.name;
           const message = this.intl.t('application.notifications.new', { actor });
           this.notifications.info(message, {
             cssClasses: 'kitsu-notification'

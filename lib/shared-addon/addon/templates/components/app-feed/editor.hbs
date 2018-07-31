@@ -24,7 +24,16 @@
 
         <div class="editor-attachments">
           {{#if (gt uploads.length 0)}} {{! Sortable Uploads }}
-
+            {{#sortable-items items=uploads onSortChanged=(action "uploadSortChanged") as |item index|}}
+              <li class="uploaded-item">
+                <img src={{item.content.original}} />
+                <span class="item-index">{{inc index}}</span>
+                <a href="#" {{action "removeUpload" item}}>
+                  {{svg-jar "x"}}
+                  {{bs-tooltip title=(t "shared-addon.app-feed.editor.attachments.uploads.remove")}}
+                </a>
+              </li>
+            {{/sortable-items}}
           {{else if embed}} {{! Embed Preview }}
             <div class="embed-preview">
               <div class="embed-meta">
@@ -45,20 +54,20 @@
           {{/if}}
 
           {{! Upload Dropzone }}
-          {{#if (not dropzone.active)}}
-            <div class="uploads-dropzone">
+          {{#if dropzone.active}}
+            <div class="upload-dropzone">
               {{#if dropzone.valid}}
-                {{t "shared-addon.app-feed.editor.attachments.uploads.dropzone-valid"}}
+                {{t "shared-addon.app-feed.editor.attachments.uploads.dropzone.valid"}}
               {{else}}
-                {{t "shared-addon.app-feed.editor.attachments.uploads.dropzone-invalid"}}
+                {{t "shared-addon.app-feed.editor.attachments.uploads.dropzone.invalid"}}
               {{/if}}
             </div>
           {{/if}}
 
           {{! Upload Progress }}
-          {{#if (eq queue.files.length 0)}}
+          {{#if (gt queue.files.length 0)}}
             <span class="upload-progress">
-              {{t "shared-addon.app-feed.editor.attachments.uploads.progress" progress=queue.progress}}
+              {{t "shared-addon.app-feed.editor.attachments.uploads.progress" progress=(format-number queue.progress)}}
             </span>
           {{/if}}
 

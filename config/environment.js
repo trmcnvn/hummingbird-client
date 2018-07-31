@@ -22,7 +22,7 @@ module.exports = function(environment) {
 
     kitsu: {
       environment: process.env.HEROKU_EMBER_APP || environment,
-      APIHost: 'https://kitsu.io',
+      APIHost: 'https://staging.kitsu.io',
       APIKeys: {
         algolia: 'AWQO5J657S',
         embedly: '90f3fb8ff40f4603991aa258127ccb5e',
@@ -35,13 +35,13 @@ module.exports = function(environment) {
           production: { key: 'eb6dvmba4ct3', app: '18373' },
           staging: { key: 'ekx6xkn9v9xx', app: '17647' },
           // development: { key: 'sjm3sx9mgcx2', app: '17073' }
-          development: { key: 'eb6dvmba4ct3', app: '18373' }
+          development: { key: 'eb6dvmba4ct3', app: '18373' } // @TODO
         },
         googleAnalytics: 'UA-37633900-4',
         twitterPixel: 'nz90m',
         facebookPixel: '1372973436170230'
       },
-      OrbitDBVersion: '99d88fb9-57c8-426a-a3d9-7ce70fef53d3'
+      OrbitDBVersion: '99d88fb9-57c8-426b-a3d9-7ce70fef53d3'
     },
 
     // ember-cli-sentry

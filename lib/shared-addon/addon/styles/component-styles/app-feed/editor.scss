@@ -55,6 +55,95 @@
   .editor-attachments {
     margin-top: rem(5px);
     margin-bottom: rem(5px);
+    overflow-y: auto;
+
+    .sortable-items {
+      min-width: max-content;
+    }
+
+    .uploaded-item {
+      position: relative;
+      margin-right: rem(5px);
+
+      img {
+        width: rem(100px);
+        height: rem(100px);
+        object-fit: cover;
+      }
+
+      .item-index {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: rem(20px);
+        height: rem(20px);
+        font-size: rem(14px);
+        text-align: center;
+
+        border-bottom-right-radius: rem(3px);
+
+        @include themify($themes) {
+          background-color: themed('green');
+          color: themed('white');
+        }
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        border-bottom-left-radius: rem(3px);
+
+        opacity: 0.5;
+        @include themify($themes) {
+          background-color: themed('black');
+        }
+
+        svg {
+          width: rem(20px);
+          height: rem(20px);
+          @include themify($themes) {
+            stroke: themed('white');
+          }
+        }
+      }
+    }
+
+    .sortable-placeholder {
+      display: block;
+      width: rem(100px);
+      height: rem(100px);
+      margin-right: rem(5px);
+      border: 1px dashed;
+
+      @include themify($themes) {
+        border-color: themed('gray-300');
+      }
+    }
+
+    .upload-dropzone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: rem(20px);
+      margin-bottom: rem(10px);
+      border: rem(1px) dashed;
+      @include themify($themes) {
+        border-color: themed('gray-400');
+      }
+    }
+
+    .upload-progress {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
 
     .embed-preview {
       .embed-meta {

@@ -102,5 +102,10 @@ module.exports = function(defaults) {
   app.import('node_modules/getstream/dist/js/getstream.js');
   app.import('node_modules/autosize/dist/autosize.js');
   app.import('node_modules/clipboard/dist/clipboard.min.js');
+  app.import('node_modules/html5sortable/dist/html5sortable.amd.js', {
+    using: [
+      { transformation: 'amd', as: 'html5sortable' }
+    ]
+  });
   return app.toTree();
 };

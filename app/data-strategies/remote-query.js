@@ -14,7 +14,6 @@ export default {
       action: 'pull',
 
       blocking(query) {
-        console.debug('query:', query); // @Debug
         return !!(query.options && query.options.blocking);
       }
     });
