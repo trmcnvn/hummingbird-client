@@ -124,6 +124,7 @@ shared-addon:
         button: "Okay, got it"
     items:
       post:
+        deleted: "Your post was deleted"
         meta:
           media: "Because you recently watched {title}"
         group: "GROUP"
