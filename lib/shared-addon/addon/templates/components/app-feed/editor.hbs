@@ -76,23 +76,25 @@
           {{/if}}
 
           {{! Media Tag }}
-          {{#if (and media (not isMediaReadOnly))}}
+          {{#if media}}
             <div class="media-preview">
-              <span class="clear-media" {{action "clearMedia"}}>
-                {{svg-jar "x"}}
-                {{bs-tooltip title=(t "shared-addon.app-feed.editor.attachments.media.remove")}}
-              </span>
+              {{#unless isMediaReadOnly}}
+                <span class="clear-media" {{action "clearMedia"}}>
+                  {{svg-jar "x"}}
+                  {{bs-tooltip title=(t "shared-addon.app-feed.editor.attachments.media.remove")}}
+                </span>
+              {{/unless}}
               {{app-feed/items/post/media media=media}}
               {{#if (gt media.unitCount 0)}}
                 <div class="media-unit">
                   <div class="custom-control custom-checkbox">
-                    <input class="custom-control-input" type="checkbox" id="unit-checkbox" checked={{isUnitTagged}}>
-                    <label class="custom-control-label" for="unit-checkbox" {{action (toggle "isUnitTagged" this)}}>
+                    <input class="custom-control-input" type="checkbox" id="unit-checkbox" checked={{isUnitTagged}} disabled={{isMediaReadOnly}} />
+                    <label class="custom-control-label" for="unit-checkbox" {{action "setUnitTagged"}}>
                       {{t "shared-addon.app-feed.editor.actions.unit" type=media.type}}
                     </label>
                   </div>
                   <input class="form-control" type="number" min="1" max={{media.unitCount}}
-                    value={{unitNumber}} oninput={{action (mut unitNumber) value="target.value"}} />
+                    value={{unitNumber}} oninput={{action (mut unitNumber) value="target.value"}} disabled={{isMediaReadOnly}} />
                 </div>
               {{/if}}
             </div>
@@ -112,7 +114,7 @@
               {{t "shared-addon.app-feed.editor.actions.images"}}
               {{bs-tooltip title=(t "shared-addon.app-feed.editor.actions.images-tooltip")}}
             {{/file-upload}}
-            <span class="media-tag {{if media "disabled"}}" {{action "showMediaModal"}}>
+            <span class="media-tag {{if (or media isMediaReadOnly) "disabled"}}" {{action "showMediaModal"}}>
               {{svg-jar "bookmark"}}
               {{t "shared-addon.app-feed.editor.actions.media"}}
               {{bs-tooltip title=(t "shared-addon.app-feed.editor.actions.media-tooltip")}}
@@ -144,7 +146,11 @@
               </label>
             </div>
             {{#ui-button onClick=(perform createPost) isLoading=createPost.isRunning isDisabled=(not canPost) buttonClass="post-button"}}
-              {{t "shared-addon.app-feed.editor.actions.post"}}
+              {{#if isEditing}}
+                {{t "shared-addon.app-feed.editor.actions.edit"}}
+              {{else}}
+                {{t "shared-addon.app-feed.editor.actions.post"}}
+              {{/if}}
             {{/ui-button}}
           </div>
         </div>

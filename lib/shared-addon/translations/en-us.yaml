@@ -66,6 +66,7 @@ shared-addon:
         nsfw: "NSFW"
         spoiler: "Spoiler"
         post: "Post"
+        edit: "Edit"
         unit: "Tag {type, select,
           anime {Episode}
           manga {Chapter}

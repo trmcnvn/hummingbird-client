@@ -92,10 +92,24 @@
             </a>
           {{/if}}
           {{#if canMutatePost}}
-            {{! @TODO }}
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="#" {{action (mut showEditModal) true}}>
               {{t "shared-addon.app-feed.items.post.actions.edit"}}
             </a>
+            {{#bs-modal size="lg" open=showEditModal onHidden=(action (mut showEditModal) false) as |modal|}}
+              {{#modal.header}}
+                <h5 class="modal-title">
+                  {{t "shared-addon.app-feed.items.post.actions.edit"}}
+                </h5>
+              {{/modal.header}}
+              {{#modal.body}}
+                {{app-feed/editor
+                  post=@post
+                  isExpanded=true
+                  isEditing=true
+                  onPostCreated=(action (mut showEditModal) false)}}
+              {{/modal.body}}
+            {{/bs-modal}}
+
             <a class="dropdown-item" href="#" {{action (mut showDeleteModal) true}}>
               {{t "shared-addon.app-feed.items.post.actions.delete"}}
             </a>
