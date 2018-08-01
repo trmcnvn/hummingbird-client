@@ -17,18 +17,22 @@
             value=message
             maxlength=maxLength
             placeholder=(t "shared-addon.app-feed.editor.message-placeholder")
+            onKeys=(hash 13=(action "onEnter"))
             onInput=(action "processMessage")
             onPaste=(action "onPaste")}}
           {{app-feed/editor/user-selector visible=showUserSelector query=userSelectorQuery}}
         </div>
 
         <div class="editor-attachments">
-          {{#if (gt uploads.length 0)}} {{! Sortable Uploads }}
-            {{#sortable-items items=uploads onSortChanged=(action "uploadSortChanged") as |item index|}}
+          {{#if (and (gt uploads.length 0) fileQueyEmpty)}} {{! Sortable Uploads }}
+            {{#sortable-items
+              items=uploads
+              onSortChanged=(action "uploadSortChanged")
+              onItemRemoved=(action "removeUpload") as |sortable|}}
               <li class="uploaded-item">
-                <img src={{item.content.original}} />
-                <span class="item-index">{{inc index}}</span>
-                <a href="#" {{action "removeUpload" item}}>
+                <img src={{sortable.item.content.original}} />
+                <span class="item-index">{{inc sortable.index}}</span>
+                <a href="#" {{action sortable.remove}}>
                   {{svg-jar "x"}}
                   {{bs-tooltip title=(t "shared-addon.app-feed.editor.attachments.uploads.remove")}}
                 </a>

@@ -1,3 +1,6 @@
 {{#each items as |item index|}}
-  {{yield item index}}
+  {{yield (hash
+    item=item
+    index=index
+    remove=(action "removeItem" item))}}
 {{/each}}
