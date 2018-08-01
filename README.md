@@ -34,6 +34,7 @@ Searchable keys used with code comments.
   - `@Metrics` - Metrics related TODO
   - `@Theme` - Theme related TODO
   - `@Cleanup` - Cleanup related TODO
+- `@Hack` - Bad!
 - `@Debug` - Logging statement that should be removed
 - `@Unsure` - Unanswered question that should be resolved
 - `@Orbit` - Custom functionality with Orbit

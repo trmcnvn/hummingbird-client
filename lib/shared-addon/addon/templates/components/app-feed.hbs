@@ -62,18 +62,26 @@
   {{! @TODO: Skeletonize }}
   {{ui-spinner size="large" center=true}}
 {{else if (gt records.length 0)}}
-  {{#ui-pagination onPagination=(perform fetchNextPage) spinnerSize="large"}}
-    {{#each records as |item index|}}
-      {{#with (compute (action "getActivityType") (object-at 0 item.activities)) as |type|}}
-        {{#occludable-component estimatedHeight=600 rootMargin=(hash bottom=600)}}
-          {{component (concat "app-feed/items/" type)
-            item=item
-            feed=feed
-            onDelete=(action "onDelete" item)}}
-        {{/occludable-component}}
-      {{/with}}
-    {{/each}}
-  {{/ui-pagination}}
+  {{! @Issue: This is a really bad experience when scrolling up on Firefox due to a bug: https://bugzilla.mozilla.org/show_bug.cgi?id=1474196 }}
+  {{#vertical-collection
+    items=records
+    estimateHeight=600
+    containerSelector="body"
+    bufferSize=5
+    lastReached="onPagination"
+    as |item index|}}
+    {{#with (compute (action "getActivityType") (object-at 0 item.activities)) as |type|}}
+      {{component (concat "app-feed/items/" type)
+        item=item
+        feed=feed
+        onDelete=(action "onDelete" item)}}
+    {{else}}
+      <div></div> {{! VerticalCollection requires an element to exist }}
+    {{/with}}
+  {{/vertical-collection}}
+  {{#if fetchNextPage.isRunning}}
+    {{ui-spinner center=true class="my-4"}}
+  {{/if}}
 {{/if}}
 
 {{! @TODO: Error state }}
