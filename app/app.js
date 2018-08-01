@@ -10,6 +10,9 @@ const App = Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
   Resolver,
+  customEvents: {
+    paste: 'paste'
+  },
 
   // eslint-disable-next-line ember/avoid-leaking-state-in-ember-objects
   engines: {
