@@ -21,7 +21,6 @@
     "ember-power-select": "*",
     "ember-fr-markdown-file": "*",
     "ember-cli-showdown": "*",
-    "ember-file-upload": "*",
-    "@html-next/vertical-collection": "*"
+    "ember-file-upload": "*"
   }
 }

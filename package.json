@@ -20,7 +20,6 @@
     "@ember-decorators/babel-transforms": "2.0.2",
     "@ember-intl/cp-validations": "4.0.1",
     "@ember/optional-features": "0.6.2",
-    "@html-next/vertical-collection": "1.0.0-beta.12",
     "@orbit/indexeddb": "0.15.18",
     "@orbit/indexeddb-bucket": "0.15.18",
     "@orbit/jsonapi": "0.15.18",
