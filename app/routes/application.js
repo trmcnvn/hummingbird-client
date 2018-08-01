@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-import { set } from '@ember/object';
 import { scheduleOnce } from '@ember/runloop';
 import { getOwner } from '@ember/application';
 import { action } from '@ember-decorators/object';

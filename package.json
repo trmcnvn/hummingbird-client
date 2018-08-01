@@ -11,7 +11,7 @@
   "repository": "https://github.com/hummingbird-me/hummingbird-client",
   "scripts": {
     "build": "ember build",
-    "lint:js": "eslint .",
+    "lint": "eslint .",
     "start": "ember serve",
     "test": "ember test --reporter dot"
   },
@@ -20,7 +20,7 @@
     "@ember-decorators/babel-transforms": "2.0.2",
     "@ember-intl/cp-validations": "4.0.1",
     "@ember/optional-features": "0.6.2",
-    "@html-next/vertical-collection": "^1.0.0-beta.12",
+    "@html-next/vertical-collection": "1.0.0-beta.12",
     "@orbit/indexeddb": "0.15.18",
     "@orbit/indexeddb-bucket": "0.15.18",
     "@orbit/jsonapi": "0.15.18",
@@ -87,6 +87,7 @@
     "ember-web-app": "2.3.0",
     "eslint": "5.2.0",
     "eslint-plugin-ember": "5.2.0",
+    "eslint-plugin-hbs": "0.1.1",
     "eslint-plugin-import": "2.13.0",
     "getstream": "3.19.0",
     "html5sortable": "0.9.3",
