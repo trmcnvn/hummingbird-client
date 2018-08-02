@@ -4,8 +4,8 @@
   </a>
   <div class="media-body">
     <div class="comment-body">
-      <h5 class="username">
-        <a href={{href-to "profile" @comment.user.linkableId}}>
+      <div class="author">
+        <a class="username" href={{href-to "profile" @comment.user.linkableId}}>
           {{@comment.user.name}}
         </a>
         <a class="timestamps" href={{href-to "comments" @comment.remoteId}}>
@@ -18,7 +18,7 @@
             {{/if}}
           </small>
         </a>
-      </h5>
+      </div>
       {{#if @comment.contentFormatted}}
         {{#read-more text=(format-content @comment.contentFormatted) limit=350 htmlSafe=true class="comment-content" as |rm|}}
           {{#if rm.wasTruncated}}
@@ -46,7 +46,7 @@
         onLike=(perform onLike)
         onDislike=(perform onDislike)
         onDelete=(perform deleteComment)
-        onReply=(if isReply @onReply (action "onReply"))}}
+        onReply=(if isReply @onReply (action "onReply" comment.parent))}}
     </div>
 
     {{#unless isReply}}

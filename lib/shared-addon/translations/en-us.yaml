@@ -52,8 +52,10 @@ shared-addon:
     activity-likes:
       reactions: "Likes"
     comment-editor:
-      message-placeholder: "Leave a comment..."
+      message-placeholder: "Leave a comment on this post..."
+      reply-placeholder: "Leave a reply to this comment..."
       post: "Post Comment"
+      edit: "Edit Comment"
       images-tooltip: "Upload Image"
     editor:
       errors:

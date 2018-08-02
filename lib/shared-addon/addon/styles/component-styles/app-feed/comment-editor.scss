@@ -6,6 +6,11 @@
   padding: rem(15px);
   padding-bottom: rem(10px);
 
+  &.comment-reply {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .editor {
     display: flex;
     flex-direction: column;

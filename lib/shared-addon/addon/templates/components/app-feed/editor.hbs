@@ -47,12 +47,16 @@
                   {{bs-tooltip title=(t "shared-addon.app-feed.editor.attachments.embed.remove")}}
                 </span>
               </div>
-              {{#if fetchEmbed.isRunning}}
-                {{ui-spinner center=true}}
+              {{#if (and isEditing post.embed)}}
+                {{app-feed/items/post/embed embed=post.embed}}
               {{else}}
-                {{#with fetchEmbed.last.value as |embed|}}
-                  {{app-feed/items/post/embed embed=embed}}
-                {{/with}}
+                {{#if fetchEmbed.isRunning}}
+                  {{ui-spinner center=true}}
+                {{else}}
+                  {{#with fetchEmbed.last.value as |embed|}}
+                    {{app-feed/items/post/embed embed=embed}}
+                  {{/with}}
+                {{/if}}
               {{/if}}
             </div>
           {{/if}}

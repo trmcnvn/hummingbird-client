@@ -8,17 +8,13 @@
       <div class="left-actions">
         {{#if isPermalinkPage}}
           {{#if @comment}}
+            <a href={{href-to "posts" @comment.post.remoteId}} class="pagination-action">
+              {{t "shared-addon.app-feed.items.post.comments.view-all"}}
+            </a>
             {{#if @comment.parent}}
-              <a href={{href-to "posts" @comment.post.remoteId}} class="pagination-action">
-                {{t "shared-addon.app-feed.items.post.comments.view-all"}}
-              </a>
               &nbsp;&mdash;&nbsp;
               <a href={{href-to "comments" @comment.parent.remoteId}} class="pagination-action">
                 {{t "shared-addon.app-feed.items.post.comments.view-parent"}}
-              </a>
-            {{else}}
-              <a href={{href-to "posts" @comment.post.remoteId}} class="pagination-action">
-                {{t "shared-addon.app-feed.items.post.comments.view-all"}}
               </a>
             {{/if}}
           {{else}}

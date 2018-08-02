@@ -1,11 +1,11 @@
-<div class={{styleNamespace}}>
+<div class="{{styleNamespace}} {{if isCommentReply "comment-reply"}}">
   {{#file-dropzone name="uploads" class="editor" as |dropzone queue|}}
     <div class="editor-body">
       {{textarea-autosize
         value=message
         maxlength=maxLength
         autofocus=autofocus
-        placeholder=(t "shared-addon.app-feed.comment-editor.message-placeholder")
+        placeholder=placeholder
         onKeys=(hash 13=(action "onEnter"))
         onInput=(action "processMessage")
         onPaste=(action "onPaste")
@@ -30,7 +30,11 @@
           {{else}}
             {{svg-jar "send"}}
           {{/if}}
-          {{bs-tooltip title=(t "shared-addon.app-feed.comment-editor.post")}}
+          {{#if isEditing}}
+            {{bs-tooltip title=(t "shared-addon.app-feed.comment-editor.edit")}}
+          {{else}}
+            {{bs-tooltip title=(t "shared-addon.app-feed.comment-editor.post")}}
+          {{/if}}
         </div>
       </div>
     </div>
@@ -59,12 +63,16 @@
               {{bs-tooltip title=(t "shared-addon.app-feed.editor.attachments.embed.remove")}}
             </span>
           </div>
-          {{#if fetchEmbed.isRunning}}
-            {{ui-spinner center=true}}
+          {{#if (and isEditing comment.embed)}}
+            {{app-feed/items/post/embed embed=comment.embed}}
           {{else}}
-            {{#with fetchEmbed.last.value as |embed|}}
-              {{app-feed/items/post/embed embed=embed}}
-            {{/with}}
+            {{#if fetchEmbed.isRunning}}
+              {{ui-spinner center=true}}
+            {{else}}
+              {{#with fetchEmbed.last.value as |embed|}}
+                {{app-feed/items/post/embed embed=embed}}
+              {{/with}}
+            {{/if}}
           {{/if}}
         </div>
       {{/if}}

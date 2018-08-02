@@ -3,6 +3,7 @@
     {{svg-jar "message-square"}}
     {{t "shared-addon.app-feed.items.post.comments.reply"}}
   </div>
+
   {{app-feed/activity-likes
     activity=@comment
     likedCount=@comment.likesCount
@@ -23,10 +24,24 @@
           {{t "shared-addon.app-feed.items.post.actions.copy"}}
         </a>
         {{#if canMutateComment}}
-          {{! @TODO }}
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" href="#" {{action (mut showEditModal) true}}>
             {{t "shared-addon.app-feed.items.post.comments.actions.edit"}}
           </a>
+          {{#bs-modal size="lg" open=showEditModal onHidden=(action (mut showEditModal) false) as |modal|}}
+            {{#modal.header}}
+              <h5 class="modal-title">
+                {{t "shared-addon.app-feed.items.post.comments.actions.edit"}}
+              </h5>
+            {{/modal.header}}
+            {{#modal.body}}
+              {{app-feed/comment-editor
+                post=post
+                comment=comment
+                isEditing=true
+                onCommentCreated=(action (mut showEditModal) false)}}
+            {{/modal.body}}
+          {{/bs-modal}}
+
           <a class="dropdown-item" href="#" {{action (mut showDeleteModal) true}}>
             {{t "shared-addon.app-feed.items.post.comments.actions.delete"}}
           </a>

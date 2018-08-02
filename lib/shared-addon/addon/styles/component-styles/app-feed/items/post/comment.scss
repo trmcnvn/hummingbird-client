@@ -6,6 +6,10 @@
     border-color: themed('gray-300');
   }
 
+  &:last-child {
+    border-bottom: none;
+  }
+
   .avatar {
     img {
       width: rem(35px);
@@ -18,22 +22,29 @@
     flex-direction: column;
 
     .comment-body {
-      .username {
+      display: flex;
+      flex-direction: column;
+
+      .author {
         display: flex;
         flex-direction: column;
-
-        font-size: rem(14px);
-        font-weight: 700;
+        align-items: flex-start;
         margin-bottom: rem(5px);
 
+        .username {
+          font-size: rem(14px);
+          font-weight: 700;
+        }
+
         .timestamps {
-          margin-top: rem(2px);
+          font-size: rem(14px);
 
           @include themify($themes) {
             color: themed('secondary-text');
           }
         }
       }
+
       .comment-content {
         font-size: rem(14px);
         margin-bottom: 0;
