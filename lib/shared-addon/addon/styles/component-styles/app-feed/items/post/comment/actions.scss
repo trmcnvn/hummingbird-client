@@ -30,6 +30,17 @@
         color: themed('secondary-text');
       }
 
+      &:hover {
+        @include themify($themes) {
+          color: themed('primary');
+        }
+        svg {
+          @include themify($themes) {
+            stroke: themed('primary');
+          }
+        }
+      }
+
       svg {
         position: relative;
         margin-right: rem(5px);
