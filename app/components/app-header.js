@@ -23,7 +23,8 @@ export default class AppHeader extends Component {
   }
 
   @action
-  transitionToDashboard() {
+  transitionToDashboard({ metaKey }) {
+    if (metaKey) { return; } // Command/Ctrl -- Don't handle this for the current page.
     const currentRouteName = this.router.currentRouteName;
     if (currentRouteName === 'dashboard.index') {
       window.location.reload();
