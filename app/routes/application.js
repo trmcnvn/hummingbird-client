@@ -29,7 +29,7 @@ export default class Application extends Route.extend(ApplicationRouteMixin) {
       return backup.pull(q => q.findRecords())
         .then(transform => this.store.sync(transform))
         .then(() => this.dataCoordinator.activate())
-        .then(() => {
+        .then(() => { // Enable processing of remote bucket requests
           const remote = this.dataCoordinator.getSource('remote');
           const promises = [remote.requestQueue.process(), remote.syncQueue.process()];
           remote.requestQueue.autoProcess = true;
@@ -58,7 +58,7 @@ export default class Application extends Route.extend(ApplicationRouteMixin) {
     if (force || version !== config.kitsu.OrbitDBVersion) {
       console.debug('Cleaning Orbit DB'); // @Debug
       const backup = this.dataCoordinator.getSource('backup');
-      return backup.deleteDB().finally(() => {
+      return backup.reset().finally(() => {
         window.localStorage.setItem('kitsu-db-version', config.kitsu.OrbitDBVersion);
         return RSVP.resolve();
       });

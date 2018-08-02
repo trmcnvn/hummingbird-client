@@ -58,7 +58,7 @@
           {{/if}}
 
           {{! Upload Dropzone }}
-          {{#if dropzone.active}}
+          {{#if (and dropzone.active (not isUploadDisabled))}}
             <div class="upload-dropzone">
               {{#if dropzone.valid}}
                 {{t "shared-addon.app-feed.editor.attachments.uploads.dropzone.valid"}}
@@ -120,7 +120,7 @@
               {{bs-tooltip title=(t "shared-addon.app-feed.editor.actions.media-tooltip")}}
             </span>
             <span class="emoji">
-              <img id="emoji-editor-action" src="https://twemoji.maxcdn.com/2/72x72/1f600.png">
+              <span id="emoji-editor-action">😃</span>
               {{app-feed/editor/emoji-selector
                 triggerElement="#emoji-editor-action"
                 popoverClass="emoji-editor-popover"

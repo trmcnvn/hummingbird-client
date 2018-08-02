@@ -1,3 +1,157 @@
 @import "../../../app/styles/variables";
 
 @import "pod-styles";
+
+// This is extended by component-css so we don't duplicate code.
+// @TODO: Move this to an imported file.
+.kitsu-editor-attachments {
+  margin-top: rem(5px);
+  margin-bottom: rem(5px);
+  overflow-y: auto;
+
+  .sortable-items {
+    min-width: max-content;
+  }
+
+  .uploaded-item {
+    position: relative;
+    margin-right: rem(5px);
+    cursor: move;
+
+    img {
+      width: rem(100px);
+      height: rem(100px);
+      object-fit: cover;
+    }
+
+    .item-index {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: rem(20px);
+      height: rem(20px);
+      font-size: rem(14px);
+      text-align: center;
+
+      border-bottom-right-radius: rem(3px);
+
+      @include themify($themes) {
+        background-color: themed('green');
+        color: themed('white');
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      border-bottom-left-radius: rem(3px);
+
+      opacity: 0.5;
+      @include themify($themes) {
+        background-color: themed('black');
+      }
+
+      svg {
+        width: rem(20px);
+        height: rem(20px);
+        @include themify($themes) {
+          stroke: themed('white');
+        }
+      }
+    }
+  }
+
+  .sortable-placeholder {
+    display: block;
+    width: rem(100px);
+    height: rem(100px);
+    margin-right: rem(5px);
+    border: 1px dashed;
+
+    @include themify($themes) {
+      border-color: themed('gray-300');
+    }
+  }
+
+  .upload-dropzone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: rem(20px);
+    margin-bottom: rem(10px);
+    border: rem(1px) dashed;
+    @include themify($themes) {
+      border-color: themed('gray-400');
+    }
+  }
+
+  .upload-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: rem(14px);
+  }
+
+  .embed-preview {
+    .embed-meta {
+      display: flex;
+      justify-content: space-between;
+      padding-top: rem(5px);
+      padding-bottom: rem(5px);
+      font-size: rem(12px);
+      border-top: rem(1px) solid;
+
+      @include themify($themes) {
+        color: themed('secondary-text');
+        border-color: themed('gray-300');
+      }
+
+      .clear-embed {
+        cursor: pointer;
+        svg {
+          width: rem(15px);
+          height: rem(15px);
+        }
+      }
+    }
+  }
+
+  .media-preview {
+    position: relative;
+
+    .clear-media {
+      position: absolute;
+      top: 0;
+      right: rem(5px);
+      cursor: pointer;
+      svg {
+        width: rem(15px);
+        height: rem(15px);
+      }
+    }
+
+    .media {
+      margin: 0 !important;
+    }
+
+    .media-unit {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: rem(10px);
+      margin-bottom: rem(10px);
+
+      input {
+        width: auto;
+        margin-left: rem(15px);
+      }
+    }
+  }
+}

@@ -51,6 +51,10 @@ shared-addon:
   app-feed:
     activity-likes:
       reactions: "Likes"
+    comment-editor:
+      message-placeholder: "Leave a comment..."
+      post: "Post Comment"
+      images-tooltip: "Upload Image"
     editor:
       errors:
         failed-upload: "There was an issue uploading one of your images."

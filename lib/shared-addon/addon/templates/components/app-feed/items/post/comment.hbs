@@ -45,8 +45,10 @@
         post=@post
         onLike=(perform onLike)
         onDislike=(perform onDislike)
-        onDelete=(perform deleteComment)}}
+        onDelete=(perform deleteComment)
+        onReply=(if isReply @onReply (action "onReply"))}}
     </div>
+
     {{#unless isReply}}
       <div class="comment-replies">
         {{#if fetchReplies.isRunning}}
@@ -73,12 +75,24 @@
           {{#each replies as |reply|}}
             {{app-feed/items/post/comment
               comment=reply
-              post=@post
+              parent=comment
+              post=post
               isReply=true
-              onDelete=(action "onReplyDeleted")}}
+              onDelete=(action "onReplyDeleted")
+              onReply=(action "onReply" true)}}
           {{/each}}
         {{/if}}
       </div>
     {{/unless}}
+
+    {{#if showEditor}}
+      {{app-feed/comment-editor
+        isCommentReply=true
+        autofocus=true
+        post=post
+        comment=(or parent comment)
+        replyMention=replyMention
+        onCommentCreated=(action "commentCreated")}}
+    {{/if}}
   </div>
 </div>

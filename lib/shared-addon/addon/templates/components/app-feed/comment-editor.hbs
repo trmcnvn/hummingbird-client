@@ -1,0 +1,91 @@
+<div class={{styleNamespace}}>
+  {{#file-dropzone name="uploads" class="editor" as |dropzone queue|}}
+    <div class="editor-body">
+      {{textarea-autosize
+        value=message
+        maxlength=maxLength
+        autofocus=autofocus
+        placeholder=(t "shared-addon.app-feed.comment-editor.message-placeholder")
+        onKeys=(hash 13=(action "onEnter"))
+        onInput=(action "processMessage")
+        onPaste=(action "onPaste")
+      }}
+      {{app-feed/editor/user-selector visible=showUserSelector query=userSelectorQuery}}
+
+      <div class="editor-actions">
+        {{#file-upload
+          class=(concat "uploads" (if isUploadDisabled " disabled"))
+          name="uploads"
+          accept=filesAccepted
+          multiple=false
+          disabled=isUploadDisabled
+          onfileadd=(perform uploadFile)}}
+          {{svg-jar "camera"}}
+          {{bs-tooltip title=(t "shared-addon.app-feed.comment-editor.images-tooltip")}}
+        {{/file-upload}}
+
+        <div class="post-action {{unless canPost "disabled"}}" {{action (perform createComment)}}>
+          {{#if createComment.isRunning}}
+            {{ui-spinner size="small" center=true}}
+          {{else}}
+            {{svg-jar "send"}}
+          {{/if}}
+          {{bs-tooltip title=(t "shared-addon.app-feed.comment-editor.post")}}
+        </div>
+      </div>
+    </div>
+
+    <div class="editor-attachments">
+      {{#if (and (gt uploads.length 0) fileQueyEmpty)}} {{! Sortable Uploads }}
+        {{#sortable-items
+          items=uploads
+          onSortChanged=(action "uploadSortChanged")
+          onItemRemoved=(action "removeUpload") as |sortable|}}
+          <li class="uploaded-item">
+            <img src={{sortable.item.content.original}} />
+            <span class="item-index">{{inc sortable.index}}</span>
+            <a href="#" {{action sortable.remove}}>
+              {{svg-jar "x"}}
+              {{bs-tooltip title=(t "shared-addon.app-feed.editor.attachments.uploads.remove")}}
+            </a>
+          </li>
+        {{/sortable-items}}
+      {{else if embed}} {{! Embed Preview }}
+        <div class="embed-preview">
+          <div class="embed-meta">
+            {{t "shared-addon.app-feed.editor.attachments.embed.preview"}}
+            <span class="clear-embed" {{action "clearEmbed"}}>
+              {{svg-jar "x"}}
+              {{bs-tooltip title=(t "shared-addon.app-feed.editor.attachments.embed.remove")}}
+            </span>
+          </div>
+          {{#if fetchEmbed.isRunning}}
+            {{ui-spinner center=true}}
+          {{else}}
+            {{#with fetchEmbed.last.value as |embed|}}
+              {{app-feed/items/post/embed embed=embed}}
+            {{/with}}
+          {{/if}}
+        </div>
+      {{/if}}
+
+      {{! Upload Dropzone }}
+      {{#if (and dropzone.active (not isUploadDisabled))}}
+        <div class="upload-dropzone">
+          {{#if dropzone.valid}}
+            {{t "shared-addon.app-feed.editor.attachments.uploads.dropzone.valid"}}
+          {{else}}
+            {{t "shared-addon.app-feed.editor.attachments.uploads.dropzone.invalid"}}
+          {{/if}}
+        </div>
+      {{/if}}
+
+      {{! Upload Progress }}
+      {{#if (gt queue.files.length 0)}}
+        <span class="upload-progress">
+          {{t "shared-addon.app-feed.editor.attachments.uploads.progress" progress=(format-number queue.progress)}}
+        </span>
+      {{/if}}
+    </div>
+  {{/file-dropzone}}
+</div>

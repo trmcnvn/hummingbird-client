@@ -1,0 +1,62 @@
+& {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: rem(15px);
+  padding-bottom: rem(10px);
+
+  .editor {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .editor-body {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      textarea {
+        padding: rem(10px);
+        outline: none;
+        border-radius: rem(3px);
+        font-size: rem(14px);
+        width: 100%;
+
+        @include themify($themes) {
+          border-color: themed('gray-300');
+        }
+      }
+
+      .editor-actions {
+        display: flex;
+        align-items: center;
+
+        svg {
+          width: rem(20px);
+          height: rem(20px);
+
+          @include themify($themes) {
+            stroke: themed('secondary-text');
+          }
+        }
+
+        .uploads, .post-action {
+          margin-left: rem(15px);
+          margin-bottom: 0;
+
+          cursor: pointer;
+          &.disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+
+    .editor-attachments {
+      @extend .kitsu-editor-attachments;
+      margin-bottom: 0 !important;
+    }
+  }
+}

@@ -43,7 +43,7 @@
       </div>
       <div class="right-actions">
         <div class="count">
-          {{t "shared-addon.app-feed.items.post.comments.count" number=comments.length total=comments.firstObject._meta.count}}
+          {{t "shared-addon.app-feed.items.post.comments.count" number=comments.length total=post.topLevelCommentsCount}}
         </div>
       </div>
     </div>
@@ -71,4 +71,11 @@
       {{/each}}
     {{/if}}
   </div>
+{{/if}}
+
+{{! @TODO: Read-only state }}
+{{#if session.hasSession}}
+  {{app-feed/comment-editor
+    post=post
+    onCommentCreated=(action "commentCreated")}}
 {{/if}}
