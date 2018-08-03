@@ -12,8 +12,8 @@
         {{t "dashboard.announcements.button"}}
       {{/ui-button}}
     {{/if}}
-    <span class="dismiss-announcement" {{action "removeAnnouncement" announcement}}>
+    <a class="dismiss-announcement" href="#" {{action "removeAnnouncement" announcement}}>
       {{svg-jar "x"}}
-    </span>
+    </a>
   </div>
 {{/with}}

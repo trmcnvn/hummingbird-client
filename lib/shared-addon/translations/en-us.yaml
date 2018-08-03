@@ -206,6 +206,17 @@ shared-addon:
             delete: "Delete Comment"
             report: "Report Comment"
             deleted: "The comment was deleted"
+      library-entry:
+        deleted: "Your library activity was deleted."
+        events:
+          delete: "Delete"
+          updated: "moved this to {status}"
+          rated: "rated it"
+          # @Legacy
+          progressed: "{type, select,
+            anime {watched Episode {number}}
+            manga {read Chapter {number}}
+            other {}}"
   confirm-modal:
     title: "Confirm Action"
     body: "Are you sure you want to do this?"

@@ -30,7 +30,12 @@ $themes: (
     'text': #464646,
     'secondary-text': #999,
     'active': darken(#fff, 5%),
-    'primary': #D95E40
+    'primary': #D95E40,
+
+    'rating-awful': #DA5E51,
+    'rating-meh': #e67e22,
+    'rating-good': #16a085,
+    'rating-great': #3e99d7
   )
 );
 

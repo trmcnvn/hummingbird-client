@@ -5,7 +5,7 @@
       <p>{{t "application.authentication.sign-up.username.info"}}</p>
       <fieldset class="form-group">
         <input class="form-control username {{if validations.attrs.name.isValid 'is-valid' 'is-invalid'}}" type="text" placeholder={{t "application.authentication.sign-up.username.placeholder"}}
-          value={{name}} oninput={{action (mut name) value="target.value"}} data-test-username />
+          value={{name}} oninput={{action (mut name) value="target.value"}} data-test-username>
         {{#if (and name validations.attrs.name.isInvalid)}}
           <div class="invalid-feedback">
             {{v-get this "name" "message"}}
@@ -20,7 +20,7 @@
       <fieldset class="form-group">
         <input class="form-control {{if validations.attrs.email.isValid 'is-valid' 'is-invalid'}}" type="email" placeholder={{t "application.authentication.sign-up.email.placeholder"}}
           value={{email}} oninput={{action (mut email) value="target.value"}}
-          onfocus={{action "removeFade" "email"}} data-test-email />
+          onfocus={{action "removeFade" "email"}} data-test-email>
         {{#if (and email validations.attrs.email.isInvalid)}}
           <div class="invalid-feedback">
             {{v-get this "email" "message"}}
@@ -35,7 +35,7 @@
       <fieldset class="form-group">
         <input class="form-control {{if validations.attrs.password.isValid 'is-valid' 'is-invalid'}}" type="password" placeholder={{t "application.authentication.sign-up.password.placeholder"}}
           value={{password}} oninput={{action (mut password) value="target.value"}}
-          onfocus={{action "removeFade" "password"}} data-test-password />
+          onfocus={{action "removeFade" "password"}} data-test-password>
         <span class="password-strength-{{passwordScore.score}}"></span>
         {{#if (and password validations.attrs.password.isInvalid)}}
           <div class="invalid-feedback">

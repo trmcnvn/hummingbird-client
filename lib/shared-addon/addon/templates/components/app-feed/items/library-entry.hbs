@@ -1,0 +1,27 @@
+{{#if media}}
+  <div class="{{styleNamespace}} card media">
+    <a class="poster-image" href={{href-to media.type media.slug}}>
+      {{ui-image image=(get-image media.posterImage "medium")}}
+    </a>
+    <div class="media-body">
+      <a class="media-title" href={{href-to media.type media.slug}}>
+        {{computed-title media}}
+      </a>
+      <dl class="timeline">
+        {{#each groupByTime as |group|}}
+          {{#if (gt group.items.length 0)}}
+            <dt class="group-header">
+              <span class="grouping">{{group.groupingKey}}</span>
+              <span class="date">{{format-time group.time month="short" day="numeric" timeZone="UTC"}}</span>
+            </dt>
+          {{/if}}
+          {{app-feed/items/library-entry/events
+            events=group.items
+            media=media
+            onDelete=(perform deleteActivity)
+            tagName="dd"}}
+        {{/each}}
+      </dl>
+    </div>
+  </div>
+{{/if}}

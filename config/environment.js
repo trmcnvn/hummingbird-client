@@ -41,7 +41,7 @@ module.exports = function(environment) {
         twitterPixel: 'nz90m',
         facebookPixel: '1372973436170230'
       },
-      OrbitDBVersion: '99d88fb9-57c8-426b-a3d9-7ce70fef53d3'
+      OrbitDBVersion: '99d88fb9-57c8-426b-a3d9-7ce70fef43d2'
     },
 
     // ember-cli-sentry

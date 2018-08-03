@@ -9,9 +9,6 @@ module.exports = {
     'eslint:recommended',
     'plugin:ember/recommended'
   ],
-  plugins: [
-    'hbs'
-  ],
   env: {
     browser: true
   },

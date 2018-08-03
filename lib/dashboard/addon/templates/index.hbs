@@ -16,7 +16,7 @@
     {{! Feed }}
     <div class="px-0 col-sm dashboard-feed">
       {{! Onboarding notice }}
-      {{#if (and session.hasSession (and (eq feedType "global/global") (eq session.currentUser.postsCount 0)))}}
+      {{#if (and session.hasSession (and (eq feedType "global") (eq session.currentUser.postsCount 0)))}}
         {{feed-notice name=session.currentUser.name}}
       {{/if}}
 
@@ -24,6 +24,7 @@
       {{app-feed
         feed=feedPath
         interestType=feedInterest
+        showFilters=(eq feedType "timeline")
         extraFilters=feedFilters}}
     </div>
 

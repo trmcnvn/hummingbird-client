@@ -78,7 +78,20 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@ember-decorators/argument@0.8.17", "@ember-decorators/argument@^0.8.13":
+"@ember-decorators/argument@0.8.18":
+  version "0.8.18"
+  resolved "https://registry.yarnpkg.com/@ember-decorators/argument/-/argument-0.8.18.tgz#16e9856b162e5300ae8980ea08274f91b1f2c8b2"
+  dependencies:
+    babel-plugin-filter-imports "^1.1.1"
+    broccoli-funnel "^2.0.1"
+    ember-cli-babel "^6.3.0"
+    ember-cli-version-checker "^2.0.0"
+    ember-compatibility-helpers "^1.0.0-beta.2"
+    ember-get-config "^0.2.3"
+    ember-source-channel-url "^1.0.1"
+    ember-try "^0.2.23"
+
+"@ember-decorators/argument@^0.8.13":
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/@ember-decorators/argument/-/argument-0.8.17.tgz#03b099defa6d3710080ba89037822ab46a73ae54"
   dependencies:
@@ -161,9 +174,9 @@
     make-plural "^2.1.3"
     uglify-js "^2.6.2"
 
-"@ember/optional-features@0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@ember/optional-features/-/optional-features-0.6.2.tgz#f1f6ec6021b9a481c3ff98bb7952e06d9ca6aa39"
+"@ember/optional-features@0.6.3":
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/@ember/optional-features/-/optional-features-0.6.3.tgz#46e5314a7893db5cc99213664a17ad49dbc86524"
   dependencies:
     chalk "^2.3.0"
     co "^4.6.0"
@@ -206,6 +219,25 @@
   resolved "https://registry.yarnpkg.com/@glimmer/resolver/-/resolver-0.4.3.tgz#b1baae5c3291b4621002ccf8d7870466097e841d"
   dependencies:
     "@glimmer/di" "^0.2.0"
+
+"@glimmer/syntax@^0.35.7":
+  version "0.35.7"
+  resolved "https://registry.yarnpkg.com/@glimmer/syntax/-/syntax-0.35.7.tgz#5980ecbcda7b731b970100539518670d84a482d9"
+  dependencies:
+    "@glimmer/interfaces" "^0.35.7"
+    "@glimmer/util" "^0.35.7"
+    handlebars "^4.0.6"
+    simple-html-tokenizer "^0.5.5"
+
+"@glimmer/util@^0.35.7":
+  version "0.35.7"
+  resolved "https://registry.yarnpkg.com/@glimmer/util/-/util-0.35.7.tgz#c6dcda4c03690d511bae17658b4e32c8ae222b39"
+
+"@glimmer/wire-format@^0.35.7":
+  version "0.35.7"
+  resolved "https://registry.yarnpkg.com/@glimmer/wire-format/-/wire-format-0.35.7.tgz#5d287467c4adfe71505faeba6d85b05638c54f71"
+  dependencies:
+    "@glimmer/util" "^0.35.7"
 
 "@orbit/coordinator@^0.15.14":
   version "0.15.18"
@@ -612,9 +644,9 @@ ajv@^6.0.1, ajv@^6.1.0, ajv@^6.5.0:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.1"
 
-algoliasearch@3.29.0:
-  version "3.29.0"
-  resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-3.29.0.tgz#d04021a5450be55ce314b928bba4a38723399bd8"
+algoliasearch@3.30.0:
+  version "3.30.0"
+  resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-3.30.0.tgz#355585e49b672e5f71d45b9c2b371ecdff129cd1"
   dependencies:
     agentkeepalive "^2.2.0"
     debug "^2.6.8"
@@ -4369,7 +4401,7 @@ ember-factory-for-polyfill@^1.3.1:
   dependencies:
     ember-cli-version-checker "^2.1.0"
 
-ember-fetch@5.1.1, "ember-fetch@^2.1.0 || ^3.0.0 || ^4.0.0 || ^5.0.0":
+"ember-fetch@^2.1.0 || ^3.0.0 || ^4.0.0 || ^5.0.0":
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/ember-fetch/-/ember-fetch-5.1.1.tgz#a7c791e85c4db46e315088287db1c73818ac9754"
   dependencies:
@@ -4768,7 +4800,7 @@ ember-svg-jar@1.2.1:
     mkdirp "^0.5.1"
     path-posix "^1.0.0"
 
-ember-template-lint@^0.8.7:
+ember-template-lint@^0.8.23:
   version "0.8.23"
   resolved "https://registry.yarnpkg.com/ember-template-lint/-/ember-template-lint-0.8.23.tgz#45170d6f2fe6336635df1d1067cabab6b5eb02d0"
   dependencies:
@@ -5021,13 +5053,6 @@ eslint-plugin-ember@5.2.0:
   dependencies:
     ember-rfc176-data "^0.3.3"
     snake-case "^2.1.0"
-
-eslint-plugin-hbs@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-hbs/-/eslint-plugin-hbs-0.1.1.tgz#bda6fbcb637b7a53a5365093fb246da4aa794b5b"
-  dependencies:
-    ember-template-lint "^0.8.7"
-    requireindex "~1.1.0"
 
 eslint-plugin-import@2.13.0:
   version "2.13.0"
@@ -9605,10 +9630,6 @@ require-uncached@^1.0.3:
     caller-path "^0.1.0"
     resolve-from "^1.0.0"
 
-requireindex@~1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.1.0.tgz#e5404b81557ef75db6e49c5a72004893fe03e162"
-
 requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
@@ -11291,9 +11312,9 @@ xmldom@^0.1.19:
   version "0.1.27"
   resolved "https://registry.yarnpkg.com/xmldom/-/xmldom-0.1.27.tgz#d501f97b3bdb403af8ef9ecc20573187aadac0e9"
 
-"xmlhttp-request@git+https://github.com/GetStream/xmlhttp-request.git#2474db1c2829697bcf2788fee49156b62ad8bcfd":
+"xmlhttp-request@https://github.com/GetStream/xmlhttp-request#2474db1c2829697bcf2788fee49156b62ad8bcfd":
   version "0.4.0"
-  resolved "git+https://github.com/GetStream/xmlhttp-request.git#2474db1c2829697bcf2788fee49156b62ad8bcfd"
+  resolved "https://github.com/GetStream/xmlhttp-request#2474db1c2829697bcf2788fee49156b62ad8bcfd"
 
 xmlhttprequest-ssl@~1.5.4:
   version "1.5.5"

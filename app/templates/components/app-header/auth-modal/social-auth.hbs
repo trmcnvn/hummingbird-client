@@ -27,6 +27,7 @@
 
       <div class="privacy-copy">
         <p>{{t "application.authentication.social-auth.privacy"}}</p>
+        {{! template-lint-disable no-invalid-interactive }}
         <p onclick={{action "handleTransition"}}>{{t "application.authentication.social-auth.agreement" link=(href-to "terms") htmlSafe=true}}</p>
       </div>
     </div>

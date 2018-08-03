@@ -16,10 +16,10 @@
     <span class="alternative-text">{{t "application.authentication.sign-in.alternative"}}</span>
     <form data-test-sign-in-form>
       <fieldset class="form-group">
-        <input class="form-control" type="text" placeholder={{t "application.authentication.sign-in.email"}}
-          value={{identification}} oninput={{action (mut identification) value="target.value"}} autofocus data-test-username />
-        <input class="form-control" type="password" placeholder={{t "application.authentication.sign-in.password"}}
-          value={{password}} oninput={{action (mut password) value="target.value"}} data-test-password />
+        <input class="form-control" type="email" placeholder={{t "application.authentication.sign-in.email"}} autocomplete="email"
+          value={{identification}} oninput={{action (mut identification) value="target.value"}} autofocus data-test-username>
+        <input class="form-control" type="password" placeholder={{t "application.authentication.sign-in.password"}} autocomplete="current-password"
+          value={{password}} oninput={{action (mut password) value="target.value"}} data-test-password>
         <a href={{href-to "password-reset"}} {{action (action closeModal)}}>
           {{t "application.authentication.sign-in.forgot"}}
         </a>

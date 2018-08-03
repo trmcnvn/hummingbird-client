@@ -1,0 +1,39 @@
+& {
+  margin-top: 0.5rem;
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+    &:last-child { margin-bottom: 0; }
+
+    font-size: rem(12px);
+
+    img {
+      width: rem(20px);
+      height: rem(20px);
+      margin-right: 0.5rem;
+    }
+
+    .event {
+      a {
+        font-weight: 700;
+      }
+
+      .media-rating {
+        display: inline-flex;
+        position: relative;
+        top: rem(6px);
+
+        .simple-rating {
+          width: rem(20px);
+          height: rem(20px);
+          background-size: rem(20px);
+        }
+      }
+    }
+  }
+}

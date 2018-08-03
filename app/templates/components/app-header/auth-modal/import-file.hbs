@@ -4,7 +4,7 @@
 
   <form>
     <fieldset class="form-group">
-      <input id="import-file" type="file" onchange={{action "selectFile"}} hidden />
+      <input id="import-file" type="file" onchange={{action "selectFile"}} hidden>
       {{#ui-button onClick=(action "triggerClick" "import-file") isDisabled=createImport.isRunning}}
         {{t "application.authentication.import-file.button"}}
         {{#if selectedFileName}}

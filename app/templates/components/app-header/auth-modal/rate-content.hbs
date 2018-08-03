@@ -2,7 +2,7 @@
   <h6>{{t "application.authentication.rate-content.header"}}</h6>
   <p>{{t "application.authentication.rate-content.info"}}</p>
   <input type="search" class="form-control" placeholder={{t "application.authentication.rate-content.search-placeholder"}}
-    value={{query}} oninput={{perform updateQuery value="target.value"}} />
+    value={{query}} oninput={{perform updateQuery value="target.value"}}>
 
   {{#bs-tab onChange=(action "tabChanged") as |tab|}}
     {{#tab.pane title=(t "general.anime")}}

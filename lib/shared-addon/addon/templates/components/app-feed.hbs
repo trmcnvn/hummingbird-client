@@ -22,18 +22,20 @@
 
 {{! Filters }}
 <div class="feed-actions">
-  {{#bs-dropdown as |dd|}}
-    {{#dd.toggle}}
-      {{t (concat "shared-addon.app-feed.feed.filters." selectedFilter)}}
-    {{/dd.toggle}}
-    {{#dd.menu align="right" as |ddm|}}
-      {{#each filterOptions as |filter|}}
-        <a class="dropdown-item {{if (eq selectedFilter filter) "active"}}" href="#" {{action "setFilter" filter}}>
-          {{t (concat "shared-addon.app-feed.feed.filters." filter)}}
-        </a>
-      {{/each}}
-    {{/dd.menu}}
-  {{/bs-dropdown}}
+  {{#if showFilters}}
+    {{#bs-dropdown as |dd|}}
+      {{#dd.toggle}}
+        {{t (concat "shared-addon.app-feed.feed.filters." selectedFilter)}}
+      {{/dd.toggle}}
+      {{#dd.menu align="right" as |ddm|}}
+        {{#each filterOptions as |filter|}}
+          <a class="dropdown-item {{if (eq selectedFilter filter) "active"}}" href="#" {{action "setFilter" filter}}>
+            {{t (concat "shared-addon.app-feed.feed.filters." filter)}}
+          </a>
+        {{/each}}
+      {{/dd.menu}}
+    {{/bs-dropdown}}
+  {{/if}}
 </div>
 
 {{! Feed Notice }}
