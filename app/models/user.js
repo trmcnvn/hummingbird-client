@@ -5,6 +5,7 @@ import { or } from '@ember-decorators/object/computed';
 
 export default class User extends Model {
   @attr('string') about;
+  @attr('string') aoPro;
   @attr('object') avatar;
   @attr('date') birthday;
   @attr('number') commentsCount;
@@ -59,9 +60,13 @@ export default class User extends Model {
     return title === 'staff' || title === 'mod';
   }
 
-  @computed('proExpiresAt')
+  @computed('aoPro', 'proExpiresAt')
   get isPro() {
-    if (!this.proExpiresAt) { return false; }
-    return new Date() < this.proExpiresAt;
+    const isKitsuPro = (() => {
+      if (!this.proExpiresAt) { return false; }
+      return new Date() < this.proExpiresAt;
+    })();
+    const isAozoraPro = this.aoPro !== null;
+    return isKitsuPro || isAozoraPro;
   }
 }
