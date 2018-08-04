@@ -50,7 +50,7 @@
             onConfirm=(action "deleteComment")
             onClose=(action (mut showDeleteModal) false)}}
         {{/if}}
-        {{#unless (is-current-user @comment.user)}}
+        {{#if (not (is-current-user @comment.user))}}
           <a class="dropdown-item" href="#" {{action (mut showReportModal) true}}>
             {{t "shared-addon.app-feed.items.post.comments.actions.report"}}
           </a>
@@ -72,7 +72,7 @@
               onConfirm=(perform blockUser)
               onClose=(action (mut showBlockModal) false)}}
           {{/unless}}
-        {{/unless}}
+        {{/if}}
       {{/if}}
     {{/dd.menu}}
   {{/bs-dropdown}}

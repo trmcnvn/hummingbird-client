@@ -1,0 +1,112 @@
+& {
+  border-radius: rem(3px);
+  padding: rem(20px);
+  height: rem(325px);
+  overflow: hidden;
+
+  @mixin abspos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    border-radius: rem(3px);
+    background-size: cover;
+  }
+
+  .reaction-vote {
+    z-index: 2;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: rem(5px) rem(10px);
+      border: rem(1px) solid;
+      border-radius: rem(3px);
+
+      font-weight: 700;
+
+      @include themify($themes) {
+        color: themed('white');
+        border-color: themed('gray-500');
+        &:hover:not(.disabled) { border-color: themed('white'); }
+      }
+
+      &.voted {
+        @include themify($themes) {
+          background-color: themed('primary');
+          border-color: themed('primary');
+          &:hover { border-color: themed('primary'); }
+        }
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+      }
+
+      svg {
+        width: rem(20px);
+        height: rem(20px);
+      }
+    }
+  }
+
+  .reaction-actions {
+    z-index: 2;
+    position: absolute;
+    top: rem(10px);
+    right: rem(20px);
+
+    svg {
+      width: rem(42px);
+      height: rem(42px);
+      @include themify($themes) {
+        stroke: themed('gray-300');
+      }
+    }
+
+    .dropdown-toggle {
+      &::after {
+        content: none;
+      }
+    }
+    .dropdown-item {
+      font-size: rem(12px);
+    }
+  }
+
+  .reaction {
+    position: absolute;
+    bottom: rem(20px);
+    left: rem(20px);
+    z-index: 2;
+
+    .reaction-media {
+      font-size: rem(12px);
+
+      @include themify($themes) {
+        color: themed('secondary-text');
+        .media-title { color: themed('white'); }
+      }
+    }
+
+    .content {
+      @include themify($themes) {
+        color: themed('white');
+      }
+    }
+  }
+
+  .poster-image {
+    @include abspos;
+  }
+
+  .overlay {
+    @include abspos;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0.9) 100%);
+    z-index: 1;
+  }
+}

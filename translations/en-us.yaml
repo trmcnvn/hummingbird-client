@@ -4,6 +4,7 @@ application:
     terms: "Terms"
     posts: "Post by {name}"
     comments: "Comment by {name}"
+    reactions: "Reaction by {name}"
   header:
     library: "Library"
     browse: "Browse"
@@ -150,10 +151,14 @@ application:
           other {}}."
   mobile-banner:
     info: "Get a better experience using the official Kitsu mobile application"
+  reactions:
+    view-more: "View all <strong>{count}</strong> of {name}'s reactions"
   errors:
     notifications-request: "There was an issue retrieving your Notifications."
     notifications-marking: "There was an issue updating your Notifications."
 general:
+  copied: "Copied to clipboard"
+  reported: "Your report has been submitted"
   anime: "Anime"
   manga: "Manga"
   status:
@@ -169,7 +174,23 @@ general:
       completed: "Completed"
       dropped: "Dropped"
       on_hold: "On Hold"
+  media:
+    subtypes:
+      tv: "TV"
+      special: "Special"
+      ona: "ONA"
+      ova: "OVA"
+      movie: "Movie"
+      music: "Music"
+      manga: "Manga"
+      novel: "Novel"
+      manhua: "Manhua"
+      oneshot: "One-shot"
+      doujin: "Doujin"
+      manhwa: "Manhwa"
+      oel: "OEL"
   errors:
+    request: "There was an issue with the request."
     delete: "There was an issue deleting this record."
 # validations addon
 errors:

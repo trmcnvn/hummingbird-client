@@ -1,0 +1,65 @@
+<div class="reaction-vote">
+  <a href="#" class="{{if hasRecord "voted"}} {{if (is-current-user reaction.user) "disabled"}}" {{action "toggleVote"}}>
+    {{svg-jar "chevrons-up"}}
+    <span class="count">{{reaction.upVotesCount}}</span>
+    {{#if (is-current-user reaction.user)}}
+      {{bs-tooltip title=(t "shared-addon.media-reaction-card.self-vote") placement="right"}}
+    {{/if}}
+  </a>
+</div>
+
+<div class="reaction-actions">
+  {{#bs-dropdown as |dd|}}
+    {{#dd.toggle}}
+      {{svg-jar "more-horizontal"}}
+    {{/dd.toggle}}
+    {{#dd.menu renderInPlace=true align="right"}}
+      <a class="dropdown-item" href={{href-to "reactions" reaction.remoteId}} data-clipboard-text={{compute (action "getCopyLink") (href-to "reactions" reaction.remoteId)}} {{action "noop"}}>
+        {{t "shared-addon.media-reaction-card.copy"}}
+      </a>
+      {{#if canMutateReaction}}
+        <a class="dropdown-item" href="#" {{action "noop"}}>
+          {{t "shared-addon.media-reaction-card.edit"}}
+        </a>
+        {{! @TODO }}
+
+        <a class="dropdown-item" href="#" {{action (mut showDeleteModal) true}}>
+          {{t "shared-addon.media-reaction-card.delete"}}
+        </a>
+        {{confirm-modal
+          open=showDeleteModal
+          onConfirm=(action "deleteReaction")
+          onClose=(action (mut showDeleteModal) false)}}
+      {{/if}}
+
+      {{#if (and session.hasSession (not (is-current-user reaction.user)))}}
+        <a class="dropdown-item" href="#" {{action (mut showReportModal) true}}>
+          {{t "shared-addon.media-reaction-card.report"}}
+        </a>
+        {{report-modal
+          open=showReportModal
+          record=reaction
+          onCreate=(action "reportCreated")
+          onClose=(action (mut showReportModal) false)}}
+      {{/if}}
+    {{/dd.menu}}
+  {{/bs-dropdown}}
+</div>
+
+<div class="reaction">
+  <div class="reaction-media">
+    <a href={{href-to media.type media.slug}} class="media-title">
+      {{computed-title media true}}
+    </a>
+    <span class="media-subtype">
+      {{t (concat "general.media.subtypes." subtypeKey)}}
+    </span>
+    {{#if media.year}}
+      &middot;
+      <span class="media-year">{{media.year}}</span>
+    {{/if}}
+  </div>
+  <a href={{href-to "reactions" reaction.remoteId}} class="content">{{reaction.reaction}}</a>
+</div>
+<div class="poster-image" style={{posterImageStyle}}></div>
+<div class="overlay"></div>

@@ -159,7 +159,6 @@ shared-addon:
         actions:
           followers: "{count} Followers"
           copy: "Copy Link"
-          copied: "Copied to clipboard"
           follow: "Follow Post"
           follow-help: "Receive notifications about this post"
           unfollow: "Unfollow Post"
@@ -186,7 +185,6 @@ shared-addon:
           delete: "Delete Post"
           deleted: "The post was deleted"
           report: "Report Post"
-          reported: "Your report has been submitted"
           block: "Block @{name}"
           block-help: "You'll no longer see this users posts and they won't be able to interact with you"
           blocked: "You've blocked @{name}"
@@ -241,6 +239,12 @@ shared-addon:
     mod: "MOD"
     staff: "STAFF"
     pro: "PRO"
+  media-reaction-card:
+    self-vote: "You can't vote on your own reaction"
+    copy: "Copy Link to Reaction"
+    edit: "Edit Reaction"
+    delete: "Delete Reaction"
+    deleted: "Your reaction was deleted"
+    report: "Report Reaction"
   errors:
     feed-request: "There was an issue requesting your feed."
-    request: "There was an issue with the request. Please try again!"

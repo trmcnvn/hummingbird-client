@@ -1,0 +1,20 @@
+.page-reactions {
+  .view-more > a {
+    display: block;
+    padding: rem(10px);
+    margin-top: rem(15px);
+    margin-bottom: rem(15px);
+    border-radius: rem(3px);
+    border: rem(1px) solid;
+    text-align: center;
+
+    @include themify($themes) {
+      color: themed('text');
+      border-color: themed('gray-300');
+      &:hover {
+        color: themed('primary');
+        border-color: themed('primary');
+      }
+    }
+  }
+}

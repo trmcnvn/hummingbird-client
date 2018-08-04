@@ -1,0 +1,19 @@
+<div class="container page-reactions">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 pl-0">
+      {{media-reaction-card reaction=model isPermalinkPage=true}}
+      <div class="view-more">
+        {{! @TODO: @Profiles - Link to reactions }}
+        <a href="#">
+          {{t "application.reactions.view-more"
+            count=model.user.mediaReactionsCount
+            name=model.user.name
+            htmlSafe=true}}
+        </a>
+      </div>
+    </div>
+    <div class="col-sm-4 pr-0">
+      {{user-card user=model.user}}
+    </div>
+  </div>
+</div>

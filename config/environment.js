@@ -46,7 +46,7 @@ module.exports = function(environment) {
           networkId: '20370372407'
         }
       },
-      OrbitDBVersion: '99d88fb9-57c8-426b-a3d9-7ce70fef43d2'
+      OrbitDBVersion: '99d88fb9-57c8-426b-a3d9-7ce70fef42d2'
     },
 
     // ember-cli-sentry
