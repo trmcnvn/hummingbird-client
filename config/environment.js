@@ -37,9 +37,14 @@ module.exports = function(environment) {
           // development: { key: 'sjm3sx9mgcx2', app: '17073' }
           development: { key: 'eb6dvmba4ct3', app: '18373' } // @TODO
         },
-        googleAnalytics: 'UA-37633900-4',
-        twitterPixel: 'nz90m',
-        facebookPixel: '1372973436170230'
+        analytics: {
+          googleAnalytics: 'UA-37633900-4',
+          twitterPixel: 'nz90m',
+          facebookPixel: '1372973436170230'
+        },
+        google: {
+          networkId: '20370372407'
+        }
       },
       OrbitDBVersion: '99d88fb9-57c8-426b-a3d9-7ce70fef43d2'
     },

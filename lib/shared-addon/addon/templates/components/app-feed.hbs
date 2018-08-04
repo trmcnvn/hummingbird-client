@@ -55,7 +55,7 @@
         {{t "shared-addon.app-feed.feed.notice.button"}}
       {{/ui-button}}
     </div>
-    <span class="close" {{action "dismissNotice"}}>{{svg-jar "x"}}</span>
+    <a href="#" class="close" {{action "dismissNotice"}}>{{svg-jar "x"}}</a>
   </div>
 {{/if}}
 
@@ -74,6 +74,22 @@
             onDelete=(action "onDelete" item)}}
         {{/occludable-component}}
       {{/with}}
+
+      {{#if (compute (action "isAdIndex") index)}}
+        {{! We don't want to render ads on NSFW pages, this is against Google's policy }}
+        {{#if targetGroup.nsfw}}
+          {{! ... }}
+        {{else if targetMedia.nsfw}}
+          {{! ... }}
+        {{else}}
+          {{gam-unit
+            unit="kitsu.feeds.inline"
+            targeting=(hash section="feed")
+            sizes=(hash
+              mobile=(array (array 336 280) (array 300 250) (array 320 100) (array 320 50))
+            )}}
+        {{/if}}
+      {{/if}}
     {{/each}}
   {{/ui-pagination}}
 {{/if}}
