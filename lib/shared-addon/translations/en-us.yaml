@@ -246,5 +246,8 @@ shared-addon:
     delete: "Delete Reaction"
     deleted: "Your reaction was deleted"
     report: "Report Reaction"
+  user-follow-button:
+    follow: "Follow"
+    unfollow: "Unfollow"
   errors:
     feed-request: "There was an issue requesting your feed."

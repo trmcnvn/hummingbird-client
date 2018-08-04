@@ -1,0 +1,51 @@
+& {
+  border-radius: rem(3px);
+
+  .banner > img {
+    height: rem(80px);
+    width: 100%;
+    border-radius: rem(3px);
+    object-fit: cover;
+  }
+
+  .user-block {
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    top: rem(-40px);
+
+    margin-bottom: rem(-25px);
+    margin-left: rem(15px);
+  }
+
+  .avatar {
+    img {
+      width: rem(80);
+      height: rem(80px);
+
+      border: 2px solid;
+      @include themify($themes) {
+        border-color: themed('white');
+      }
+    }
+  }
+
+  .username {
+    position: relative;
+    top: rem(-15px);
+    margin-left: rem(15px);
+
+    h4 {
+      font-size: rem(20px);
+      font-weight: 700;
+
+      @include themify($themes) {
+        color: themed('white');
+        -webkit-text-fill-color: themed('white');
+        -webkit-text-stroke-width: 0.25px;
+        -webkit-text-stroke-color: themed('black');
+      }
+    }
+  }
+}

@@ -87,7 +87,7 @@
     "ember-test-selectors": "1.0.0",
     "ember-truth-helpers": "2.0.0",
     "ember-web-app": "2.3.0",
-    "eslint": "5.2.0",
+    "eslint": "5.3.0",
     "eslint-plugin-ember": "5.2.0",
     "eslint-plugin-import": "2.13.0",
     "getstream": "3.19.0",

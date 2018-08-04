@@ -51,6 +51,8 @@ export default class User extends Model {
   @hasMany('categoryFavorite', { inverse: 'user' }) categoryFavorites;
   @hasMany('libraryEntry', { inverse: 'user' }) libraryEntries;
   @hasMany('upload', { inverse: 'user' }) uploads;
+  @hasMany('follow', { inverse: 'follower' }) following;
+  @hasMany('follow', { inverse: 'followed' }) followers;
 
   @or('slug', 'remoteId') linkableId;
 

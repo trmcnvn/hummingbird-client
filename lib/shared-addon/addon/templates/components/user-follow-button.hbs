@@ -1,0 +1,14 @@
+{{#if fetchFollow.isIdle}}
+  {{#ui-button
+    buttonClass=styleNamespace
+    isLoading=fetchFollow.isRunning
+    isDestructive=isFollowing
+    onClick=(action "onClick")
+  }}
+    {{#if isFollowing}}
+      {{t "shared-addon.user-follow-button.unfollow"}}
+    {{else}}
+      {{t "shared-addon.user-follow-button.follow"}}
+    {{/if}}
+  {{/ui-button}}
+{{/if}}
