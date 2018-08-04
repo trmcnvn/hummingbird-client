@@ -1,7 +1,7 @@
 <div class={{styleNamespace}}>
   {{#if (and isReadOnly currentRating)}}
     <span class="simple-rating rating-{{currentRating.tag}}"></span>
-    <span class="simple-tag simple-tag-{{currentRating.tag}}">{{t (concat "shared-addon.media-rating." currentRating.tag)}}</span>
+    <span class="simple-tag simple-tag--{{currentRating.tag}}">{{t (concat "shared-addon.media-rating." currentRating.tag)}}</span>
   {{else}}
     {{#each allRatings as |rating|}}
       <a href="#" class="bounce rating-{{rating.tag}} {{if (not-eq rating.value rating)  "disabled"}}" {{action "setRating" rating}}>

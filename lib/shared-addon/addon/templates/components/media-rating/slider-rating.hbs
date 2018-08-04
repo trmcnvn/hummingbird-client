@@ -1,1 +1,12 @@
-{{yield}}
+<div class={{styleNamespace}}>
+  {{#if isReadOnly}}
+    <span class="star-rating star-rating--{{ratingTag}}">{{svg-jar "star"}}</span>
+    {{! @i18n: Do we need to put this `N / N` into translations? }}
+    <span class="star-rating-value">
+      <span class="star-rating-value--{{ratingTag}}">{{rating}}</span>
+      / {{format-number 10}}
+    </span>
+  {{else}}
+    {{! @TODO - @NotImplemented }}
+  {{/if}}
+</div>

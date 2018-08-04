@@ -49,10 +49,10 @@
     font-weight: 700;
 
     @include themify($themes) {
-      &-awful { color: themed('rating-awful') }
-      &-meh { color: themed('rating-meh') }
-      &-good { color: themed('rating-good') }
-      &-great { color: themed('rating-great') }
+      &--awful { color: themed('rating-awful') }
+      &--meh { color: themed('rating-meh') }
+      &--good { color: themed('rating-good') }
+      &--great { color: themed('rating-great') }
     }
   }
 }

@@ -1,0 +1,43 @@
+// @TODO: Move this into an imported file
+@mixin star-rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .star-rating {
+    margin-right: rem(5px);
+    svg {
+      stroke-width: rem(1px);
+      @include themify($themes) {
+        stroke: themed('black');
+      }
+    }
+
+    @include themify($themes) {
+      &--awful {
+        svg { fill: themed('rating-awful'); }
+      }
+      &--meh {
+        svg { fill: themed('rating-meh'); }
+      }
+      &--good {
+        svg { fill: themed('rating-good'); }
+      }
+      &--great {
+        svg { fill: themed('rating-great'); }
+      }
+    }
+  }
+
+  .star-rating-value {
+    font-weight: 700;
+
+    @include themify($themes) {
+      &--awful { color: themed('rating-awful'); }
+      &--meh { color: themed('rating-meh'); }
+      &--good { color: themed('rating-good'); }
+      &--great { color: themed('rating-great'); }
+    }
+  }
+}

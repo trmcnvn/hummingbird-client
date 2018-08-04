@@ -22,20 +22,3 @@ Check out the main [repo][meta] for information on setting up a development envi
 ## Issues
 
 Looking to create an issue? Click this helpful link [here](https://github.com/hummingbird-me/hummingbird/issues/new?labels=realm:client) or open a [bug report on Kitsu](https://kitsu.io/feedback/bugs).
-
-## Development
-
-### Comment Keys
-
-Searchable keys used with code comments.
-
-- `@TODO` - Tasks that needs to be completed in a future commit
-  - `@FastBoot` - Fastboot related TODO
-  - `@Metrics` - Metrics related TODO
-  - `@Theme` - Theme related TODO
-  - `@Cleanup` - Cleanup related TODO
-- `@Debug` - Logging statement that should be removed
-- `@Unsure` - Unanswered question that should be resolved
-- `@Orbit` - Custom functionality with Orbit
-- `@Legacy` - Handling legacy code
-- `@Issue` - Workaround related to an active GitHub issue

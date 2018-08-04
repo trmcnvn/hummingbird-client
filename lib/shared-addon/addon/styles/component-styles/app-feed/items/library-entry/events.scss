@@ -25,9 +25,11 @@
 
       .media-rating {
         display: inline-flex;
-        position: relative;
-        top: rem(6px);
 
+        .simple-rating, .simple-tag {
+          position: relative;
+          top: 6px;
+        }
         .simple-rating {
           width: rem(20px);
           height: rem(20px);
