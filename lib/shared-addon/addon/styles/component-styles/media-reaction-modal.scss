@@ -60,39 +60,30 @@
       }
     }
 
-    .actions {
-      position: relative;
-
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
-
-      .destroy {
-        svg {
-          width: rem(20px);
-          height: rem(20px);
-
-          @include themify($themes) {
-            stroke: themed('red');
-          }
-        }
-      }
-
-      .create {
-        position: absolute;
-        top: rem(-10px);
-        right: rem(-10px);
-
-        border-radius: 999em;
-        border: 2px solid;
-
-        width: rem(100px);
-        height: rem(100px);
+    .destroy {
+      svg {
+        width: rem(20px);
+        height: rem(20px);
 
         @include themify($themes) {
-          border-color: themed('white');
+          stroke: themed('red');
         }
+      }
+    }
+
+    .create {
+      position: absolute;
+      bottom: rem(-50px);
+      right: rem(15px);
+
+      border-radius: 999em;
+      border: 2px solid;
+
+      width: rem(100px);
+      height: rem(100px);
+
+      @include themify($themes) {
+        border-color: themed('white');
       }
     }
   }

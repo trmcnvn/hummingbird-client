@@ -1,8 +1,10 @@
-{{#bs-modal class=styleNamespace open=@open onHidden=@onHidden as |modal|}}
+{{#bs-modal class=styleNamespace open=@open onHidden=@onHidden renderInPlace=false as |modal|}}
   {{#modal.body}}
     <div class="reaction">
       <div class="reaction-header">
-        <div class="warning">{{t "shared-addon.media-reaction-modal.editing"}}</div>
+        {{#if isEditing}}
+          <div class="warning">{{t "shared-addon.media-reaction-modal.editing"}}</div>
+        {{/if}}
         <div class="meta">
           <div class="media-info">
             <a href={{href-to media.type media.slug}} class="media-title">
@@ -27,23 +29,25 @@
         onInput=(action (mut message))
         onKeys=(hash 13=(action "onEnter"))}}
       <div class="actions">
-        <a class="destroy" href="#" {{action (mut showDeleteModal) true}}>
-          {{svg-jar "trash"}}
-          {{bs-tooltip title=(t "shared-addon.media-reaction-modal.delete")}}
-        </a>
-        {{confirm-modal
-          open=showDeleteModal
-          onConfirm=(perform destroyReaction)
-          onClose=(action (mut showDeleteModal) false)}}
-
-        {{#ui-button buttonClass="create" onClick=(perform createReaction) isLoading=createReaction.isRunning}}
-          {{#if isEditing}}
-            {{t "shared-addon.media-reaction-modal.edit"}}
-          {{else}}
-            {{t "shared-addon.media-reaction-modal.post"}}
-          {{/if}}
-        {{/ui-button}}
+        {{#if isEditing}}
+          <a class="destroy" href="#" {{action (mut showDeleteModal) true}}>
+            {{svg-jar "trash"}}
+            {{bs-tooltip title=(t "shared-addon.media-reaction-modal.delete")}}
+          </a>
+          {{confirm-modal
+            open=showDeleteModal
+            onConfirm=(perform destroyReaction)
+            onClose=(action (mut showDeleteModal) false)}}
+        {{/if}}
       </div>
+
+      {{#ui-button buttonClass="create" onClick=(perform createReaction) isLoading=createReaction.isRunning}}
+        {{#if isEditing}}
+          {{t "shared-addon.media-reaction-modal.edit"}}
+        {{else}}
+          {{t "shared-addon.media-reaction-modal.post"}}
+        {{/if}}
+      {{/ui-button}}
     </div>
     <div class="poster-image" style={{posterImageStyle}}></div>
     <div class="overlay"></div>

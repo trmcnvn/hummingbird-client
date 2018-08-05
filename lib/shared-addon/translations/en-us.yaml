@@ -262,5 +262,7 @@ shared-addon:
     delete: "Delete Reaction"
     post: "Post"
     edit: "Edit"
+  user-card:
+    view-profile: "View Profile"
   errors:
     feed-request: "There was an issue requesting your feed."

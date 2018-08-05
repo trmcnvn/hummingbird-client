@@ -13,7 +13,11 @@
   </a>
 </div>
 <div class="actions">
-  {{#if (not (is-current-user user))}}
+  {{#if (is-current-user user)}}
+    {{#ui-button onClick=(action "transitionToProfile")}}
+      {{t "shared-addon.user-card.view-profile"}}
+    {{/ui-button}}
+  {{else}}
     {{user-follow-button user=user}}
     {{user-actions user=user vertical=true}}
   {{/if}}

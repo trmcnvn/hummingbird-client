@@ -36,8 +36,17 @@
     will-change: transform;
 
     @include themify($themes) {
-      background-color: themed('background');
-      box-shadow: 0 rem(1px) rem(10px) rgba(0, 0, 0, 0.8); // @Theme
+      &:not(.completed) {
+        background-color: themed('background');
+        box-shadow: 0 rem(1px) rem(10px) rgba(0, 0, 0, 0.8); // @Theme
+      }
+    }
+
+    .completed-actions {
+      padding: rem(10px);
+
+      display: flex;
+      flex-direction: column;
     }
 
     textarea {

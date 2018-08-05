@@ -1,8 +1,22 @@
 <div class="{{styleNamespace}}">
   {{! Hover Actions }}
-  <div class="action-wrapper">
+  <div class="action-wrapper {{if isCompleted "completed"}}">
     {{#if isCompleted}}
-      {{! @TODO: Completed State (Rating/Reaction) }}
+      <div class="completed-actions">
+        {{#ui-button buttonClass="reaction-button" onClick=(action (mut showReactionComponent) true)}}
+          Post Reaction
+        {{/ui-button}}
+        {{media-reaction-modal
+          reaction=reactionRecord
+          media=libraryEntry.media
+          libraryEntry=libraryEntry
+          open=showReactionComponent
+          onHidden=(action (mut showReactionComponent) false)
+          onCreate=(action "onReactionCreated")
+          onDelete=(action "onReactionDeleted")}}
+
+        {{! @TODO: Rating }}
+      </div>
     {{else}}
       <textarea placeholder={{t "dashboard.quick-update.actions.placeholder" type=libraryEntry.media.type number=nextProgressValue}}
       value={{message}} oninput={{action (mut message) value="target.value"}} />

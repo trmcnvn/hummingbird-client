@@ -19,6 +19,7 @@ const App = Application.extend({
   // eslint-disable-next-line ember/avoid-leaking-state-in-ember-objects
   engines: {
     dashboard: {
+      // @TODO: Specify properly
       dependencies: {
         services: [
           'algolia',
@@ -41,22 +42,67 @@ const App = Application.extend({
     },
     explore: {
       dependencies: {
-        services: ['algolia', 'analytics', 'fetch', 'intl', 'router', 'session', 'store']
+        services: [
+          'algolia',
+          'analytics',
+          'cache',
+          'dataCoordinator',
+          'experiments',
+          'fetch',
+          'intl',
+          'notification-messages',
+          'raven',
+          'router',
+          'session',
+          'store'
+        ]
       }
     },
     feedback: {
       dependencies: {
-        services: ['analytics', 'intl', 'fetch', 'router', 'session']
+        services: [
+          'analytics',
+          'fetch',
+          'intl',
+          'router',
+          'session',
+        ]
       }
     },
     media: {
       dependencies: {
-        services: ['analytics', 'intl', 'router', 'session', 'store']
+        services: [
+          'algolia',
+          'analytics',
+          'cache',
+          'dataCoordinator',
+          'experiments',
+          'fetch',
+          'intl',
+          'notification-messages',
+          'raven',
+          'router',
+          'session',
+          'store'
+        ]
       }
     },
     profile: {
       dependencies: {
-        services: ['analytics', 'intl', 'router', 'session', 'store']
+        services: [
+          'algolia',
+          'analytics',
+          'cache',
+          'dataCoordinator',
+          'experiments',
+          'fetch',
+          'intl',
+          'notification-messages',
+          'raven',
+          'router',
+          'session',
+          'store'
+        ]
       }
     }
   }
