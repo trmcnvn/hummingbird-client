@@ -252,5 +252,13 @@ shared-addon:
   guest-user-card:
     text: "{name} is using Kitsu to track their progress and share their anime & manga experiences."
     button: "Create Account"
+  media-reaction-modal:
+    editing: "Careful! Editing will reset the votes on this reaction."
+    placeholder: "{index, plural,
+      =0 {Got me rethinking some important life decisions.}
+      =1 {Unexpectedly good! Lots of memorable scenes.}
+      =2 {While it may not be everyone's cup of tea, it's certainly interesting.}
+      other {Overrated, don't waste your time on this one.}}"
+    delete: "Delete Reaction"
   errors:
     feed-request: "There was an issue requesting your feed."

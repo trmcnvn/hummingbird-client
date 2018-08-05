@@ -1,0 +1,102 @@
+& {
+  .modal-dialog {
+    height: rem(390px);
+    width: rem(390px);
+  }
+
+  .modal-content {
+    height: 100%;
+  }
+
+  .modal-body {
+    padding: 0;
+    height: 100%;
+  }
+
+  .reaction {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100% !important;
+    padding: rem(20px);
+    z-index: 2;
+
+    .reaction-header {
+      display: flex;
+      flex-direction: column;
+
+      font-size: rem(14px);
+      border-bottom: rem(1px) solid;
+      padding-bottom: rem(5px);
+
+      @include themify($themes) {
+        border-color: themed('gray-700');
+        color: themed('secondary-text');
+        .media-title { color: themed('gray-300'); }
+      }
+
+      .warning {
+        font-style: italic;
+      }
+
+      .meta {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    textarea {
+      background-color: transparent !important;
+      min-height: rem(70px);
+      margin-top: rem(15px);
+      border: none;
+      outline: none;
+      width: 100% !important;
+
+      @include themify($themes) {
+        color: themed('white');
+      }
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+
+      .destroy {
+        svg {
+          width: rem(20px);
+          height: rem(20px);
+
+          @include themify($themes) {
+            stroke: themed('red');
+          }
+        }
+      }
+    }
+  }
+
+  @mixin abspos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    border-radius: rem(3px);
+  }
+
+  .poster-image {
+    @include abspos;
+    background-size: cover;
+  }
+
+  .overlay {
+    @include abspos;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0.9) 100%);
+    z-index: 1;
+  }
+}

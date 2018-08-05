@@ -20,7 +20,7 @@
     {{/if}}
 
     {{#unless isUserBlocked}}
-      <a class="dropdown-item" href="#" {{action (mut showBlockModal) true}}>
+      <a class="dropdown-item" href="#" {{action "toggleBlockModal"}}>
         {{t "shared-addon.app-feed.items.post.actions.block" name=user.name}}
         <small>{{t "shared-addon.app-feed.items.post.actions.block-help"}}</small>
       </a>

@@ -19,7 +19,7 @@
       {{#dd.toggle}}
         {{svg-jar "more-horizontal"}}
       {{/dd.toggle}}
-      {{#dd.menu align="right" as |ddm|}}
+      {{#dd.menu align="right"}}
         {{#if fetchRecords.isRunning}}
           {{ui-spinner center=true class="my-2"}}
         {{else}}
@@ -35,7 +35,7 @@
               {{/if}}
             </a>
           {{/if}}
-          {{#unless (is-current-user @post.user)}}
+          {{#if (not (is-current-user @post.user))}}
             <a class="dropdown-item" href="#" {{action (perform followPost)}}>
               {{#if isPostFollowed}}
                 {{t "shared-addon.app-feed.items.post.actions.unfollow"}}
@@ -45,7 +45,7 @@
                 <small>{{t "shared-addon.app-feed.items.post.actions.follow-help"}}</small>
               {{/if}}
             </a>
-          {{/unless}}
+          {{/if}}
           {{#if isOnTimeline}}
             {{#if (and @post.targetGroup groupMemberRecord)}}
               <a class="dropdown-item" href="#" {{action (perform hideGroup)}}>
@@ -118,7 +118,7 @@
               onConfirm=(action "deletePost")
               onClose=(action (mut showDeleteModal) false)}}
           {{/if}}
-          {{#unless (is-current-user @post.user)}}
+          {{#if (not (is-current-user @post.user))}}
             <a class="dropdown-item" href="#" {{action (mut showReportModal) true}}>
               {{t "shared-addon.app-feed.items.post.actions.report"}}
             </a>
@@ -131,7 +131,7 @@
               onClose=(action (mut showReportModal) false)}}
 
             {{#unless isUserBlocked}}
-              <a class="dropdown-item" href="#" {{action (mut showBlockModal) true}}>
+              <a class="dropdown-item" href="#" {{action "toggleBlockModal"}}>
                 {{t "shared-addon.app-feed.items.post.actions.block" name=@post.user.name}}
                 <small>{{t "shared-addon.app-feed.items.post.actions.block-help"}}</small>
               </a>
@@ -140,7 +140,7 @@
                 onConfirm=(perform blockUser)
                 onClose=(action (mut showBlockModal) false)}}
             {{/unless}}
-          {{/unless}}
+          {{/if}}
         {{/if}}
       {{/dd.menu}}
     {{/bs-dropdown}}

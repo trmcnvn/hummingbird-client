@@ -1,0 +1,43 @@
+{{#bs-modal class=styleNamespace open=@open onHidden=@onHidden as |modal|}}
+  {{#modal.body}}
+    <div class="reaction">
+      <div class="reaction-header">
+        <div class="warning">{{t "shared-addon.media-reaction-modal.editing"}}</div>
+        <div class="meta">
+          <div class="media-info">
+            <a href={{href-to media.type media.slug}} class="media-title">
+              {{computed-title media true}}
+            </a>
+            <span class="media-subtype">
+              {{t (concat "general.media.subtypes." subtypeKey)}}
+            </span>
+            {{#if media.year}}
+              &middot;
+              <span class="media-year">{{media.year}}</span>
+            {{/if}}
+          </div>
+          <div class="reaction-count">{{charCount}}</div>
+        </div>
+      </div>
+      {{textarea-autosize
+        value=message
+        placeholder=(t "shared-addon.media-reaction-modal.placeholder" index=editorPlaceholder)
+        maxlength=maxLength
+        autofocus=true
+        onInput=(action (mut message))
+        onKeys=(hash 13=(action "onEnter"))}}
+      <div class="actions">
+        <a class="destroy" href="#" {{action (mut showDeleteModal) true}}>
+          {{svg-jar "trash"}}
+          {{bs-tooltip title=(t "shared-addon.media-reaction-modal.delete")}}
+        </a>
+        {{confirm-modal
+          open=showDeleteModal
+          onConfirm=(perform destroyReaction)
+          onClose=(action (mut showDeleteModal) false)}}
+      </div>
+    </div>
+    <div class="poster-image" style={{posterImageStyle}}></div>
+    <div class="overlay"></div>
+  {{/modal.body}}
+{{/bs-modal}}

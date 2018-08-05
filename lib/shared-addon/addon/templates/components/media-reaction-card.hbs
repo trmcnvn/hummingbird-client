@@ -18,17 +18,22 @@
         {{t "shared-addon.media-reaction-card.copy"}}
       </a>
       {{#if canMutateReaction}}
-        <a class="dropdown-item" href="#" {{action "noop"}}>
+        <a class="dropdown-item" href="#" {{action (mut showEditComponent) true}}>
           {{t "shared-addon.media-reaction-card.edit"}}
         </a>
-        {{! @TODO }}
+        {{media-reaction-modal
+          reaction=reaction
+          media=reaction.media
+          open=showEditComponent
+          onHidden=(action (mut showEditComponent) false)
+          onDelete=(perform destroyReaction)}}
 
         <a class="dropdown-item" href="#" {{action (mut showDeleteModal) true}}>
           {{t "shared-addon.media-reaction-card.delete"}}
         </a>
         {{confirm-modal
           open=showDeleteModal
-          onConfirm=(action "deleteReaction")
+          onConfirm=(perform destroyReaction)
           onClose=(action (mut showDeleteModal) false)}}
       {{/if}}
 

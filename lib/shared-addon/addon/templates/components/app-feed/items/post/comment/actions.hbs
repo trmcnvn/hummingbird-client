@@ -1,8 +1,8 @@
 <div class="left-actions">
-  <div class="reply-action" {{action @onReply}}>
+  <a class="reply-action" href="#" {{action @onReply}}>
     {{svg-jar "message-square"}}
     {{t "shared-addon.app-feed.items.post.comments.reply"}}
-  </div>
+  </a>
 
   {{app-feed/activity-likes
     activity=@comment
@@ -16,7 +16,7 @@
     {{#dd.toggle}}
       {{svg-jar "more-horizontal"}}
     {{/dd.toggle}}
-    {{#dd.menu align="right" as |ddm|}}
+    {{#dd.menu align="right"}}
       {{#if fetchGroupMember.isRunning}}
         {{ui-spinner center=true class="my-2"}}
       {{else}}
@@ -63,7 +63,7 @@
             onClose=(action (mut showReportModal) false)}}
 
           {{#unless isUserBlocked}}
-            <a class="dropdown-item" href="#" {{action (mut showBlockModal) true}}>
+            <a class="dropdown-item" href="#" {{action "toggleBlockModal"}}>
               {{t "shared-addon.app-feed.items.post.actions.block" name=@comment.user.name}}
               <small>{{t "shared-addon.app-feed.items.post.actions.block-help"}}</small>
             </a>
