@@ -1,6 +1,9 @@
-<a class="banner" href={{href-to "profile" user.linkableId}}>
-  {{ui-image image=(get-image user.coverImage "tiny") fallback="/images/default_cover.png"}}
-</a>
+<div class="user-banner">
+  <a class="banner" href={{href-to "profile" user.linkableId}}>
+    {{ui-image image=(get-image user.coverImage "tiny") fallback="/images/default_cover.png"}}
+  </a>
+  <div class="overlay"></div>
+</div>
 <div class="user-block">
   <a class="avatar" href={{href-to "profile" user.linkableId}}>
     {{ui-avatar image=(get-image user.avatar "large")}}
@@ -8,10 +11,10 @@
   <a class="username" href={{href-to "profile" user.linkableId}}>
     <h4>{{user.name}}</h4>
   </a>
-  <div class="actions">
-    {{#if (not (is-current-user user))}}
-      {{user-follow-button user=user}}
-      {{! @TODO: Actions }}
-    {{/if}}
-  </div>
+</div>
+<div class="actions">
+  {{#if (not (is-current-user user))}}
+    {{user-follow-button user=user}}
+    {{user-actions user=user vertical=true}}
+  {{/if}}
 </div>

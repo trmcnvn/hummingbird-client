@@ -249,5 +249,8 @@ shared-addon:
   user-follow-button:
     follow: "Follow"
     unfollow: "Unfollow"
+  guest-user-card:
+    text: "{name} is using Kitsu to track their progress and share their anime & manga experiences."
+    button: "Create Account"
   errors:
     feed-request: "There was an issue requesting your feed."

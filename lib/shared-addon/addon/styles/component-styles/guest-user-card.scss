@@ -1,0 +1,14 @@
+& {
+  padding: rem(15px);
+
+  border-radius: rem(3px) !important;
+  border: none !important;
+
+  @include themify($themes) {
+    background-color: darken(themed('background'), 5%) !important;
+  }
+
+  p {
+    text-align: center;
+  }
+}

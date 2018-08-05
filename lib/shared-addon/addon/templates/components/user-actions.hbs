@@ -1,0 +1,33 @@
+{{#bs-dropdown as |dd|}}
+  {{#dd.toggle}}
+    {{#if vertical}}
+      {{svg-jar "more-vertical"}}
+    {{else}}
+      {{svg-jar "more-horizontal"}}
+    {{/if}}
+  {{/dd.toggle}}
+  {{#dd.menu renderInPlace=true align="right"}}
+    {{#if hasRecord}}
+      <a href="#" class="dropdown-item" {{action "hidePosts"}}>
+        {{#if followRecord.hidden}}
+          {{t "shared-addon.app-feed.items.post.actions.unhide-user" name=user.name}}
+          <small>{{t "shared-addon.app-feed.items.post.actions.unhide-user-help"}}</small>
+        {{else}}
+          {{t "shared-addon.app-feed.items.post.actions.hide-user" name=user.name}}
+          <small>{{t "shared-addon.app-feed.items.post.actions.hide-user-help"}}</small>
+        {{/if}}
+      </a>
+    {{/if}}
+
+    {{#unless isUserBlocked}}
+      <a class="dropdown-item" href="#" {{action (mut showBlockModal) true}}>
+        {{t "shared-addon.app-feed.items.post.actions.block" name=user.name}}
+        <small>{{t "shared-addon.app-feed.items.post.actions.block-help"}}</small>
+      </a>
+      {{confirm-modal
+        open=showBlockModal
+        onConfirm=(perform blockUser)
+        onClose=(action (mut showBlockModal) false)}}
+    {{/unless}}
+  {{/dd.menu}}
+{{/bs-dropdown}}

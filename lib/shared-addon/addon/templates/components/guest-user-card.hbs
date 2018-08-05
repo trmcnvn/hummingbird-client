@@ -1,0 +1,10 @@
+{{#unless session.hasSession}}
+  <div class="{{styleNamespace}} card">
+    {{#with user.name as |name|}}
+      <p>{{t "shared-addon.guest-user-card.text" name=name}}</p>
+    {{/with}}
+    {{#ui-button onClick=(action "onClick")}}
+      {{t "shared-addon.guest-user-card.button"}}
+    {{/ui-button}}
+  </div>
+{{/unless}}

@@ -1,11 +1,31 @@
 & {
   border-radius: rem(3px);
 
-  .banner > img {
-    height: rem(80px);
-    width: 100%;
-    border-radius: rem(3px);
-    object-fit: cover;
+  .user-banner {
+    position: relative;
+
+    .banner > img {
+      height: rem(80px);
+      width: 100%;
+      border-radius: rem(3px);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+
+      width: 100%;
+      border-radius: rem(3px);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0, rgba(0, 0, 0, 0.6) 100%);
+      z-index: 1;
+    }
   }
 
   .user-block {
@@ -17,11 +37,12 @@
 
     margin-bottom: rem(-25px);
     margin-left: rem(15px);
+    z-index: 2;
   }
 
   .avatar {
     img {
-      width: rem(80);
+      width: rem(80px);
       height: rem(80px);
 
       border: 2px solid;
@@ -42,10 +63,26 @@
 
       @include themify($themes) {
         color: themed('white');
-        -webkit-text-fill-color: themed('white');
-        -webkit-text-stroke-width: 0.25px;
-        -webkit-text-stroke-color: themed('black');
       }
+    }
+  }
+
+  .actions {
+    z-index: 2;
+    position: relative;
+    top: rem(-40px);
+
+    margin-left: rem(110px);
+    margin-right: rem(15px);
+    margin-bottom: rem(-25px);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      flex: 1;
+      margin-right: rem(5px);
     }
   }
 }

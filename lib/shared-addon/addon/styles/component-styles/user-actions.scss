@@ -1,0 +1,31 @@
+& {
+  .dropdown-toggle {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &::after {
+      content: none;
+    }
+
+    svg {
+      width: rem(28px);
+      height: rem(28px);
+
+      @include themify($themes) {
+        stroke: themed('gray-500');
+      }
+    }
+  }
+
+  .dropdown-item {
+    font-size: rem(12px);
+    small {
+      display: block;
+      margin-top: rem(5px);
+      @include themify($themes) {
+        color: themed('secondary-text');
+      }
+    }
+  }
+}
