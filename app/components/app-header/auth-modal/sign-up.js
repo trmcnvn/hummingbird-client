@@ -3,6 +3,7 @@ import { action, computed } from '@ember-decorators/object';
 import { task } from 'ember-concurrency-decorators';
 import { service } from '@ember-decorators/service';
 import { validator, buildValidations, hasValidations } from 'ember-cp-validations';
+import getErrorMessage from '../../../utils/get-error-message';
 
 const Validations = buildValidations({
   name: [
@@ -60,9 +61,7 @@ export default class SignUp extends Component {
       });
       this.transitionToComponent('import-select');
     } catch (error) {
-      // @TODO: Attempt to get human-readable server error from `error`
-      // otherwise, default to a translated error
-      const message = this.intl.t('application.authentication.errors.unknown-error');
+      const message = getErrorMessage(error) || this.intl.t('general.errors.request');
       this.notifications.error(message, { clearDuration: 5000 });
     }
   };

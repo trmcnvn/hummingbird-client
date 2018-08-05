@@ -4,6 +4,7 @@ import { service } from '@ember-decorators/service';
 import { action } from '@ember-decorators/object';
 import { task } from 'ember-concurrency-decorators';
 import { dasherize } from '@orbit/utils';
+import getErrorMessage from '../../../utils/get-error-message';
 
 export default class ImportFile extends Component {
   siteName = null;
@@ -38,7 +39,7 @@ export default class ImportFile extends Component {
       });
       this.transitionToComponent('import-progress', this.data);
     } catch (error) {
-      const message = this.intl.t('application.authentication.errors.unknown-error');
+      const message = getErrorMessage(error) || this.intl.t('general.errors.request');
       this.notifications.error(message, { clearDuration: 5000 });
     }
   };

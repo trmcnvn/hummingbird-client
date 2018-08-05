@@ -4,6 +4,7 @@ import { task } from 'ember-concurrency-decorators';
 import { computed } from '@ember-decorators/object';
 import { service } from '@ember-decorators/service';
 import { underscore } from '@orbit/utils';
+import getErrorMessage from '../../../utils/get-error-message';
 
 export default class SignIn extends Component {
   identification = null;
@@ -57,7 +58,7 @@ export default class SignIn extends Component {
         this.closeModal();
       }
     } catch (error) {
-      const message = this.intl.t('application.authentication.errors.invalid-credenditials');
+      const message = getErrorMessage(error) || this.intl.t('application.authentication.errors.invalid-credenditials');
       this.notifications.error(message, { clearDuration: 5000 });
     }
   };

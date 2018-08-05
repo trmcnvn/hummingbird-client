@@ -45,7 +45,7 @@ export default class Notifications extends Component {
       return records;
     } catch (error) {
       const message = this.intl.t('application.errors.notifications-request');
-      this.notifications.error(message);
+      this.notifications.error(message, { clearDuration: 5000 });
     }
   };
 
@@ -147,7 +147,7 @@ export default class Notifications extends Component {
       this.forkedStore.update(t => records.map(record => t.replaceAttribute(record, property, true)));
     } catch (error) {
       const message = this.intl.t('application.errors.notifications-marking');
-      this.notifications.error(message);
+      this.notifications.error(message, { clearDuration: 5000 });
     }
   }
 

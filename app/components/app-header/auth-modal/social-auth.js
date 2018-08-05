@@ -25,11 +25,11 @@ export default class SocialAuth extends Component {
           this.authentication.setComponent('sign-up', data);
         } catch (error) {
           const message = this.intl.t('application.authentication.errors.facebook-user');
-          this.notifications.error(message);
+          this.notifications.error(message, { clearDuration: 5000 });
         }
       } else {
         const message = this.intl.t('application.authentication.errors.facebook-user');
-        this.notifications.error(message);
+        this.notifications.error(message, { clearDuration: 5000 });
       }
     }
   };

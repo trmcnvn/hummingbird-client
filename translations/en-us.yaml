@@ -31,7 +31,6 @@ application:
     errors:
       facebook-user: "There was a problem with a request to Facebook. Please try again."
       invalid-credenditials: "There was a problem authenticating you with Kitsu. Were your details correct?"
-      unknown-error: "There was a problem with the request. Please try again."
       facebook-connected: "There is already an account on Kitsu associated with your Facebook."
     social-auth:
       intro: "Create an account to track, share, and discover anime and manga in a uniquely social way."

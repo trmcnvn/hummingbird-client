@@ -5,6 +5,7 @@ import { service } from '@ember-decorators/service';
 import { layout } from '@ember-decorators/component';
 import { isPresent } from '@ember/utils';
 import { assert } from '@ember/debug';
+import getErrorMessage from '../../../utils/get-error-message';
 
 @layout(template)
 export default class AozoraAccountDetails extends Component {
@@ -38,9 +39,7 @@ export default class AozoraAccountDetails extends Component {
       yield this.store.update(t => t.replaceRecord(record), { blocking: true });
       this.closeModal();
     } catch (error) {
-      // @TODO: Attempt to get human-readable server error from `error`
-      // otherwise, default to a translated error
-      const message = this.intl.t('application.authentication.errors.unknown-error');
+      const message = getErrorMessage(error) || this.intl.t('general.errors.request');
       this.notifications.error(message, { clearDuration: 5000 });
       this.raven.captureException(error);
     }

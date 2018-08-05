@@ -3,6 +3,7 @@ import { service } from '@ember-decorators/service';
 import { task } from 'ember-concurrency-decorators';
 import { isPresent } from '@ember/utils';
 import { taskState } from 'kitsu/app/decorators';
+import getErrorMessage from '../../../utils/get-error-message';
 
 export default class FindFriends extends Component {
   @service facebook;
@@ -26,7 +27,7 @@ export default class FindFriends extends Component {
     try {
       yield this.facebook.disconnect(this.session.userId)
     } catch (error) {
-      const message = this.intl.t('application.authentication.errors.unknown-error');
+      const message = getErrorMessage(error) || this.intl.t('general.errors.request');
       this.notifications.error(message, { clearDuration: 5000 });
     }
   };
