@@ -56,6 +56,10 @@ export default class Session extends SessionService {
   }
 
   async fetchCurrentUser() {
+    // @Debug
+    console.debug('Attempting to fetch the current user');
+    console.debug('Current state:', this.session.isAuthenticated);
+
     if (!this.session.isAuthenticated) { return RSVP.reject(); }
     try {
       const users = await this.store.request('user', {

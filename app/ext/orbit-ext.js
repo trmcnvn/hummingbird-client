@@ -76,6 +76,8 @@ Store.reopen({
     // Remove `undefined` values
     compact(query);
 
+    // @TODO: Store and check if a request with the same key is already in motion and use that result
+    // don't spawn multiple requests that are the same.
     try {
       // try to find a cached request record
       const record = this.cache.findRecord('request', key);

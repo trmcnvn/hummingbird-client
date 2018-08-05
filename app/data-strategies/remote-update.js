@@ -20,8 +20,12 @@ export default {
         return !(transform.options && transform.options.local);
       },
 
-      catch() {
-        // caught and handled by `remote-push-fail`
+      catch(error, transform) {
+        if (transform.options && transform.options.blocking) {
+          this.source.requestQueue.skip();
+          this.target.requestQueue.skip();
+        }
+        throw error;
       }
     });
   }

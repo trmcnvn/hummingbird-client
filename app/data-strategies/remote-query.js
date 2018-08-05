@@ -15,6 +15,14 @@ export default {
 
       blocking(query) {
         return !!(query.options && query.options.blocking);
+      },
+
+      catch(error, query) {
+        if (query.options && query.options.blocking) {
+          this.source.requestQueue.skip();
+          this.target.requestQueue.skip();
+        }
+        throw error;
       }
     });
   }
