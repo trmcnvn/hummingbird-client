@@ -24,8 +24,10 @@
         {{media-reaction-modal
           reaction=reaction
           media=reaction.media
+          libraryEntry=reaction.libraryEntry
           open=showEditComponent
           onHidden=(action (mut showEditComponent) false)
+          onCreate=(action (mut showEditComponent) false)
           onDelete=(perform destroyReaction)}}
 
         <a class="dropdown-item" href="#" {{action (mut showDeleteModal) true}}>

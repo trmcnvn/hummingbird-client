@@ -260,5 +260,7 @@ shared-addon:
       =2 {While it may not be everyone's cup of tea, it's certainly interesting.}
       other {Overrated, don't waste your time on this one.}}"
     delete: "Delete Reaction"
+    post: "Post"
+    edit: "Edit"
   errors:
     feed-request: "There was an issue requesting your feed."

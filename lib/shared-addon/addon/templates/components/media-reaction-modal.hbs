@@ -35,6 +35,14 @@
           open=showDeleteModal
           onConfirm=(perform destroyReaction)
           onClose=(action (mut showDeleteModal) false)}}
+
+        {{#ui-button buttonClass="create" onClick=(perform createReaction) isLoading=createReaction.isRunning}}
+          {{#if isEditing}}
+            {{t "shared-addon.media-reaction-modal.edit"}}
+          {{else}}
+            {{t "shared-addon.media-reaction-modal.post"}}
+          {{/if}}
+        {{/ui-button}}
       </div>
     </div>
     <div class="poster-image" style={{posterImageStyle}}></div>

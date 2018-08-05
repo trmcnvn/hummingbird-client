@@ -47,6 +47,9 @@
         }
 
         .uploads, .post-action {
+          position: relative;
+          top: rem(-4px);
+
           margin-left: rem(15px);
           margin-bottom: 0;
 

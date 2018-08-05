@@ -8,7 +8,7 @@ export default class Reactions extends Route {
   model({ id }) {
     return this.store.request('mediaReaction', {
       filter: { id },
-      include: ['user', 'anime', 'manga'].join(),
+      include: ['user', 'anime', 'manga', 'libraryEntry'].join(),
       cache: false
     }).then(records => records.firstObject);
   }

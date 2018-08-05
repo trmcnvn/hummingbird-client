@@ -4,13 +4,13 @@
     width: rem(390px);
   }
 
-  .modal-content {
-    height: 100%;
-  }
-
-  .modal-body {
+  .modal-content, .modal-body {
     padding: 0;
     height: 100%;
+
+    border-radius: rem(3px);
+    border: none;
+    background-color: transparent;
   }
 
   .reaction {
@@ -61,6 +61,8 @@
     }
 
     .actions {
+      position: relative;
+
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -74,6 +76,22 @@
           @include themify($themes) {
             stroke: themed('red');
           }
+        }
+      }
+
+      .create {
+        position: absolute;
+        top: rem(-10px);
+        right: rem(-10px);
+
+        border-radius: 999em;
+        border: 2px solid;
+
+        width: rem(100px);
+        height: rem(100px);
+
+        @include themify($themes) {
+          border-color: themed('white');
         }
       }
     }
