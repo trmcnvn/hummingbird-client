@@ -3,9 +3,9 @@
     {{ui-spinner size="small"}}
   </div>
 {{else}}
-  <span class="heart {{if isLiked "is-liked"}}" {{action (perform createLike)}}>
+  <a class="heart {{if isLiked "is-liked"}}" href="#" {{action (perform createLike)}}>
     {{svg-jar "heart"}}
-  </span>
+  </a>
 
   {{#if (and showUsers (gt records.length 0))}}
     <div class="users">

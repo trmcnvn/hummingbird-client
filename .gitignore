@@ -19,5 +19,5 @@ npm-debug.log*
 testem.log
 yarn-error.log
 .vscode/
-
+CNAME
 v4-CHANGES.md

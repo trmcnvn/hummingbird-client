@@ -1,8 +1,8 @@
 {{#if (and isContentGated isGateShown)}}
-  <div class="content-gate {{gateType}}" {{action "toggleGate"}}>
+  <a class="content-gate {{gateType}}" href="#" {{action "toggleGate"}}>
     <div class="gate-label">{{t (concat "shared-addon.app-feed.items.post.gate." gateType ".label")}}</div>
     <div class="gate-hover">{{t (concat "shared-addon.app-feed.items.post.gate." gateType ".hover")}}</div>
-  </div>
+  </a>
 {{else}}
   {{! Post body }}
   {{#if post.contentFormatted}}
@@ -13,13 +13,13 @@
     {{else}}
       {{#read-more text=(format-content post.contentFormatted) limit=700 htmlSafe=true class="post-content" as |rm|}}
         {{#if rm.wasTruncated}}
-          <div class="view-more" {{action rm.toggle}}>
+          <a class="view-more" href="#" {{action rm.toggle}}>
             {{#if rm.isExpanded}}
               {{t "shared-addon.app-feed.items.post.view-less"}}
             {{else}}
               {{t "shared-addon.app-feed.items.post.view-more"}}
             {{/if}}
-          </div>
+          </a>
         {{/if}}
       {{/read-more}}
     {{/if}}

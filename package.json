@@ -15,7 +15,8 @@
     "lint:hbs": "ember-template-lint app/templates/**/* lib/**/**/templates/**/*",
     "lint": "yarn run lint:js; yarn run lint:hbs",
     "start": "ember serve",
-    "test": "ember test --reporter dot"
+    "test": "ember test --reporter dot",
+    "deploy:surge": "ember build -prod; surge ./dist"
   },
   "devDependencies": {
     "@ember-decorators/argument": "0.8.18",

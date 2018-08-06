@@ -1,20 +1,20 @@
 {{#bs-popover fade=false placement="bottom" triggerElement=@triggerElement class=(concat styleNamespace " " @popoverClass)}}
   <div class="emojis">
     {{#each selectedEmojis as |emoji|}}
-      <span class="emoji" {{action "emojiSelected" emoji.char}}>
+      <a class="emoji" href="#" {{action "emojiSelected" emoji.char}}>
         {{html-safe emoji.char}}
         {{bs-tooltip title=(concat ":" emoji.key ":")}}
-      </span>
+      </a>
     {{/each}}
   </div>
   <div class="categories">
     {{#each-in emojis as |category emojis|}}
-      <div class="category {{if (eq selectedCategory category) "active"}}" {{action (mut selectedCategory) category}}>
+      <a class="category {{if (eq selectedCategory category) "active"}}" href="#" {{action (mut selectedCategory) category}}>
         {{#with (object-at 0 emojis) as |emoji|}}
           {{emoji.char}}
           {{bs-tooltip title=(t "shared-addon.app-feed.editor.emoji-selector.categories" category=emoji.category)}}
         {{/with}}
-      </div>
+      </a>
     {{/each-in}}
   </div>
 {{/bs-popover}}

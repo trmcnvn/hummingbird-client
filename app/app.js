@@ -5,6 +5,7 @@ import config from './config/environment';
 
 import './ext/orbit-ext';
 import './ext/array-ext';
+import './ext/popper-ext';
 
 const App = Application.extend({
   modulePrefix: config.modulePrefix,

@@ -14,7 +14,6 @@
     "ember-component-css": "*",
     "ember-composable-helpers": "*",
     "ember-truth-helpers": "*",
-    "ember-popper": "*",
     "ember-svg-jar": "*",
     "ember-href-to": "*",
     "ember-click-outside": "*",

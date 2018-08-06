@@ -12,7 +12,7 @@
               {{t "shared-addon.app-feed.items.post.comments.view-all"}}
             </a>
             {{#if @comment.parent}}
-              &nbsp;&mdash;&nbsp;
+             &nbsp;&mdash;&nbsp;
               <a href={{href-to "comments" @comment.parent.remoteId}} class="pagination-action">
                 {{t "shared-addon.app-feed.items.post.comments.view-parent"}}
               </a>
@@ -22,7 +22,7 @@
               {{#dd.toggle}}
                 {{t (concat "shared-addon.app-feed.items.post.comments.sort." selectedSort)}}
               {{/dd.toggle}}
-              {{#dd.menu as |ddm|}}
+              {{#dd.menu}}
                 {{#each sortOptions as |option|}}
                   <a class="dropdown-item {{if (eq selectedSort option) "active"}}" href="#" {{action "changeSort" option}}>
                     {{t (concat "shared-addon.app-feed.items.post.comments.sort." option)}}

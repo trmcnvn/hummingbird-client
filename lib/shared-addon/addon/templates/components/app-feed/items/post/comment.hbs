@@ -22,13 +22,13 @@
       {{#if @comment.contentFormatted}}
         {{#read-more text=(format-content @comment.contentFormatted) limit=350 htmlSafe=true class="comment-content" as |rm|}}
           {{#if rm.wasTruncated}}
-            <div class="view-more" {{action rm.toggle}}>
+            <a class="view-more" href="#" {{action rm.toggle}}>
               {{#if rm.isExpanded}}
                 {{t "shared-addon.app-feed.items.post.view-less"}}
               {{else}}
                 {{t "shared-addon.app-feed.items.post.view-more"}}
               {{/if}}
-            </div>
+            </a>
           {{/if}}
         {{/read-more}}
       {{/if}}

@@ -11,13 +11,13 @@
 
 {{! Realtime Activities Count }}
 {{#if (gt newActivities.length 0)}}
-  <div class="new-activities card" {{action (perform fetchNewActivities)}}>
+  <a class="new-activities card" href="#" {{action (perform fetchNewActivities)}}>
     {{#if fetchNewActivities.isRunning}}
       {{ui-spinner size="small" center=true}}
     {{else}}
       {{t "shared-addon.app-feed.feed.new-activities" number=newActivities.length}}
     {{/if}}
-  </div>
+  </a>
 {{/if}}
 
 {{! Filters }}
@@ -27,7 +27,7 @@
       {{#dd.toggle}}
         {{t (concat "shared-addon.app-feed.feed.filters." selectedFilter)}}
       {{/dd.toggle}}
-      {{#dd.menu align="right" as |ddm|}}
+      {{#dd.menu align="right"}}
         {{#each filterOptions as |filter|}}
           <a class="dropdown-item {{if (eq selectedFilter filter) "active"}}" href="#" {{action "setFilter" filter}}>
             {{t (concat "shared-addon.app-feed.feed.filters." filter)}}
@@ -66,8 +66,8 @@
 {{else if (gt records.length 0)}}
   {{#ui-pagination onPagination=(perform fetchNextPage) spinnerSize="large"}}
     {{#each records as |item index|}}
-      {{#with (compute (action "getActivityType") (object-at 0 item.activities)) as |type|}}
-        {{#occludable-component estimatedHeight=600 rootMargin=(hash bottom=600)}}
+      {{#with (compute (action "getActivityType") item.activities) as |type|}}
+        {{#occludable-component estimatedHeight=600 rootMargin=(hash top=600)}}
           {{component (concat "app-feed/items/" type)
             item=item
             feed=feed
@@ -82,12 +82,14 @@
         {{else if targetMedia.nsfw}}
           {{! ... }}
         {{else}}
-          {{gam-unit
-            unit="kitsu.feeds.inline"
-            targeting=(hash section="feed")
-            sizes=(hash
-              mobile=(array (array 336 280) (array 300 250) (array 320 100) (array 320 50))
-            )}}
+          {{#occludable-component estimatedHeight=280 rootMargin=(hash top=280)}}
+            {{gam-unit
+              unit="kitsu.feeds.inline"
+              targeting=(hash section="feed")
+              sizes=(hash
+                mobile=(array (array 336 280) (array 300 250) (array 320 100) (array 320 50))
+              )}}
+          {{/occludable-component}}
         {{/if}}
       {{/if}}
     {{/each}}
