@@ -1,0 +1,31 @@
+General:
+  ☐ Create an `empty-state` component rather than using text.
+  ☐ Create an addon that transpiles Markdown files to HTML at build time
+  ☐ Create a decorator that allows routes to transition to `/404` when a model request fails
+  ☐ Meta tags breadcrumbs (Port from v3)
+  ☐ Make sure errors are being sent to Sentry
+
+Issues:
+  ☐ Signing in sometimes gets locked up, is it the `waitForProperty` yield?
+  ☐ Is it better to only create Modals in the DOM when they are invoked?
+
+Dashboard:
+  Quick Update:
+    ☐ Completed State
+    ☐ Edit Library Entries
+    ☐ Link to unit page
+
+Explore:
+  ☐ Build the advanced search pages to be backed by Algolia search
+
+Editor:
+  ☐ Implement the `user-selector` component
+  ☐ Build a mapping for mentions. Some uses don't have a `slug` and `id's` look ugly. (Name <-> linkableId)
+
+Feed:
+  ☐ Review component
+  ☐ Reaction component
+  ☐ Follow component
+
+Ideas:
+  ☐ Look into modifying editor to fork the store and modify a post record directly instead of many attributes
