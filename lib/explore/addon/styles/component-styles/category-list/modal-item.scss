@@ -15,6 +15,11 @@
     width: rem(26px);
     height: rem(26px);
     float: right;
+    color: inherit;
+    &:active, &:focus {
+      color: inherit;
+    }
+
     svg {
       stroke-width: 1;
     }
@@ -25,10 +30,6 @@
     border-left: rem(1px) solid;
     @include themify($themes) {
       border-color: themed('gray-500');
-    }
-
-    a {
-      color: inherit;
     }
   }
 }

@@ -2,10 +2,12 @@
   {{svg-jar "search"}}
   <input
     class="form-control" type="search" placeholder={{t "explore.search.placeholder"}}
-    value={{query}} oninput={{action (mut query) value="target.value"}} />
+    value={{query}} oninput={{action (mut query) value="target.value"}}>
   {{search-popper query=query eventTarget="#explore-input-search" eventType="click"}}
 </div>
 
 <div class="meta-info">
-  {{t "explore.search.meta" type=@type htmlSafe=true}}
+  {{t "explore.search.meta"
+    link=(href-to (concat "explore-" @type))
+    htmlSafe=true}}
 </div>

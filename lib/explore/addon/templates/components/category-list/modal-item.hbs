@@ -9,9 +9,9 @@
 {{/if}}
 
 {{#if (gt @category.childCount 0)}}
-  <span class="modal-item-expand" {{action "toggleExpansion"}}>
+  <a href="#" class="modal-item-expand" {{action "toggleExpansion"}}>
     {{svg-jar (if isExpanded "minus-square" "plus-square")}}
-  </span>
+  </a>
 
   {{#if isExpanded}}
     {{#if fetchChildren.isRunning}}

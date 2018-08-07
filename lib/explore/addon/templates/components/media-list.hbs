@@ -22,7 +22,7 @@
         {{/each}}
 
         {{#if (and media (lt media.length 5))}}
-          {{#each (range 0 (dec 5 media.length)) as |index|}}
+          {{#each (range 0 (dec 5 media.length))}}
             {{media-poster}}
           {{/each}}
         {{/if}}
@@ -31,7 +31,8 @@
   </div>
 </div>
 
-{{#unless (or @hideMeta (and (not isWorking) (eq media.length 0)))}}
+{{! Only show if @hideMeta is false, we have a media count, and we aren't doing any work }}
+{{#if (and (not @hideMeta) (or (not isWorking) (gt media.length 0)))}}
   <div class="media-list-more">
     {{#if (is-empty @category)}}
       <a href={{href-to viewMoreRoute @type @key}}>
@@ -43,4 +44,4 @@
       </a>
     {{/if}}
   </div>
-{{/unless}}
+{{/if}}

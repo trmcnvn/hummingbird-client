@@ -22,7 +22,7 @@ module.exports = function(environment) {
 
     kitsu: {
       environment: process.env.HEROKU_EMBER_APP || environment,
-      APIHost: 'https://staging.kitsu.io',
+      APIHost: 'https://kitsu.io',
       APIKeys: {
         algolia: 'AWQO5J657S',
         embedly: '90f3fb8ff40f4603991aa258127ccb5e',
@@ -46,7 +46,7 @@ module.exports = function(environment) {
           networkId: '20370372407'
         }
       },
-      OrbitDBVersion: '99d88fb9-57c8-426b-a3d9-7ce70fef42d2'
+      OrbitDBVersion: '99d88fb9-57c8-426b-a3d9-7ce70fdf42d2'
     },
 
     // ember-cli-sentry

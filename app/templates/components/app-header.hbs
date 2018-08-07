@@ -37,7 +37,7 @@
           {{#dd.toggle}}
             {{t "application.header.feedback"}}
           {{/dd.toggle}}
-          {{#dd.menu as |ddm|}}
+          {{#dd.menu}}
             <a href={{href-to "feedback.bugs"}} class="dropdown-item">
               {{t "application.header.feedback-items.bugs"}}
             </a>
@@ -71,7 +71,7 @@
             {{#dd.toggle class="pr-0 user-dropdown"}}
               {{ui-avatar image=(get-image session.currentUser.avatar "small") size="small"}}
             {{/dd.toggle}}
-            {{#dd.menu align="right"}}
+            {{#dd.menu align="right" as |ddm|}}
               <a href={{href-to "profile" session.currentUser.linkableId}} class="dropdown-item">
                 {{t "application.header.user.profile"}}
               </a>

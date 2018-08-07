@@ -4,10 +4,10 @@ General:
   ☐ Create a decorator that allows routes to transition to `/404` when a model request fails
   ☐ Meta tags breadcrumbs (Port from v3)
   ☐ Make sure errors are being sent to Sentry
+  ☐ Use localForage with Orbit
 
 Issues:
-  ☐ Signing in sometimes gets locked up, is it the `waitForProperty` yield?
-  ☐ Is it better to only create Modals in the DOM when they are invoked?
+  ✔ Signing in sometimes gets locked up, is it the `waitForProperty` yield? @done(18-08-07 03:51)
 
 Dashboard:
   Quick Update:
@@ -24,8 +24,8 @@ Editor:
 
 Feed:
   ☐ Review component
-  ☐ Reaction component
+  ✔ Reaction component @done(18-08-07 03:35)
   ☐ Follow component
 
-Ideas:
+Cleanup:
   ☐ Look into modifying editor to fork the store and modify a post record directly instead of many attributes

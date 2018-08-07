@@ -2,9 +2,14 @@ import SessionService from 'ember-simple-auth/services/session';
 import { get, set } from '@ember/object';
 import { service } from '@ember-decorators/service';
 import { isArray } from '@ember/array';
-import { ClientError } from '@orbit/data';
 import { computed } from '@ember-decorators/object';
 import RSVP from 'rsvp';
+
+class EmptyUserError extends Error {
+  constructor() {
+    super('Invalid Token');
+  }
+}
 
 export default class Session extends SessionService {
   userId = null; // This is the local store id, not the user's remote id.
@@ -56,10 +61,6 @@ export default class Session extends SessionService {
   }
 
   async fetchCurrentUser() {
-    // @Debug
-    console.debug('Attempting to fetch the current user');
-    console.debug('Current state:', this.session.isAuthenticated);
-
     if (!this.session.isAuthenticated) { return RSVP.reject(); }
     try {
       const users = await this.store.request('user', {
@@ -67,15 +68,13 @@ export default class Session extends SessionService {
         cache: false
       });
       const user = isArray(users) ? users.firstObject : null;
-      if (!user) {
-        throw new ClientError('Unauthorized');
-      }
+      if (!user) { throw new EmptyUserError(); }
       set(this, 'userId', user.id);
       return user;
     } catch (error) {
       // Don't invalidate the session for 5xx errors
       const status = get(error, 'response.status');
-      if (status === 401) {
+      if (status === 401 || error instanceof EmptyUserError) {
         this.invalidate();
       } else {
         this.raven.captureException(error);

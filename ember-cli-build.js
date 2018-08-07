@@ -17,6 +17,16 @@ module.exports = function(defaults) {
       'jquery.js': null
     },
 
+    addons: {
+      // These addons are used in engines only, we don't want them bundled with
+      // the host application. Revisit this when ember-engines is further developed.
+      // as this will still bundle any underlying imports into the host's vendor.
+      // @Engines
+      blacklist: [
+        'ember-cli-swiper'
+      ]
+    },
+
     fingerprint: {
       exclude: [
         'OneSignalSDKWorker.js',
@@ -43,7 +53,7 @@ module.exports = function(defaults) {
     },
 
     pollyjs: {
-      enabled: EmberApp.env() !== 'production'
+      enabled: EmberApp.env() === 'test'
     },
 
     svgJar: {

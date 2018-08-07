@@ -49,4 +49,6 @@ explore:
     title: "All Categories"
   search:
     placeholder: "What are you searching for?"
-    meta: "Or, browse using our <a href=\"/{type}\">advanced filters.</a>"
+    meta: "Or, browse using our <a href={link}>advanced filters.</a>"
+  search-page:
+    placeholder: "Search by title..."

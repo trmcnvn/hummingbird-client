@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { service } from '@ember-decorators/service';
 import QueryParams from 'ember-parachute';
+import WithParams from 'shared-addon/mixins/query-params';
 
 const queryParams = new QueryParams({
   notification: {
@@ -9,7 +10,8 @@ const queryParams = new QueryParams({
   }
 });
 
-export default class Application extends Controller.extend(queryParams.Mixin) {
+@WithParams(queryParams)
+export default class Application extends Controller {
   @service fetch;
   @service session;
   @service store;

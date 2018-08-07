@@ -1,9 +1,13 @@
 & {
   padding: 0;
-  margin-bottom: rem(20px);
   border-bottom: rem(1px) solid;
   border-radius: 0;
   max-height: rem(42px);
+
+  margin-bottom: rem(20px);
+  .no-navbar-padding & {
+    margin-bottom: rem(0px);
+  }
 
   @include themify($themes) {
     border-color: darken(themed('purple-dark'), 5%);

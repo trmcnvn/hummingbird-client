@@ -30,6 +30,7 @@ before_script:
 - greenkeeper-lockfile-update
 
 script:
+- yarn run lint:hbs
 - yarn test
 
 after_script:

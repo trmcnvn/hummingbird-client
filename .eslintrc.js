@@ -17,6 +17,7 @@ module.exports = {
   },
   overrides: [{
     files: [
+      '.template-lintrc.js',
       'testem.js',
       'ember-cli-build.js',
       'config/**/*.js',

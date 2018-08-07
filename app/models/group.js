@@ -1,5 +1,5 @@
 import Model from 'kitsu/mixins/models/base';
-import { attr, hasOne, hasMany } from 'kitsu/decorators';
+import { attr, hasMany } from 'kitsu/decorators';
 
 export default class GroupInvite extends Model {
   @attr('string') about;
