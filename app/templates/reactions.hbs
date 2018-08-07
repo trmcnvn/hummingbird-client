@@ -1,7 +1,7 @@
 <div class="container page-reactions">
   <div class="row justify-content-center">
     <div class="col-sm-8 pl-0">
-      {{media-reaction-card reaction=model isPermalinkPage=true}}
+      {{media-reaction-card reaction=model onDelete=(action "onDelete")}}
       <div class="view-more">
         {{! @TODO: @Profiles - Link to reactions }}
         <a href="#">

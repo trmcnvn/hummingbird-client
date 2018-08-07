@@ -1,9 +1,13 @@
-import observerManager, { ObserverMap, ListenerMap } from 'kitsu/utils/observer-manager';
+import observerManager, { ObserverMap } from 'kitsu/utils/observer-manager';
 import { module, test } from 'qunit';
 
-module('Unit | Utility | observer-manager', function() {
+module('Unit | Utility | observer-manager', function(hooks) {
+  hooks.beforEeach(() => {
+    ObserverMap.clear();
+  });
+
   test('it reuses IntersectionObserver instances', function(assert) {
-    const foo =observerManager({ abc: 'def' });
+    observerManager({ abc: 'def' });
     assert.equal(ObserverMap.size, 1);
 
     // doesn't create a new observer

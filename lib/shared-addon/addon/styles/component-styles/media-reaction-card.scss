@@ -99,6 +99,20 @@
         color: themed('white');
       }
     }
+
+    .blockquote-footer {
+      @include themify($themes) {
+        color: themed('secondary-text');
+      }
+
+      cite {
+        font-weight: 700;
+        font-style: normal;
+        @include themify($themes) {
+          color: themed('primary');
+        }
+      }
+    }
   }
 
   .poster-image {

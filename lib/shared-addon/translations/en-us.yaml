@@ -246,6 +246,7 @@ shared-addon:
     delete: "Delete Reaction"
     deleted: "Your reaction was deleted"
     report: "Report Reaction"
+    author: "Reaction by <a href={link}><cite title={name}>{name}</cite></a>"
   user-follow-button:
     follow: "Follow"
     unfollow: "Unfollow"

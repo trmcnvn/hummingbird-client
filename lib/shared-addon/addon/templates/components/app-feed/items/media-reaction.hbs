@@ -1,1 +1,7 @@
-{{yield}}
+{{#if reaction}}
+  {{media-reaction-card
+    reaction=reaction
+    author=activity.actor
+    showAuthor=true
+    onDelete=(action "deletedReaction")}}
+{{/if}}
