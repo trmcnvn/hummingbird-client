@@ -186,6 +186,6 @@
     </h5>
   {{/modal.header}}
   {{#modal.body}}
-    {{markdown-to-html markdown=(fr-markdown-file "post-help") tables=true}}
+    {{render-markdown "post-help"}}
   {{/modal.body}}
 {{/bs-modal}}
